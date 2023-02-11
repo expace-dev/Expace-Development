@@ -1,0 +1,21 @@
+@import '~bootstrap/scss/bootstrap';
+
+@import "../components/animate.css/animate.css";
+@import "../components/bootstrap-icons/bootstrap-icons.css";
+@import "../components/boxicons/css/boxicons.css";
+@import "../components/glightbox/css/glightbox.css";
+@import "../components/swiper/swiper-bundle.min.css";
+
+
+@import './general';
+@import './general-section';
+@import './topbar';
+@import './auth';
+@import './breadcrumbs';
+@import './carousel';
+@import './contact';
+@import './featured';
+@import './testimonials';
+@import './statistiques';
+@import './procedure';
+@import './footer';

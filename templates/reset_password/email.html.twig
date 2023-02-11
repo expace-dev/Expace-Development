@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Demande de contact</title>
+    </head>
+    <body>
+        <div style="display: flex; justify-content: center;">
+            <div style="
+                color: #444444;
+                box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+                padding: 20px 0 30px 0;
+                max-width: 600px;
+            ">
+                <div style="text-align: center;">
+                    <img src="https://www.expace-development.fr/images/logo.png" alt="logo Expace Development">
+                </div>
+
+                <div style="padding: 20px 20px 20px 20px;">
+                    
+
+                    <p>
+                        cliquez sur le boutton ci-dessous pour réinitialiser votre mot de passe<br><br>
+                        
+                        
+                    </p>
+                    <p style="text-align: center;">
+                        <a 
+                            style="
+                                background: #545454;
+                                border: 0;
+                                padding: 10px 24px;
+                                border-radius: 5px;
+                                color: #fff;
+                                transition: 0.4s;
+                                text-decoration: none;
+                            "
+                            onMouseOver="
+                                this.style.background='#2962ff'
+                            "
+                            onMouseOut="
+                                this.style.background='#545454'
+                            " 
+                            href="
+                                {{ url('app_reset_password', {token: resetToken.token}) }}
+                            "
+                            >
+                            Réinitialiser le mot de passe
+                        </a><br><br>
+                    </p>
+                    
+
+                    <p>Ce lien expire dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+                </div>
+
+            </div>    
+        </div>
+        
+    </body>
+</html>
+

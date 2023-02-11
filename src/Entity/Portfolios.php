@@ -1,0 +1,121 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\PortfoliosRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: PortfoliosRepository::class)]
+class Portfolios
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $client = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $url = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $details = null;
+
+    #[ORM\OneToMany(mappedBy: 'projet', targetEntity: ImagesPortfolios::class, orphanRemoval: true)]
+    private Collection $imagesPortfolios;
+
+    public function __construct()
+    {
+        $this->imagesPortfolios = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getClient(): ?string
+    {
+        return $this->client;
+    }
+
+    public function setClient(string $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(string $url): self
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    public function getDetails(): ?string
+    {
+        return $this->details;
+    }
+
+    public function setDetails(string $details): self
+    {
+        $this->details = $details;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ImagesPortfolios>
+     */
+    public function getImagesPortfolios(): Collection
+    {
+        return $this->imagesPortfolios;
+    }
+
+    public function addImagesPortfolio(ImagesPortfolios $imagesPortfolio): self
+    {
+        if (!$this->imagesPortfolios->contains($imagesPortfolio)) {
+            $this->imagesPortfolios->add($imagesPortfolio);
+            $imagesPortfolio->setProjet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImagesPortfolio(ImagesPortfolios $imagesPortfolio): self
+    {
+        if ($this->imagesPortfolios->removeElement($imagesPortfolio)) {
+            // set the owning side to null (unless already changed)
+            if ($imagesPortfolio->getProjet() === $this) {
+                $imagesPortfolio->setProjet(null);
+            }
+        }
+
+        return $this;
+    }
+}
