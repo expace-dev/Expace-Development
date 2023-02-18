@@ -1,0 +1,32 @@
+.input-icon {
+    position: relative;
+  }
+  
+  .input-icon .form-control:not(:last-child) {
+    padding-right: 2.5rem;
+  }
+  
+  .input-icon .form-control:not(:first-child) {
+    padding-left: 2.5rem;
+  }
+  
+  .input-icon-addon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    color: #d8d8d8;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    pointer-events: none;
+  }
+  
+  .input-icon-addon:last-child {
+    left: auto;
+    right: 0;
+  }

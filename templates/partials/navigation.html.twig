@@ -1,15 +1,40 @@
+<li><a href="{{path('app_home')}}">Accueil</a></li>
+<li><a href="{{ path('app_home', {'_fragment': 'portfolio'}) }}">Portfolio</a></li>
+<li><a href="{{ path('app_home', {'_fragment': 'temoignages'}) }}">Temoignages</a></li>
+<li><a href="{{ path('app_home', {'_fragment': 'statistiques'}) }}">Statistiques</a></li>
+<li><a href="{{ path('app_home', {'_fragment': 'about'}) }}">Fonctionnement</a></li>
+<li><a href="{{path('app_contact')}}">Contact</a></li>
+<!--<li><a href="{{ path('app_home', {'_fragment': 'team'}) }}" class="">Team</a></li>-->
 {% if is_granted("ROLE_USER") %}
-    {% if is_granted("ROLE_ADMIN") %}
-        je suis admin
+    {% if app.user.avatar %}
+    <li class="dropdown"><a href="#"><img src="{{ app.user.avatar }}" class="avatar avatar-mini"> <i class="bi bi-chevron-down"></i></a>
     {% else %}
-        je suis client
+    <li class="dropdown"><a href="#"><img src="/images/no-avatar-350x350.jpg" class="avatar avatar-mini"> <i class="bi bi-chevron-down"></i></a>
     {% endif %}
-{% else %}
-    <li><a href="{{path('app_home')}}">Accueil</a></li>
-    <li><a href="{{ path('app_home', {'_fragment': 'portfolio'}) }}">Portfolio</a></li>
-    <li><a href="{{ path('app_home', {'_fragment': 'temoignages'}) }}">Temoignages</a></li>
-    <li><a href="{{ path('app_home', {'_fragment': 'statistiques'}) }}">Statistiques</a></li>
-    <li><a href="{{ path('app_home', {'_fragment': 'about'}) }}">Fonctionnement</a></li>
-    <li><a href="{{path('app_contact')}}">Contact</a></li>
-    <!--<li><a href="{{ path('app_home', {'_fragment': 'team'}) }}" class="">Team</a></li>-->
+        <ul>
+            {% if is_granted("ROLE_ADMIN") %}
+            <li><a href="">Dashboard</a></li>
+            <li><a href="{{ path('app_admin_users_index') }}">Clients</a></li>
+            <li><a href="">Réalisations</a></li>
+            <li><a href="">Intervenants</a></li>
+            <li><a href="{{ path('app_admin_projets_index') }}">Projets</a></li>
+            <li><a href="">Témoignages</a></li>
+            <li><a href="{{ path('app_admin_devis_index') }}">Devis</a></li>
+            <li><a href="">Factures</a></li>
+            <li><a href="">Activités</a></li>
+            <li><a href="">Profil</a></li>
+            {% else %}
+            <li><a href="">Dashboard</a></li>
+            <li><a href="">Clients</a></li>
+            <li><a href="">Réalisations</a></li>
+            <li><a href="">Intervenants</a></li>
+            <li><a href="">Projets</a></li>
+            <li><a href="">Témoignages</a></li>
+            <li><a href="">Devis</a></li>
+            <li><a href="">Factures</a></li>
+            <li><a href="">Activités</a></li>
+            <li><a href="">Profil</a></li>
+            {% endif %}
+        </ul>
+    </li>
 {% endif %}

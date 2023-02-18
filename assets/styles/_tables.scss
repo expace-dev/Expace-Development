@@ -1,0 +1,45 @@
+.table thead th,
+.text-wrap table thead th,
+.table thead td,
+.text-wrap table thead td {
+  padding: 0.3rem;
+  vertical-align: top;
+  border-top: 1px solid #fff;
+}
+.table thead th,
+.text-wrap table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #fff;
+}
+.table thead th,
+.text-wrap table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #fff;
+}
+tbody tr {
+    line-height: 2rem;
+  }
+  .table .thead-dark th,
+.text-wrap table .thead-dark th {
+  color: #fff;
+  background-color: #1f2225;
+  border-color: #343a40;
+}
+.table thead th,
+  .text-wrap table thead th {
+    border-top: 0;
+    border-bottom-width: 1px;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+  .table th,
+.text-wrap table th {
+  color: #d8d8d8;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+.table-vcenter td,
+.table-vcenter th {
+  vertical-align: middle;
+}

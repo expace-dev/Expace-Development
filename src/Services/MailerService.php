@@ -19,7 +19,11 @@ class MailerService {
         $template = '', 
         $subject = '', 
         $content = '', 
-        $to = 'admin@expace-development.fr'
+        $to = 'noreply@expace-development.fr',
+        $attache = '',
+        $type = '',
+        $client = '',
+        $document = ''
         ):void {
 
         $email = (new TemplatedEmail())
@@ -30,6 +34,46 @@ class MailerService {
             ->context([
                 'message' => $content
             ]);
+
+        $email = (new TemplatedEmail())
+            ->from(new Address($from, $name))
+            ->to(new Address($to))
+            ->subject($subject)
+            ->attachFromPath($attache)
+            ->htmlTemplate($template)
+            ->context([
+                'prenom' => $client,
+                'document' => $document
+        ]);
+
+        $this->mailer->send($email);
+
+    }
+
+    public function sendDocument(
+        $from = '', 
+        $name = '', 
+        $template = '', 
+        $subject = '', 
+        $content = '', 
+        $to = 'noreply@expace-development.fr',
+        $attache = '',
+        $docAttache = '',
+        $client = '',
+        $document = '',
+        $mime = ''
+        ):void {
+
+        $email = (new TemplatedEmail())
+            ->from(new Address($from, $name))
+            ->to(new Address($to))
+            ->subject($subject)
+            ->attachFromPath($attache, $docAttache, $mime)
+            ->htmlTemplate($template)
+            ->context([
+                'prenom' => $client,
+                'document' => $document
+        ]);
 
         $this->mailer->send($email);
 

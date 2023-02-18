@@ -15,3 +15,5 @@ import './bootstrap';
 
 import bootstrap from "bootstrap";
 window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
+
+import '@grafikart/drop-files-element';

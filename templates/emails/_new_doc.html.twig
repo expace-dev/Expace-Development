@@ -1,0 +1,17 @@
+<h1>Votre demande de projet évolue!</h1>
+
+<p>
+    Bonjour {{ prenom }},<br><br>
+
+    Nous venons de déposer {% if document == 'cahier des charges' %}le{% else %}la{% endif %}
+     {{document}} concernant votre projet web.<br>
+    Vous trouverez ce document en pièce jointe de cet email.<br><br>
+
+    Vous pouvez également {% if document == 'cahier des charges' %}le{% else %}la{% endif %} retrouver sur votre espace client.
+
+</p>
+
+<p>
+    Cordialement<br>
+    L'équipe Expace Development
+</p>

@@ -3,19 +3,26 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
+use App\Entity\Devis;
 use App\Entity\Users;
+use App\Entity\Projets;
 use App\Entity\Portfolios;
 use App\Entity\Temoignages;
 use App\Entity\ImagesPortfolios;
+use App\Services\InvoiceService;
+use App\Repository\DevisRepository;
+use App\Services\NumInvoiceService;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class AppFixtures extends Fixture
 {
     private $encoder;
     
-    public function __construct(UserPasswordHasherInterface $encoder)
+    
+    public function __construct(UserPasswordHasherInterface $encoder, private NumInvoiceService $numInvoiceService, private DevisRepository $devisRepository, private InvoiceService $invoiceService, private ParameterBagInterface $params)
     {
         $this->encoder = $encoder;
         
@@ -40,7 +47,8 @@ class AppFixtures extends Fixture
                  ->setPays($faker->country)
                  ->setSociete($faker->company)
                  ->setTelephone($faker->phoneNumber)
-                 ->setCreatedAt($faker->dateTime('now'));
+                 ->setCreatedAt($faker->dateTime('now'))
+                 ->setFullName('Husson Frederic');
 
         $manager->persist($adminUser);
 
@@ -60,24 +68,29 @@ class AppFixtures extends Fixture
 
             $hash = $this->encoder->hashPassword($user, 'password');
 
+            $nom = $faker->lastName($genre);
+            $prenom = $faker->firstName($genre);
+
             $user->setEmail($faker->email)
                  ->setPassword($hash)
                  ->setIsVerified(1)
                  ->setAvatar($picture)
                  ->setUsername($faker->userName)
-                 ->setNom($faker->lastName($genre))
-                 ->setPrenom($faker->firstName($genre))
+                 ->setNom($nom)
+                 ->setPrenom($prenom)
                  ->setAdresse($faker->streetAddress)
                  ->setCodePostal($faker->postcode)
                  ->setVille($faker->city)
                  ->setPays($faker->country)
                  ->setSociete($faker->company)
                  ->setTelephone($faker->phoneNumber)
-                 ->setCreatedAt($faker->dateTime('now'));
+                 ->setCreatedAt($faker->dateTime('now'))
+                 ->setFullName($nom. ' ' .$prenom);
 
             $manager->persist($user);
             $users[] = $user;        
 
+            dump('On crée le client' .$i);
         }
 
         // Nous gérons les Témoignages
@@ -85,7 +98,7 @@ class AppFixtures extends Fixture
         $temoignages = [];
         $note = ['0', '0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5'];
 
-        for ($i=1; $i<=5; $i++) {
+        for ($i=1; $i<=50; $i++) {
 
             $temoignage = new Temoignages();
 
@@ -103,7 +116,7 @@ class AppFixtures extends Fixture
 
         $realisations = [];
 
-        for ($i=1; $i<=5; $i++) {
+        for ($i=1; $i<=50; $i++) {
 
             $realisation = new Portfolios();
 
@@ -131,6 +144,92 @@ class AppFixtures extends Fixture
 
 
             }
+        }
+
+        $projets = [];
+
+        for ($n=1; $n<=50; $n++) {
+
+            $projet = new Projets();
+
+            $statut = ['en_cours', 'terminé', 'ouverture'];
+
+            $projet->setClient($faker->randomElement($users))
+                   ->setTitre($faker->sentence())
+                   ->setStatut($faker->randomElement($statut))
+                   ->setBesoinClient('<p>' . join ('</p><p>', $faker->paragraphs(5)) . '</p>')
+                   ->setCreatedAt($faker->dateTime('now'));
+                   //->setUpdatedAt($faker->dateTime('now'));
+                   
+
+            $manager->persist($projet);
+            $projets[] = $projet;
+        }
+
+        $devis = [];
+
+        for ($n=1; $n<=50; $n++) {
+            
+            $devi = new Devis();
+
+            $statut = ['en_attente', 'accepte', 'refus'];
+
+            $numero = $this->numInvoiceService->Generate(
+                numInvoice: $n,
+                type: 'DEVIS'
+            );
+
+            
+
+            $documentClient = $this->params->get('clients_directory');
+
+            $url = $documentClient. '/' . $numero . '.pdf';
+            
+            $slug = $numero . '.pdf';
+            $devi->setSlug($slug);
+
+            $devi->setProjet($faker->randomElement($projets));
+            $devi->setClient($devi->getProjet()->getClient());
+            
+            $services = [];
+
+            for ($j = 1; $j <= mt_rand(1, 10); $j++) {
+                
+                $service = [
+                    'type' => $faker->sentence(),
+                    'quantite' => $faker->numberBetween(1, 100),
+                    'tarif' => $faker->numberBetween(50, 450)
+                ];
+
+                $services[] = $service;
+            }
+
+            $devi->setServices($services);
+
+            $tarif_total = null;
+            foreach ($services as $values) {
+                $tarif_total += $values['tarif']*$values['quantite'];
+            }
+
+            $this->invoiceService->CreateDevis(
+                numero: $numero,
+                url: $url,
+                type: 'DEVIS',
+                document: $devi
+            );
+
+            
+            
+            $devi->setStatut($faker->randomElement($statut))
+                 ->setUrl($url)
+                 ->setCreatedAt('123456789')
+                 ->setDate($faker->dateTime('now'))
+                 ->setAmount($tarif_total);
+
+            //dd($devi);     
+
+            $manager->persist($devi);
+            $devis[] = $devi;
         }
 
         $manager->flush();

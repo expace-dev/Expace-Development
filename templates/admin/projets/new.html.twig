@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Projets{% endblock %}
+
+{% block body %}
+        {{ component('breadcrumbs', {'title': block('title')}) }}
+    <section class="auth">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="info-box mb-4">
+                    <div class="container mt-3">
+                            {{ component('projet_form_admin', {
+                                projet: projet.id ? projet: null,
+                                form: form
+                            }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
