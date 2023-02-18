@@ -1,0 +1,11 @@
+{% form_theme form 'themes/_form_factures.html.twig' %}
+
+<div {{ attributes }}>
+    {{ form_start(form, {attr: {'data-model': '*'}}) }}
+        {{ form_row(form.projet) }}
+
+        {{ form_widget(form.services) }}
+        
+    {{ form_end(form) }}
+
+</div>

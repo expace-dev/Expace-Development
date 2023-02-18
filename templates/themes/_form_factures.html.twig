@@ -1,0 +1,53 @@
+{% block _factures_services_entry_row %}
+
+    <div class="row align-items-end">
+        <div class="col-lg-5">
+            <div class="mb-3">
+                {{ form_label(form.type) }}
+                {{ form_widget(form.type) }}
+            </div>
+            
+            
+        </div>
+        <div class="col-lg-3">
+            <div class="mb-3">
+                {{ form_label(form.quantite) }}
+                {{ form_widget(form.quantite) }}
+            </div>
+            
+            
+        </div>
+        <div class="col-lg-3">
+            <div class="mb-3">
+            {{ form_label(form.tarif) }}
+            {{ form_widget(form.tarif) }}
+            </div>
+            
+            
+        </div>
+        <div class="col-lg-1 text-end">
+            {{ form_row(button_delete, { label: 'X', attr: { class: 'btn btn-danger fw-bold' } }) }}
+        </div>
+        <div class="col-12 mb-3">
+        {{ form_errors(form.type) }}
+        {{ form_errors(form.quantite) }}
+        {{ form_errors(form.tarif) }}
+        </div>
+    </div>
+{% endblock %}
+
+{%- block live_collection_widget -%}
+    {{ block('form_widget') }}
+    {%- if button_add is defined and not button_add.rendered -%}
+    <div class="row justify-content-center">
+            <div class="col-md-12 text-end">
+                <div style="padding-top: 1rem; padding-bottom: 1rem;">
+                    <button class="btn btn-success">Enregistrer</button>
+                    {{ form_widget(button_add, { label: 'Ajouter une ligne', attr: { class: 'btn btn-secondary' } }) }}
+                </div>
+            </div>
+        </div>
+        
+    {%- endif -%}
+{%- endblock -%}
+

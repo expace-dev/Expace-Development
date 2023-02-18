@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use App\Entity\Devis;
+use App\Entity\Factures;
 use App\Entity\Users;
 use App\Entity\Projets;
 use App\Entity\Portfolios;
@@ -230,6 +231,92 @@ class AppFixtures extends Fixture
 
             $manager->persist($devi);
             $devis[] = $devi;
+        }
+
+
+        $projets = [];
+
+        for ($n=1; $n<=50; $n++) {
+
+            $projet = new Projets();
+
+            $statut = ['en_cours', 'terminé', 'ouverture'];
+
+            $projet->setClient($faker->randomElement($users))
+                   ->setTitre($faker->sentence())
+                   ->setStatut($faker->randomElement($statut))
+                   ->setBesoinClient('<p>' . join ('</p><p>', $faker->paragraphs(5)) . '</p>')
+                   ->setCreatedAt($faker->dateTime('now'));
+                   //->setUpdatedAt($faker->dateTime('now'));
+                   
+
+            $manager->persist($projet);
+            $projets[] = $projet;
+        }
+
+        $factures = [];
+
+        for ($n=1; $n<=50; $n++) {
+            
+            $facture = new Factures();
+
+            $statut = ['en_attente', 'paye'];
+
+            $numero = $this->numInvoiceService->Generate(
+                numInvoice: $n,
+                type: 'FACTURE'
+            );
+
+            
+
+            $documentClient = $this->params->get('clients_directory');
+
+            $url = $documentClient. '/' . $numero . '.pdf';
+            
+            $slug = $numero . '.pdf';
+            $facture->setSlug($slug);
+
+            $facture->setProjet($faker->randomElement($projets));
+            $facture->setClient($devi->getProjet()->getClient());
+            
+            $services = [];
+
+            for ($j = 1; $j <= mt_rand(1, 10); $j++) {
+                
+                $service = [
+                    'type' => $faker->sentence(),
+                    'quantite' => $faker->numberBetween(1, 100),
+                    'tarif' => $faker->numberBetween(50, 450)
+                ];
+
+                $services[] = $service;
+            }
+
+            $facture->setServices($services);
+
+            $tarif_total = null;
+            foreach ($services as $values) {
+                $tarif_total += $values['tarif']*$values['quantite'];
+            }
+
+            $this->invoiceService->CreateDevis(
+                numero: $numero,
+                url: $url,
+                type: 'FACTURE',
+                document: $facture
+            );
+
+            
+            
+            $facture->setStatut($faker->randomElement($statut))
+                 ->setUrl($url)
+                 ->setCreatedAt($faker->dateTime('now'))
+                 ->setAmount($tarif_total);
+
+            //dd($devi);     
+
+            $manager->persist($facture);
+            $factures[] = $facture;
         }
 
         $manager->flush();

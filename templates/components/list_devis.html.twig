@@ -85,30 +85,3 @@
         {% endif %}
     </div>
 </div>
-
-<script>
-    $(document).ready( function () {
-
-        $(".btn-danger").click(function (event) {
-            event.preventDefault();
-
-            url = $(this).attr('href');
-
-            console.log(url);
-
-            Swal.fire({
-                text: "Voulez vous vraiment supprimer ce projet ?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'supprimer'
-            }).then((result) => {
-                if(result.isConfirmed) {
-                    document.location.href = url;
-                }
-            })
-        });
-
-    });
-</script>
