@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PortfoliosRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -19,21 +20,22 @@ class Portfolios
     #[ORM\Column(length: 255)]
     private ?string $client = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $date = null;
-
     #[ORM\Column(length: 255)]
     private ?string $url = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $details = null;
 
-    #[ORM\OneToMany(mappedBy: 'projet', targetEntity: ImagesPortfolios::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'projet', targetEntity: ImagesPortfolios::class, orphanRemoval: true, cascade:['persist'])]
     private Collection $imagesPortfolios;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $createdAt = null;
 
     public function __construct()
     {
         $this->imagesPortfolios = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int
@@ -49,18 +51,6 @@ class Portfolios
     public function setClient(string $client): self
     {
         $this->client = $client;
-
-        return $this;
-    }
-
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
 
         return $this;
     }
@@ -115,6 +105,18 @@ class Portfolios
                 $imagesPortfolio->setProjet(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

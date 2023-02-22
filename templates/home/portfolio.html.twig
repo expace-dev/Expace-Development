@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réalisations{% endblock %}
+
+{% block body %}
+
+    {{ component('breadcrumbs', {'title': block('title')}) }}
+
+    {{component('list_portfolios_home')}}
+{% endblock %}

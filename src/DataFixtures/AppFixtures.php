@@ -124,7 +124,7 @@ class AppFixtures extends Fixture
             $realisation->setClient($faker->company())
                         ->setUrl($faker->url())
                         ->setDetails($faker->text(255))
-                        ->setDate($faker->dateTime('now'));
+                        ->setCreatedAt($faker->dateTime('now'));
 
             $manager->persist($realisation);
             $realisations[] = $realisation;
@@ -132,13 +132,13 @@ class AppFixtures extends Fixture
             $portfolioImages = [];
 
             // Nous gérons les images du portfolio
-            for ($j = 1; $j <= mt_rand(0, 10); $j++) {
+            for ($j = 1; $j <= mt_rand(1, 10); $j++) {
 
                 $portfolioImage = new ImagesPortfolios();
                 $realisaton = $realisations[mt_rand(0, count($realisations) -1)];
 
                 $portfolioImage->setProjet($realisation)
-                               ->setUrl($faker->imageUrl(1000,350));
+                               ->setUrl($faker->imageUrl(800,600));
 
                 $manager->persist($portfolioImage);
                 $portfolioImages[] = $portfolioImage;

@@ -57,4 +57,18 @@ class HomeController extends AbstractController
             'contact' => $contact
         ]);
     }
+
+    #[Route('/portfolio', name: 'app_portfolios_index')]
+    public function portfolio(PortfoliosRepository $portfoliosRepository): Response
+    {
+        return $this->render('home/portfolio.html.twig', [
+            'portfolios' => $portfoliosRepository->findAll()
+        ]);
+    }
+
+    #[Route('/portfolio/details', name: 'app_portfolios_details')]
+    public function portfolioDetails(PortfoliosRepository $portfoliosRepository): Response
+    {
+        return $this->render('home/portfolio_details.html.twig');
+    }
 }

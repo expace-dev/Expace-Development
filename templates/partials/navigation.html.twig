@@ -15,7 +15,7 @@
             {% if is_granted("ROLE_ADMIN") %}
             <li><a href="">Dashboard</a></li>
             <li><a href="{{ path('app_admin_users_index') }}">Clients</a></li>
-            <li><a href="">Réalisations</a></li>
+            <li><a href="{{ path('app_admin_portfolios_index') }}">Réalisations</a></li>
             <li><a href="">Intervenants</a></li>
             <li><a href="{{ path('app_admin_projets_index') }}">Projets</a></li>
             <li><a href="">Témoignages</a></li>

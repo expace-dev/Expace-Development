@@ -1,0 +1,81 @@
+<div {{ attributes }}>
+    {{ form_start(form, {attr: {'data-model': '*'}}) }}
+        <div class="row">
+            <div class="col-lg-6">{{ form_row(form.client) }}</div>
+            <div class="col-lg-6">{{ form_row(form.url) }}</div>
+            <div class="col-lg-12">{{ form_row(form.details) }}</div>
+            {% if app.request.attributes.get('_route') == 'app_admin_portfolios_edit' %}
+                            <div class="row mt-3 text-center">                           
+                                {% for image in portfolio.imagesPortfolios %}
+                                    <div class="col-2 mb-5" id="{{ path('app_admin_portfolios_image_delete', {id: image.id}) }}">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <img src="{{ asset(image.url) }}" width="112px" height="80">
+                                            </div>
+                                            <div class="col-12 mt-1">
+                                                <a style="width: 112px;" class="btn btn-danger btn-delete" href="{{ path('app_admin_portfolios_image_delete', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+            
+            <div class="col-lg-12">{{ form_row(form.imagesPortfolios) }}</div>
+            <div class="col-lg-12 text-end">
+                <div style="padding-top: 1rem; padding-bottom: 1rem;">
+                    <button class="btn btn-success">Enregistrer</button>
+                    <a href="{{ path('app_admin_portfolios_index') }}" class="btn btn-secondary">Annuler</a>
+                </div>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>
+
+<script>
+    let links = document.querySelectorAll("[data-delete]");
+let link;
+
+for (link of links) {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+    
+        Swal.fire({
+            text: "Voulez vous vraiment supprimer cette image ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#198754',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirmer',
+            cancelButtonText: 'Annuler',
+          }).then((result) => {
+            if (result.isConfirmed) {
+                console.log(this.getAttribute("href"));
+            fetch(this.getAttribute("href"), {
+                method: "DELETE",
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({"_token": this.dataset.token})
+            }).then(
+                response => response.json()
+            ).then(data => {
+                if(data.success) {
+                    this.closest('.col-2').remove();
+                }
+                else {
+                    alert(data.error);
+                }
+            }).catch(e => alert(e));
+            }
+        })
+
+            
+
+
+
+    });
+}
+</script>

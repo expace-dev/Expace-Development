@@ -1,0 +1,33 @@
+.paginate {
+    color: #878787;
+  }
+  
+.paginate ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+.paginate li {
+    margin: 0 5px;
+    transition: 0.3s;
+  }
+  
+.paginate li a {
+    color: #545454;
+    padding: 7px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.paginate li.active,
+.paginate li:hover {
+    background: #2962ff;
+  }
+  
+.paginate li.active a,
+.paginate li:hover a {
+    color: #fff;
+  }
