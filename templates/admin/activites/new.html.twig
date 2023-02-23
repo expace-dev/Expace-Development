@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Activites{% endblock %}
+
+{% block body %}
+    {{ component('breadcrumbs', {'title': block('title')}) }}
+
+    <section class="auth">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="info-box mb-4 col-lg-6">
+                    <div class="container mt-3">
+                        {% for label, messages in app.flashes %}
+                            <div class="alert alert-{{ label }}">
+                                {% for message in messages %}
+                                    {{ message | raw }}    
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        {{ component('form_activites', {
+                            activite: activite.id ? activite: null,
+                            form: form
+                        }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
