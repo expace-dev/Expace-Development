@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-lg-3">
+        <form action="" class="input-icon my-3 my-lg-0">
+            <div class="gs-container">
+                <input type="text" class="form-control header-search">
+            </div>
+            <div class="input-icon-addon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="table-responsive mt-2">
+    <table class="table card-table table-vcenter table-hover">
+        <thead class="thead-dark form-group-sm">
+            <tr>
+                <th>Client</th>
+                <th>Date</th>
+                <th>Note</th>
+                <th>Actif</th>
+                <th class="text-end"><select name="search_limit" class="search_limit" style="width: 60px;"><option value="5">5</option><option value="15" selected="selected">15</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="999999999">all</option></select></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for temoignage in this.allTemoignages.data %}
+                <tr>
+                    <td>{{ temoignage.client.nom }} {{ temoignage.client.prenom }}</td>
+                    <td>{{ temoignage.createdAt|date('d-m-Y') }}</td>
+                    <td>{{ temoignage.note }}</td>
+                    <td>
+                        {% if temoignage.actif == true %}
+                            <div class="badge bg-success" style="min-width:110px">Actif</div>
+                        {% else %}
+                            <div class="badge bg-danger" style="min-width:110px">Inactif</div>
+                        {% endif %}
+                        
+                    </td>
+                    <td class="text-end">
+                        <div class="btn-group">
+                            <a href="{{ path('app_admin_temoignages_edit', {'id': temoignage.id}) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+                            {% if temoignage.actif == true %}
+                                <a href="{{ path('app_admin_temoignages_update', {'id': temoignage.id}) }}" class="btn btn-secondary"><i class="fa-solid fa-stop"></i></a>
+                            {% else %}
+                                <a href="{{ path('app_admin_temoignages_update', {'id': temoignage.id}) }}" class="btn btn-success"><i class="fa-solid fa-play"></i></a>
+                            {% endif %}
+                            
+                            
+                            <a class="btn btn-danger" href="{{ path('app_admin_temoignages_delete', {'id': temoignage.id}) }}"><i class="fa-solid fa-trash-can"></i></i></a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div style="padding-right: 10px;">
+        {% set pages = this.allTemoignages.pages %}
+        {% set currentPage = this.allTemoignages.page %}
+        {% set limit = this.allTemoignages.limit %}
+        {% if pages > 1 %}
+            <ul class="pagination justify-content-end">
+                {% if currentPage > 1 %}
+                    <li class="page-item"><a class="page-link" href="{{ path('app_admin_temoignages_index', {page: currentPage - 1}) }}">&laquo;</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link">&laquo;</a></li>
+                {% endif %}
+                {% set pageSupp = currentPage +4 %}
+                {% if pages > 5 and currentPage < pages %}
+                    {% for page in currentPage..pageSupp %}
+                        {% if page <= pages %}
+                            <li class="{{ (page == currentPage) ? 'active' : '' }} page-item">
+                                <a class="page-link" href="{{ path('app_admin_temoignages_index', {page: page, limit: limit }) }}">{{ page }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% for page in 1..pages %}
+                        <li class="{{ (page == currentPage) ? 'active' : '' }} page-item">
+                            <a class="page-link" href="{{ path('app_admin_temoignages_index', {page: page, limit: limit }) }}">{{ page }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+                {% if currentPage < pages %}
+                    <li class="page-item"><a class="page-link" href="{{ path('app_admin_temoignages_index', {page: currentPage + 1}) }}">&raquo;</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+<script>
+    $(document).ready( function () {
+
+        $(".btn-danger").click(function (event) {
+            event.preventDefault();
+
+            url = $(this).attr('href');
+
+            console.log(url);
+
+            Swal.fire({
+                text: "Voulez vous vraiment supprimer ce témoignage ?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'supprimer'
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    document.location.href = url;
+                }
+            })
+        });
+
+    });
+</script>

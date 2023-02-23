@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Temoignages{% endblock %}
+
+{% block body %}
+    <h1>Create new Temoignages</h1>
+
+    {{ include('temoignages/_form.html.twig') }}
+
+    <a href="{{ path('app_temoignages_index') }}">back to list</a>
+{% endblock %}

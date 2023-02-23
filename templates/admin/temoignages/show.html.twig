@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Temoignages{% endblock %}
+
+{% block body %}
+    <h1>Temoignages</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ temoignage.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ temoignage.description }}</td>
+            </tr>
+            <tr>
+                <th>Actif</th>
+                <td>{{ temoignage.actif ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ temoignage.note }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ temoignage.createdAt ? temoignage.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_temoignages_index') }}">back to list</a>
+
+    <a href="{{ path('app_temoignages_edit', {'id': temoignage.id}) }}">edit</a>
+
+    {{ include('temoignages/_delete_form.html.twig') }}
+{% endblock %}
