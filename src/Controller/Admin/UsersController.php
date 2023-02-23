@@ -19,7 +19,7 @@ class UsersController extends AbstractController
     #[Route('/', name: 'app_admin_users_index', methods: ['GET'])]
     public function index(UsersRepository $usersRepository): Response
     {
-        return $this->render('admin/users/index.html.twig', [
+        return $this->render('users/index.html.twig', [
             'users' => $usersRepository->findAll(),
         ]);
     }
@@ -34,10 +34,10 @@ class UsersController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $usersRepository->save($user, true);
 
-            return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin_users_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/users/new.html.twig', [
+        return $this->render('users/new.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -64,7 +64,7 @@ class UsersController extends AbstractController
             return $this->redirectToRoute('app_admin_users_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/users/edit.html.twig', [
+        return $this->render('users/edit.html.twig', [
             'user' => $user,
             'credentialsForm' => $credentialsForm,
             'profilForm' => $profilForm

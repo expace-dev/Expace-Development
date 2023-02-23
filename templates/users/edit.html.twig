@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Users{% endblock %}
+{% if app.request.attributes.get('_route') == 'app_profil_edit' %}
+    {% set titre = 'Editer mon compte' %}
+{% else %}
+    {% set titre = 'Editer un client' %}
+{% endif %}
+
+{% block title %}{{ titre }}{% endblock %}
 
 {% block body %}
     {{ component('breadcrumbs', {'title': block('title')}) }}

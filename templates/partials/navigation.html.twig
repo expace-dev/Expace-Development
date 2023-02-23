@@ -22,7 +22,7 @@
             <li><a href="{{ path('app_admin_devis_index') }}">Devis</a></li>
             <li><a href="{{ path('app_admin_factures_index') }}">Factures</a></li>
             <li><a href="{{ path('app_admin_activites_new') }}">Activités</a></li>
-            <li><a href="">Profil</a></li>
+            <li><a href="{{ path('app_profil_edit') }}">Profil</a></li>
             {% else %}
             <li><a href="">Dashboard</a></li>
             <li><a href="">Clients</a></li>
@@ -32,8 +32,7 @@
             <li><a href="">Témoignages</a></li>
             <li><a href="">Devis</a></li>
             <li><a href="">Factures</a></li>
-            <li><a href="">Activités</a></li>
-            <li><a href="">Profil</a></li>
+            <li><a href="{{ path('app_profil_edit') }}">Profil</a></li>
             {% endif %}
         </ul>
     </li>
