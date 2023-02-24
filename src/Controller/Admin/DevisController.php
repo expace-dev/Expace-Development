@@ -68,7 +68,7 @@ class DevisController extends AbstractController
             return $this->redirectToRoute('app_admin_devis_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/devis/new.html.twig', [
+        return $this->render('admin/devis/edit.html.twig', [
             'devi' => $devis,
             'form' => $form,
         ]);

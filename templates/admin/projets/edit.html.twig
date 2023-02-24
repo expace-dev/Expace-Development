@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Editer le projet{% endblock %}
+{% if app.request.attributes.get('_route') == 'app_admin_projets_edit' %}
+    {% set titre = 'Editer le projet' %}
+{% else %}
+    {% set titre = 'Créer un projet' %}
+{% endif %}
+
+{% block title %}{{ titre }}{% endblock %}
 
 {% block body %}
     
@@ -17,15 +23,17 @@
                                 {% endfor %}
                             </div>
                         {% endfor %}
-                        <div class="col-lg text-end">
-                            {% if projet.statut == 'ouverture' %}
-                                <a href="{{ path('app_admin_projets_update', {'id': projet.id, statut: 'en_cours'}) }}" class="btn btn-danger">Passer en mode developpement</a>
-                            {% elseif projet.statut == 'en_cours' %}
-                                <a href="{{ path('app_admin_projets_update', {'id': projet.id, statut: 'terminé'}) }}" class="btn btn-success">Passer en mode production</a>
-                            {% elseif projet.statut == 'terminé' %}
-                                <a href="{{ path('app_admin_projets_update', {'id': projet.id, statut: 'en_cours'}) }}" class="btn btn-danger">Passer en mode developpement</a>
-                            {% endif %}
-                        </div>
+                        {% if app.request.attributes.get('_route') == 'app_admin_projets_edit' %}
+                            <div class="col-lg text-end">
+                                {% if projet.statut == 'ouverture' %}
+                                    <a href="{{ path('app_admin_projets_update', {'id': projet.id, statut: 'en_cours'}) }}" class="btn btn-danger">Passer en mode developpement</a>
+                                {% elseif projet.statut == 'en_cours' %}
+                                    <a href="{{ path('app_admin_projets_update', {'id': projet.id, statut: 'terminé'}) }}" class="btn btn-success">Passer en mode production</a>
+                                {% elseif projet.statut == 'terminé' %}
+                                    <a href="{{ path('app_admin_projets_update', {'id': projet.id, statut: 'en_cours'}) }}" class="btn btn-danger">Passer en mode developpement</a>
+                                {% endif %}
+                            </div>
+                        {% endif %}
                             {{ component('projet_form_admin', {
                                 projet: projet.id ? projet: null,
                                 form: form

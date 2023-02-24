@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Portfolios{% endblock %}
+{% if app.request.attributes.get('_route') == 'app_admin_portfolios_edit' %}
+    {% set titre = 'Editer le projet' %}
+{% else %}
+    {% set titre = 'Créer un projet' %}
+{% endif %}
+
+{% block title %}{{ titre }}{% endblock %}
 
 {% block body %}
     {{ component('breadcrumbs', {'title': block('title')}) }}

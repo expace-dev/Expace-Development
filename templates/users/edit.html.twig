@@ -3,7 +3,7 @@
 {% if app.request.attributes.get('_route') == 'app_profil_edit' %}
     {% set titre = 'Editer mon compte' %}
 {% else %}
-    {% set titre = 'Editer un client' %}
+    {% set titre = 'Editer un compte' %}
 {% endif %}
 
 {% block title %}{{ titre }}{% endblock %}

@@ -9,6 +9,15 @@
         <ul class="nav me-auto d-flex align-items-center">
             {% include "partials/social-icon.html.twig" %}
         </ul>
+        <ul class="nav">
+            {% if app.user is null %}
+                <li><a href="{{path('app_login')}}" class="btn btn-primary btn-small capital" style="margin-right: 20px;"><i class="fas fa-sign-in-alt left"></i> Se connecter</a></li>
+                <li><a href="{{path('app_register')}}" class="btn btn-primary btn-small capital"><i class="far fa-user left"></i> S'enregistrer</a></li>
+            {% else %}
+                <li><a href="{{path('app_logout')}}" class="btn btn-primary btn-small capital"><i class="fas fa-power-off left"></i> Se deconnecter</a></li>
+            {% endif %}
+            
+        </ul>
     </div>
 
 </header>

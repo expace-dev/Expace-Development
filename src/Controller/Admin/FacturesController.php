@@ -65,7 +65,7 @@ class FacturesController extends AbstractController
             return $this->redirectToRoute('app_admin_factures_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/factures/new.html.twig', [
+        return $this->render('admin/factures/edit.html.twig', [
             'facture' => $facture,
             'form' => $form,
         ]);

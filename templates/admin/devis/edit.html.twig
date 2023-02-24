@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Devis{% endblock %}
+{% if app.request.attributes.get('_route') == 'app_admin_devis_edit' %}
+    {% set titre = 'Editer le devis' %}
+{% else %}
+    {% set titre = 'Créer un devis' %}
+{% endif %}
+
+{% block title %}{{ titre }}{% endblock %}
 
 {% block body %}
     {{ component('breadcrumbs', {'title': block('title')}) }}
@@ -10,7 +16,7 @@
             <div class="row justify-content-center">
                 <div class="info-box mb-4">
                     <div class="container mt-3">
-                        {{ component('devis_form', {
+                        {{ component('form_devis', {
                             devi: devi.id ? devi: null,
                             form: form
                         }) }}

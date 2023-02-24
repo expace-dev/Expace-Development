@@ -16,7 +16,7 @@ use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[AsLiveComponent('form_activites')]
-class FormFacturesComponent extends AbstractController {
+class FormActivitesComponent extends AbstractController {
 
     use LiveCollectionTrait;
     use DefaultActionTrait;

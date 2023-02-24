@@ -53,7 +53,7 @@ class PortfoliosController extends AbstractController
             $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span> Des erreurs subsistent, veuillez modifier votre saisie');
         }
 
-        return $this->render('admin/portfolios/form.html.twig', [
+        return $this->render('admin/portfolios/edit.html.twig', [
             'portfolio' => $portfolio,
             'form' => $form,
         ]);
@@ -89,7 +89,7 @@ class PortfoliosController extends AbstractController
             $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span> Des erreurs subsistent, veuillez modifier votre saisie');
         }
 
-        return $this->render('admin/portfolios/form.html.twig', [
+        return $this->render('admin/portfolios/edit.html.twig', [
             'portfolio' => $portfolio,
             'form' => $form,
         ]);

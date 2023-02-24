@@ -11,8 +11,8 @@ use Symfony\UX\LiveComponent\ComponentWithFormTrait;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[AsLiveComponent('contact_form')]
-class ContactFormComponent extends AbstractController {
+#[AsLiveComponent('form_contact')]
+class FormContactComponent extends AbstractController {
 
 
     use DefaultActionTrait;

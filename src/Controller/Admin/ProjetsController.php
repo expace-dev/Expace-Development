@@ -42,7 +42,7 @@ class ProjetsController extends AbstractController
             return $this->redirectToRoute('app_admin_projets_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/projets/new.html.twig', [
+        return $this->render('admin/projets/edit.html.twig', [
             'projet' => $projet,
             'form' => $form,
         ]);

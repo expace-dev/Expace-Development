@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Factures{% endblock %}
+{% if app.request.attributes.get('_route') == 'app_admin_factures_edit' %}
+    {% set titre = 'Editer la facture' %}
+{% else %}
+    {% set titre = 'Créer une facture' %}
+{% endif %}
+
+{% block title %}{{ titre }}{% endblock %}
 
 {% block body %}
     {{ component('breadcrumbs', {'title': block('title')}) }}
@@ -10,7 +16,7 @@
             <div class="row justify-content-center">
                 <div class="info-box mb-4">
                     <div class="container mt-3">
-                        {{ component('facture_form', {
+                        {{ component('form_factures', {
                             facture: facture.id ? facture: null,
                             form: form
                         }) }}

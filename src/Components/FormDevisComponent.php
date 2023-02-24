@@ -11,8 +11,8 @@ use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\LiveComponent\LiveCollectionTrait;
 
-#[AsLiveComponent('devis_form')]
-class DevisComponent extends AbstractController {
+#[AsLiveComponent('form_devis')]
+class FormDevisComponent extends AbstractController {
 
     use LiveCollectionTrait;
     use DefaultActionTrait;

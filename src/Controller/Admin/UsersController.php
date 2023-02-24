@@ -34,6 +34,8 @@ class UsersController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $usersRepository->save($user, true);
 
+            $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Compte client enregistré avec succès');
+
             return $this->redirectToRoute('app_admin_users_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -52,6 +54,8 @@ class UsersController extends AbstractController
         if ($profilForm->isSubmitted() && $profilForm->isValid()) {
             $usersRepository->save($user, true);
 
+            $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Compte client enregistré avec succès');
+
             return $this->redirectToRoute('app_admin_users_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -60,6 +64,8 @@ class UsersController extends AbstractController
 
         if ($credentialsForm->isSubmitted() && $credentialsForm->isValid()) {
             $usersRepository->save($user, true);
+
+            $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Compte client enregistré avec succès');
 
             return $this->redirectToRoute('app_admin_users_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -75,6 +81,8 @@ class UsersController extends AbstractController
     public function delete(Request $request, Users $user, UsersRepository $usersRepository): Response
     {
             $usersRepository->remove($user, true);
+
+            $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Compte client supprimmé avec succès');
 
         return $this->redirectToRoute('app_admin_users_index', [], Response::HTTP_SEE_OTHER);
     }

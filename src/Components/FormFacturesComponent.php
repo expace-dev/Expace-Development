@@ -13,7 +13,7 @@ use Symfony\UX\LiveComponent\LiveCollectionTrait;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[AsLiveComponent('facture_form')]
+#[AsLiveComponent('form_factures')]
 class FormFacturesComponent extends AbstractController {
 
     use LiveCollectionTrait;
