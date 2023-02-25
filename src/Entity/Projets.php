@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ProjetsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Cocur\Slugify\Slugify;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProjetsRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: ProjetsRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Projets
 {
     #[ORM\Id]
@@ -18,6 +20,9 @@ class Projets
 
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
 
     #[ORM\ManyToOne(inversedBy: 'projets')]
     #[ORM\JoinColumn(nullable: false)]
@@ -50,6 +55,20 @@ class Projets
         $this->factures = new ArrayCollection();
     }
 
+    /**
+     * Permet d'initialiser le slug
+     *
+     * @return void
+     */
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function initializeSlug() {
+        if(empty($this->slug)) {
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->titre);
+        }
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -63,6 +82,18 @@ class Projets
     public function setTitre(?string $titre): self
     {
         $this->titre = $titre;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

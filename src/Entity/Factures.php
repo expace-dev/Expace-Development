@@ -41,6 +41,9 @@ class Factures
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    #[ORM\OneToOne(mappedBy: 'facture', cascade: ['persist', 'remove'])]
+    private ?Paiements $paiements = null;
+
     public function __construct()
     {
         $this->statut = 'en_attente';
@@ -144,6 +147,23 @@ class Factures
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getPaiements(): ?Paiements
+    {
+        return $this->paiements;
+    }
+
+    public function setPaiements(Paiements $paiements): self
+    {
+        // set the owning side of the relation if necessary
+        if ($paiements->getFacture() !== $this) {
+            $paiements->setFacture($this);
+        }
+
+        $this->paiements = $paiements;
 
         return $this;
     }

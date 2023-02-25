@@ -24,14 +24,11 @@
             <li><a href="{{ path('app_profil_edit') }}">Profil</a></li>
             {% else %}
             <li><a href="">Dashboard</a></li>
-            <li><a href="">Clients</a></li>
-            <li><a href="">Réalisations</a></li>
-            <li><a href="">Intervenants</a></li>
-            <li><a href="">Projets</a></li>
-            <li><a href="">Témoignages</a></li>
-            <li><a href="">Devis</a></li>
-            <li><a href="">Factures</a></li>
-            <li><a href="{{ path('app_profil_edit') }}">Profil</a></li>
+            <li><a href="{{ path('app_client_projets_index') }}">Mes projets</a></li>
+            <li><a href="">Mes devis</a></li>
+            <li><a href="">Mes factures</a></li>
+            <li><a href="">Mon avis</a></li>
+            <li><a href="{{ path('app_profil_edit') }}">Mon profil</a></li>
             {% endif %}
         </ul>
     </li>

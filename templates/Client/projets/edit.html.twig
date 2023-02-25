@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% if app.request.attributes.get('_route') == 'app_client_projets_edit' %}
+    {% set titre = 'Editer mon projet' %}
+{% else %}
+    {% set titre = 'Créer un projet' %}
+{% endif %}
+
+{% block title %}{{ titre }}{% endblock %}
+
+{% block body %}
+    {{ component('breadcrumbs', {'title': block('title')}) }}
+    <section class="auth">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="info-box mb-4">
+                    <div class="container mt-3">
+                        {% for label, messages in app.flashes %}
+                            <div class="alert alert-{{ label }}">
+                                {% for message in messages %}
+                                    {{ message | raw }}    
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        {% if app.request.attributes.get('_route') == 'app_admin_projets_edit' %}
+                            <div class="col-lg text-end">
+                                {% if projet.statut == 'ouverture' %}
+                                    <a href="{{ path('app_admin_projets_update', {'id': projet.id, statut: 'en_cours'}) }}" class="btn btn-danger">Passer en mode developpement</a>
+                                {% elseif projet.statut == 'en_cours' %}
+                                    <a href="{{ path('app_admin_projets_update', {'id': projet.id, statut: 'terminé'}) }}" class="btn btn-success">Passer en mode production</a>
+                                {% elseif projet.statut == 'terminé' %}
+                                    <a href="{{ path('app_admin_projets_update', {'id': projet.id, statut: 'en_cours'}) }}" class="btn btn-danger">Passer en mode developpement</a>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                            {{ component('form_projets_client', {
+                                projet: projet.id ? projet: null,
+                                form: form
+                            }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

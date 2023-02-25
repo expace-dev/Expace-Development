@@ -98,6 +98,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Factures::class, orphanRemoval: true)]
     private Collection $factures;
 
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Paiements::class, orphanRemoval: true)]
+    private Collection $paiements;
+
     public function __construct()
     {
         $this->temoignages = new ArrayCollection();
@@ -105,6 +108,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         $this->devis = new ArrayCollection();
         $this->fullName = $this->getNom(). ' ' .$this->getPrenom();
         $this->factures = new ArrayCollection();
+        $this->paiements = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -495,6 +499,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($facture->getClient() === $this) {
                 $facture->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Paiements>
+     */
+    public function getPaiements(): Collection
+    {
+        return $this->paiements;
+    }
+
+    public function addPaiement(Paiements $paiement): self
+    {
+        if (!$this->paiements->contains($paiement)) {
+            $this->paiements->add($paiement);
+            $paiement->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaiement(Paiements $paiement): self
+    {
+        if ($this->paiements->removeElement($paiement)) {
+            // set the owning side to null (unless already changed)
+            if ($paiement->getClient() === $this) {
+                $paiement->setClient(null);
             }
         }
 

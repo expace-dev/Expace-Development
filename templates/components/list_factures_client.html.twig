@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-lg-3">
+        <form action="" class="input-icon my-3 my-lg-0">
+            <div class="gs-container">
+                <input type="text" class="form-control header-search">
+            </div>
+            <div class="input-icon-addon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="table-responsive mt-2">
+    <table class="table card-table table-vcenter table-hover">
+        <thead class="thead-dark form-group-sm">
+            <tr>
+                <th>Statut</th>
+                <th>Date</th>
+                <th>Projet</th>
+                <th class="text-end"><select name="search_limit" class="search_limit" style="width: 60px;"><option value="5">5</option><option value="15" selected="selected">15</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="999999999">all</option></select></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for facture in this.allFactures.data %}
+                <tr>
+                    <td>
+                    {% if facture.statut == 'en_attente' %}
+                            <div class="badge bg-warning" style="min-width:110px">Non payé</div>
+                        {% else %}
+                            <div class="badge bg-success" style="min-width:110px">Payé</div>    
+                        {% endif %}
+                    </td>
+                    <td>{{ facture.createdAt|date('d-m-Y') }}</td>
+                    <td>{{ facture.projet.titre }}</td>
+                    <td class="text-end">
+                        <div class="btn-group">
+                            <a class="btn btn-secondary" target="_blank" href="{{ path('app_client_factures_show', {'slug': facture.slug}) }}"><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-success" href=""><i class="fa-solid fa-credit-card"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div style="padding-right: 10px;">
+        {% set pages = this.allFactures.pages %}
+        {% set currentPage = this.allFactures.page %}
+        {% set limit = this.allFactures.limit %}
+        {% if pages > 1 %}
+            <ul class="pagination justify-content-end">
+                {% if currentPage > 1 %}
+                    <li class="page-item"><a class="page-link" href="{{ path('app_client_factures_index', {page: currentPage - 1}) }}">&laquo;</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link">&laquo;</a></li>
+                {% endif %}
+                {% set pageSupp = currentPage +4 %}
+                {% if pages > 5 and currentPage < pages %}
+                    {% for page in currentPage..pageSupp %}
+                        {% if page <= pages %}
+                            <li class="{{ (page == currentPage) ? 'active' : '' }} page-item">
+                                <a class="page-link" href="{{ path('app_client_factures_index', {page: page, limit: limit }) }}">{{ page }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% for page in 1..pages %}
+                        <li class="{{ (page == currentPage) ? 'active' : '' }} page-item">
+                            <a class="page-link" href="{{ path('app_client_factures_index', {page: page, limit: limit }) }}">{{ page }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+                {% if currentPage < pages %}
+                    <li class="page-item"><a class="page-link" href="{{ path('app_client_factures_index', {page: currentPage + 1}) }}">&raquo;</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
