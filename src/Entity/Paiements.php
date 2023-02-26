@@ -31,6 +31,9 @@ class Paiements
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $client = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $PaymentIntent = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,6 +95,18 @@ class Paiements
     public function setClient(?Users $client): self
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    public function getPaymentIntent(): ?string
+    {
+        return $this->PaymentIntent;
+    }
+
+    public function setPaymentIntent(?string $PaymentIntent): self
+    {
+        $this->PaymentIntent = $PaymentIntent;
 
         return $this;
     }

@@ -44,6 +44,9 @@ class Factures
     #[ORM\OneToOne(mappedBy: 'facture', cascade: ['persist', 'remove'])]
     private ?Paiements $paiements = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $paiementIntent = null;
+
     public function __construct()
     {
         $this->statut = 'en_attente';
@@ -164,6 +167,18 @@ class Factures
         }
 
         $this->paiements = $paiements;
+
+        return $this;
+    }
+
+    public function getPaiementIntent(): ?string
+    {
+        return $this->paiementIntent;
+    }
+
+    public function setPaiementIntent(?string $paiementIntent): self
+    {
+        $this->paiementIntent = $paiementIntent;
 
         return $this;
     }
