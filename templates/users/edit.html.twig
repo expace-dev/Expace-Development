@@ -16,7 +16,7 @@
             <div class="row justify-content-center">
                 <div class="info-box mb-4">
                     <div class="container mt-3">
-                        {{ component('profil_update', {
+                        {{ component('profil_form_info', {
                             user: user.id ? user: null,
                             form: profilForm
                         }) }}
@@ -31,7 +31,7 @@
             <div class="row justify-content-center">
                 <div class="info-box mb-4">
                     <div class="container mt-3">
-                        {{ component('credentials_update', {
+                        {{ component('profil_form_credentials', {
                             user: user.id ? user: null,
                             form: credentialsForm
                         }) }}

@@ -25,9 +25,9 @@
             {% else %}
             <li><a href="">Dashboard</a></li>
             <li><a href="{{ path('app_client_projets_index') }}">Mes projets</a></li>
-            <li><a href="">Mes devis</a></li>
-            <li><a href="">Mes factures</a></li>
-            <li><a href="">Mon avis</a></li>
+            <li><a href="{{ path('app_client_devis_index') }}">Mes devis</a></li>
+            <li><a href="{{ path('app_client_factures_index') }}">Mes factures</a></li>
+            <li><a href="{{ path('app_client_temoignages_new') }}">Mon avis</a></li>
             <li><a href="{{ path('app_profil_edit') }}">Mon profil</a></li>
             {% endif %}
         </ul>

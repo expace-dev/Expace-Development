@@ -1,0 +1,30 @@
+{% set article = this.blogpost %}
+<article class="entry">
+  <div class="entry-img">
+    <img src="{{ article.img }}" alt="" class="img-fluid">
+  </div>
+  <h2 class="entry-title">
+    <a href="{{ path('app_blog_show', {'id': article.id}) }}">{{ article.title }}</a>
+  </h2>
+  <div class="entry-meta">
+    <ul>
+      <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="{{ path('app_blog_show', {'id': article.id}) }}">{{ article.auteur.username }}</a></li>
+      <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="{{ path('app_blog_show', {'id': article.id}) }}"><time datetime="2020-01-01">{{ article.date|format_datetime(locale='fr',pattern="dd MMMM YYYY") }}</time></a></li>
+      <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="{{ path('app_blog_show', {'id': article.id}) }}">{{ article.comments|length }} Commentaires</a></li>
+    </ul>
+  </div>
+  <div class="entry-content">
+    {% if app.request.get('_route') != 'app_blog_show' %}
+      {% set content = article.content | raw | slice(0,2000)  %}
+    {% else %}
+      {% set content = article.content %}
+    {% endif %}
+    
+    <p>{{ content|raw }}</p>
+    {% if app.request.get('_route') != 'app_blog_show' %}
+      <div class="read-more">
+        <a href="{{ path('app_blog_show', {'id': article.id}) }}">Lire la suite</a>
+      </div>
+    {% endif %}
+  </div>
+</article>

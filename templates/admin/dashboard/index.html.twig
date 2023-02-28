@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques{% endblock %}
+
+{% block body %}
+
+    {{ component('breadcrumbs', {'title': block('title')}) }}
+    <section id="dashboard" class="dashboard">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="icon-box">
+                        <i class="bi bi-people-fill"></i>
+                        <h3><a href="">{{clients}} Utilisateurs</a></h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="icon-box">
+                        <i class="bi bi-file-earmark-pdf-fill"></i>
+                        <h3><a href="">{{factures}} Factures</a></h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="icon-box">
+                        <i class="bi bi-card-checklist"></i>
+                        <h3><a href="">{{projets}} Projets</a></h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="icon-box">
+                        <i class="bi bi-emoji-heart-eyes-fill"></i>
+                        <h3><a href="">{{temoignages}} Témoignages</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

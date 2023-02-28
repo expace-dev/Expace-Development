@@ -23,7 +23,7 @@
                                 {% endfor %}
                             </div>
                         {% endfor %}
-                        {{ component('portfolios_form', {
+                        {{ component('portfolios_form_admin', {
                             portfolio: portfolio.id ? portfolio: null,
                             form: form
                         }) }}

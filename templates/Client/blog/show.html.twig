@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+    <section class="breadcrumbs-custom">
+        <div class="breadcrumbs-custom__aside bg-image context-dark" style="background-image: url(/images/bg-image-1-1920x238.jpg);">
+            <div class="container">
+                <h2 class="breadcrumbs-custom__title">{{ block('title') }}</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-8 entries">
+                    {{ component('blog_post', {'id': article.id}) }}
+                    <div class="blog-author d-flex align-items-center">
+                        <img src="{{ article.auteur.avatar }}" class="rounded-circle float-left" alt="">
+                        <div>
+                            <h4>{{ article.auteur.fullName }}</h4>
+                            <div class="social-links">
+                                {% if article.auteur.tweeter %}
+                                <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                                {% endif %}
+                                {% if article.auteur.facebook %}
+                                <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                                {% endif %}
+                                {% if article.auteur.linkedin %}
+                                <a href="https://instagram.com/#"><i class="bi bi-linkedin"></i></a>
+                                {% endif %}
+                            </div>
+                            <p>
+                            {{ article.auteur.description }}
+                            </p>
+                        </div>
+                    </div>
+                    {{component('blog_comment', {'id': article.id})}}
+                </div>
+                {{component('menu_blog')}}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

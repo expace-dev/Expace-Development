@@ -4,9 +4,12 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use App\Entity\Devis;
-use App\Entity\Factures;
 use App\Entity\Users;
 use App\Entity\Projets;
+use App\Entity\Articles;
+use App\Entity\Comments;
+use App\Entity\Factures;
+use App\Entity\Categories;
 use App\Entity\Portfolios;
 use App\Entity\Temoignages;
 use App\Entity\ImagesPortfolios;
@@ -319,6 +322,55 @@ class AppFixtures extends Fixture
             $factures[] = $facture;
         }
 
+        $categories = [];
+
+        for ($i=1; $i<=10; $i++) {
+
+            $categorie = new Categories;
+
+            $mots = rand(1,3);
+
+            $categorie->setName($faker->words($mots, true));
+
+            $manager->persist($categorie);
+            $categories[] = $categorie;
+
+
+        }
+
+        $articles = [];
+        for ($i=1; $i<=500; $i++) {
+
+            $article = new Articles();
+
+            $article->setDate($faker->dateTime('now'))
+                    ->setContent($faker->paragraph(5))
+                    ->setTitle($faker->text(50))
+                    ->setImg($faker->imageUrl(1024, 768))
+                    ->setCategories($faker->randomElement($categories))
+                    ->setAuteur($faker->randomElement($users));
+
+            $manager->persist($article);
+            $articles[] = $article;
+        }
+
+        $commentaires = [];
+        for ($i=1; $i<=500; $i++) {
+
+            $commentaire = new Comments();
+
+            $commentaire->setArticles($faker->randomElement($articles))
+                        ->setAuteur($faker->randomElement($users))
+                        ->setContent($faker->paragraph(1))
+                        ->setActive(true)
+                        ->setCreatedAt($faker->dateTime('now'));
+
+            $manager->persist($commentaire);
+            $commentaires[] = $commentaire;
+        }
+
         $manager->flush();
     }
+
+    
 }

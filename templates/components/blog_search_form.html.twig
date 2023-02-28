@@ -1,0 +1,11 @@
+<div {{ attributes }}>
+    <input
+        type="text"
+        data-model="query"
+        class="form-control"
+        placeholder="Rechercher..."
+    >
+    {% for article in this.blogpost %}
+    {{ component('blogpost', {'id': article.id}) }}
+    {% endfor %}
+</div>

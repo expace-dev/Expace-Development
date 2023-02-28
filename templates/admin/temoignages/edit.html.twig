@@ -17,7 +17,7 @@
                                 {% endfor %}
                             </div>
                         {% endfor %}
-                        {{ component('form_temoignages', {
+                        {{ component('temoignages_form_admin', {
                             temoignage: temoignage.id ? temoignage: null,
                             form: form
                         }) }}
