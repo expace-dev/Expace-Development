@@ -89,6 +89,19 @@ class ArticlesRepository extends ServiceEntityRepository
         }
     }
 
+    public function nombreArticlesMensuel($year, $month) {
+
+        return $this->createQueryBuilder('p')
+                    ->select('COUNT(p)')
+                    ->Where('YEAR(p.date) = :year')
+                    ->setParameter('year', $year)
+                    ->andWhere('MONTH(p.date) = :month')
+                    ->setParameter('month', $month)
+                    ->getQuery()
+                    ->getSingleScalarResult(); 
+    
+    }
+
 //    /**
 //     * @return Articles[] Returns an array of Articles objects
 //     */

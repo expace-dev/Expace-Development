@@ -8,12 +8,14 @@ use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints\Length;
 
-class ArticleType extends AbstractType
+class ArticlesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -31,11 +33,32 @@ class ArticleType extends AbstractType
                 'label' => 'Titre',
                 'attr' => [
                     'placeholder' => 'Titre de l\'article'
-                ]
+                ],
+                'constraints' => [
+                    new NotNull(['message' => 'Veillez donner un titre']),
+                    new Length([
+                        'min' => 10,
+                        'minMessage' => 'Trop court, minimum {{ limit }} caractères',
+                        'max' => 180,
+                        'maxMessage' => 'Trop long, maximum {{ limit }} caractères'
+    
+                    ]),
+                ],
+                'trim' => false,
             ])
             ->add('content', CKEditorType::class, [
                 'label' => 'Contenu',
                 'config_name' => 'main_config',
+                'row_attr' => [
+                    'data-live-ignore' => 'true'
+                ],
+                'constraints' => [
+                    new NotNull(['message' => 'Veuillez détailler votre article']),
+                    new Length([
+                        'min' => 5,
+                        'minMessage' => 'Trop court, minimum {{ limit }} caractères',
+                    ]),
+                ],
             ])
             ->add('img', FileType::class, [
                 'attr' => [

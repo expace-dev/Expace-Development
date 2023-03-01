@@ -13,13 +13,26 @@
     {% endif %}
         <ul>
             {% if is_granted("ROLE_ADMIN") %}
-            <li><a href="">Dashboard</a></li>
+            <li><a href="{{ path('app_admin_dashboard') }}">Dashboard</a></li>
             <li><a href="{{ path('app_admin_users_index') }}">Clients</a></li>
             <li><a href="{{ path('app_admin_portfolios_index') }}">Réalisations</a></li>
             <li><a href="{{ path('app_admin_projets_index') }}">Projets</a></li>
             <li><a href="{{ path('app_admin_temoignages_index') }}">Témoignages</a></li>
-            <li><a href="{{ path('app_admin_devis_index') }}">Devis</a></li>
-            <li><a href="{{ path('app_admin_factures_index') }}">Factures</a></li>
+            <li class="dropdown"><a href="#"><span>Gestion du blog</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                    <li><a href="{{ path('app_admin_blog_index') }}">Articles</a></li>
+                    <li><a href="{{ path('app_admin_categories_blog_index') }}">Catégories</a></li>
+                    <li><a href="{{ path('app_admin_comments_blog_index') }}">Commentaires</a></li>  
+                </ul>
+            </li>
+            <li class="dropdown"><a href="#"><span>Comptabilité</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                    <li><a href="{{ path('app_admin_factures_index') }}">Factures</a></li>
+                    <li><a href="">Paiements</a></li>
+                    <li><a href="{{ path('app_admin_devis_index') }}">Devis</a></li>
+                </ul>
+            </li>
+            
             <li><a href="{{ path('app_admin_activites_new') }}">Activités</a></li>
             <li><a href="{{ path('app_profil_edit') }}">Profil</a></li>
             {% else %}

@@ -1,0 +1,23 @@
+<div {{ attributes }}>
+    {{ form_start(form, {attr: {'data-model': '*'}}) }}
+        
+        <div class="row">
+            <div class="col-12">
+                {{ form_row(form.content) }}
+            </div>
+            <div class="col-12">
+                {{ form_row(form.active) }}
+            </div>
+            <div class="col-lg-12 text-end">
+                <button class="btn btn-success">Enregistrer</button>
+                <a class="btn btn-secondary" href="">Annuller</a>
+            </div>
+        </div>
+        
+
+        
+
+        
+    {{ form_end(form) }}
+
+</div>

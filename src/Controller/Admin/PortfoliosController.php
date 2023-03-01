@@ -35,11 +35,12 @@ class PortfoliosController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $fichiers = $form->get('imagesPortfolios')->getData();
+            $directory = 'portfolios_directory';
 
             foreach ($fichiers as $fichier) {
 
                 $img = new ImagesPortfolios();
-                $img->setUrl('images/portfolios/' .$uploadService->send($fichier));
+                $img->setUrl('images/portfolios/' .$uploadService->send($fichier, $directory));
                 $portfolio->addImagesPortfolio($img);
                 
             }
@@ -68,11 +69,12 @@ class PortfoliosController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $fichiers = $form->get('imagesPortfolios')->getData();
+            $directory = 'portfolios_directory';
 
             foreach ($fichiers as $fichier) {
 
                 $img = new ImagesPortfolios();
-                $img->setUrl('images/portfolios/' .$uploadService->send($fichier));
+                $img->setUrl('images/portfolios/' .$uploadService->send($fichier, $directory));
                 $portfolio->addImagesPortfolio($img);
                 
             }

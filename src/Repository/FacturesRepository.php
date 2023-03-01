@@ -104,6 +104,19 @@ class FacturesRepository extends ServiceEntityRepository
 
     }
 
+    public function amountFacturesMensuel($year, $month) {
+
+        return $this->createQueryBuilder('p')
+                    ->select('SUM(p.amount)')
+                    ->Where('YEAR(p.createdAt) = :year')
+                    ->setParameter('year', $year)
+                    ->andWhere('MONTH(p.createdAt) = :month')
+                    ->setParameter('month', $month)
+                    ->getQuery()
+                    ->getSingleScalarResult(); 
+    
+    }
+
 
 //    /**
 //     * @return Factures[] Returns an array of Factures objects

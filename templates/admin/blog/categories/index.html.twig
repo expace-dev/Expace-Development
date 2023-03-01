@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories index{% endblock %}
+
+{% block body %}
+    {{ component('breadcrumbs', {'title': block('title')}) }}
+
+    <section class="auth">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="info-box mb-4 col-md-12">
+                    <div class="container mt-3">
+                        {% for label, messages in app.flashes %}
+                            <div class="alert alert-{{ label }}">
+                                {% for message in messages %}
+                                    {{ message | raw }}    
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        {{component('blog_categories_list_admin')}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

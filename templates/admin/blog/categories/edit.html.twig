@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% if app.request.attributes.get('_route') == 'app_admin_categories_blog_edit' %}
+    {% set titre = 'Editer une catégorie' %}
+{% else %}
+    {% set titre = 'Créer une catégorie' %}
+{% endif %}
+
+{% block title %}{{ titre }}{% endblock %}
+
+{% block body %}
+
+    {{ component('breadcrumbs', {'title': block('title')}) }}
+    <section class="auth">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="info-box mb-4">
+                        <div class="container mt-3">
+                            {% for label, messages in app.flashes %}
+                                <div class="alert alert-{{ label }}">
+                                    {% for message in messages %}
+                                        {{ message | raw }}    
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                            {{ component('blog_categories_form_admin', {
+                                categorie: categorie.id ? categorie: null,
+                                form: form
+                            }) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}

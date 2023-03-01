@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Comments;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Comments>
@@ -38,6 +39,51 @@ class CommentsRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function findComments($page, $limit = 15) {
+        $limit = abs($limit);
+
+        $result = [];
+
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('u')
+            ->from('App\Entity\Comments', 'u')
+            ->setMaxResults($limit)
+            ->setFirstResult(($page * $limit) - $limit);
+
+        $paginator = new Paginator($query);
+        $data = $paginator->getQuery()->getResult();
+        
+        
+        if (empty($data)) {
+            return $result;
+        }
+
+        $pages = ceil($paginator->count() / $limit);
+
+        $result['data'] = $data;
+        $result['pages'] = $pages;
+        $result['page'] = $page;
+        $result['limit'] = $limit;
+        //dd($data);
+
+        return $result;
+
+    }
+
+    public function nombreCommentairesMensuel($year, $month) {
+
+        return $this->createQueryBuilder('p')
+                    ->select('COUNT(p)')
+                    ->Where('YEAR(p.createdAt) = :year')
+                    ->setParameter('year', $year)
+                    ->andWhere('MONTH(p.createdAt) = :month')
+                    ->setParameter('month', $month)
+                    ->getQuery()
+                    ->getSingleScalarResult(); 
+    
+    }
+
 
 //    /**
 //     * @return Comments[] Returns an array of Comments objects

@@ -1,0 +1,100 @@
+<div class="row">
+    <div class="col-lg-3">
+        <form action="" class="input-icon my-3 my-lg-0">
+            <div class="gs-container">
+                <input type="text" class="form-control header-search">
+            </div>
+            <div class="input-icon-addon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg text-end">
+        <a href="{{ path('app_admin_blog_new') }}" class="btn btn-success">Ajouter un nouvel article</a>
+    </div>
+</div>
+<div class="table-responsive mt-2">
+    <table class="table card-table table-vcenter table-hover">
+        <thead class="thead-dark form-group-sm">
+            <tr>
+                <th>Titre</th>
+                <th>Date</th>
+                <th class="text-end"><select name="search_limit" class="search_limit" style="width: 60px;"><option value="5">5</option><option value="15" selected="selected">15</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="999999999">all</option></select></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in this.allArticles.data %}
+                <tr>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.date ? article.date|format_datetime(locale='fr',pattern="dd MMMM YYYY") : '' }}</td>
+                    <td class="text-end">
+                        <div class="btn-group">
+                            <a href="{{ path('app_admin_blog_edit', {'id': article.id}) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+                            <a class="btn btn-danger" href="{{ path('app_admin_blog_delete', {'id': article.id}) }}"><i class="fa-solid fa-trash-can"></i></i></a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div style="padding-right: 10px;">
+        {% set pages = this.allArticles.pages %}
+        {% set currentPage = this.allArticles.page %}
+        {% set limit = this.allArticles.limit %}
+        {% if pages > 1 %}
+            <ul class="pagination justify-content-end">
+                {% if currentPage > 1 %}
+                    <li class="page-item"><a class="page-link" href="{{ path('app_admin_blog_index', {page: currentPage - 1}) }}">&laquo;</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link">&laquo;</a></li>
+                {% endif %}
+                {% set pageSupp = currentPage +4 %}
+                {% if pages > 5 and currentPage < pages %}
+                    {% for page in currentPage..pageSupp %}
+                        {% if page <= pages %}
+                            <li class="{{ (page == currentPage) ? 'active' : '' }} page-item">
+                                <a class="page-link" href="{{ path('app_admin_blog_index', {page: page, limit: limit }) }}">{{ page }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <li class="active page-item">
+                        <a class="page-link" href="{{ path('app_admin_blog_index', {page: pages }) }}">{{ pages }}</a>
+                    </li>
+                {% endif %}
+                {% if currentPage < pages %}
+                    <li class="page-item"><a class="page-link" href="{{ path('app_admin_blog_index', {page: currentPage + 1}) }}">&raquo;</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    $(document).ready( function () {
+
+        $(".btn-danger").click(function (event) {
+            event.preventDefault();
+
+            url = $(this).attr('href');
+
+            console.log(url);
+
+            Swal.fire({
+                text: "Voulez vous vraiment supprimer cet article ?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'supprimer'
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    document.location.href = url;
+                }
+            })
+        });
+
+    });
+</script>

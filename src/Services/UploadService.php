@@ -12,13 +12,13 @@ class UploadService {
         
     }
 
-    public function send($fichier) {
+    public function send($fichier, $directory) {
         
         $nom = md5(uniqid()) . '.' . $fichier->guessExtension();
 
         
         $fichier->move(
-            $this->params->get('portfolios_directory'),
+            $this->params->get($directory),
             $nom
         );
         

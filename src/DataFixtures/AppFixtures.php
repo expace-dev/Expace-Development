@@ -9,6 +9,7 @@ use App\Entity\Projets;
 use App\Entity\Articles;
 use App\Entity\Comments;
 use App\Entity\Factures;
+use App\Entity\Paiements;
 use App\Entity\Categories;
 use App\Entity\Portfolios;
 use App\Entity\Temoignages;
@@ -320,6 +321,17 @@ class AppFixtures extends Fixture
 
             $manager->persist($facture);
             $factures[] = $facture;
+
+            $paiement = new Paiements;
+
+            $paiement->setFacture($facture)
+                    ->setMontant($faker->randomNumber(5, false))
+                    ->setStatut('complete')
+                    ->setCreatedAt($faker->dateTime('now'))
+                    ->setClient($faker->randomElement($users));
+
+            $manager->persist($paiement);
+
         }
 
         $categories = [];
