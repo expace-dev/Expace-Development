@@ -6,7 +6,6 @@ use App\Entity\Users;
 use App\Form\CredentialsType;
 use App\Form\ProfilType;
 use App\Form\RegistrationFormType;
-use App\Form\UsersType;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,11 +16,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class UsersController extends AbstractController
 {
     #[Route('/', name: 'app_admin_users_index', methods: ['GET'])]
-    public function index(UsersRepository $usersRepository): Response
+    public function index(): Response
     {
-        return $this->render('users/index.html.twig', [
-            'users' => $usersRepository->findAll(),
-        ]);
+        return $this->render('users/index.html.twig');
     }
 
     #[Route('/new', name: 'app_admin_users_new', methods: ['GET', 'POST'])]

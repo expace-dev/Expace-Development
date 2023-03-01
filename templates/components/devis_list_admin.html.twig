@@ -50,38 +50,12 @@
         </tbody>
     </table>
     <div style="padding-right: 10px;">
-        {% set pages = this.allDevis.pages %}
-        {% set currentPage = this.allDevis.page %}
-        {% set limit = this.allDevis.limit %}
-        {% if pages > 1 %}
-            <ul class="pagination justify-content-end">
-                {% if currentPage > 1 %}
-                    <li class="page-item"><a class="page-link" href="{{ path('app_admin_projets_index', {page: currentPage - 1}) }}">&laquo;</a></li>
-                {% else %}
-                    <li class="page-item disabled"><a class="page-link">&laquo;</a></li>
-                {% endif %}
-                {% set pageSupp = currentPage +4 %}
-                {% if pages > 5 and currentPage < pages %}
-                    {% for page in currentPage..pageSupp %}
-                        {% if page <= pages %}
-                            <li class="{{ (page == currentPage) ? 'active' : '' }} page-item">
-                                <a class="page-link" href="{{ path('app_admin_devis_index', {page: page, limit: limit }) }}">{{ page }}</a>
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                {% else %}
-                    {% for page in 1..pages %}
-                        <li class="{{ (page == currentPage) ? 'active' : '' }} page-item">
-                            <a class="page-link" href="{{ path('app_admin_devis_index', {page: page, limit: limit }) }}">{{ page }}</a>
-                        </li>
-                    {% endfor %}
-                {% endif %}
-                {% if currentPage < pages %}
-                    <li class="page-item"><a class="page-link" href="{{ path('app_admin_devis_index', {page: currentPage + 1}) }}">&raquo;</a></li>
-                {% else %}
-                    <li class="page-item disabled"><a class="page-link">&raquo;</a></li>
-                {% endif %}
-            </ul>
-        {% endif %}
+        {{ component('pagination', {
+            'pages': this.allDevis.pages,
+            'currentPage': this.allDevis.page,
+            'limit': this.allDevis.limit,
+            'path': 'app_admin_devis_index',
+            'position': 'justify-content-end'
+        }) }}
     </div>
 </div>
