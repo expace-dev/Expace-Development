@@ -9,7 +9,7 @@
     {% if app.user.avatar %}
     <li class="dropdown"><a href="#"><img src="{{ app.user.avatar }}" class="avatar avatar-mini"> <i class="bi bi-chevron-down"></i></a>
     {% else %}
-    <li class="dropdown"><a href="#"><img src="/images/no-avatar-350x350.jpg" class="avatar avatar-mini"> <i class="bi bi-chevron-down"></i></a>
+    <li class="dropdown"><a href="#"><img src="/images/no-avatar.jpg" class="avatar avatar-mini"> <i class="bi bi-chevron-down"></i></a>
     {% endif %}
         <ul>
             {% if is_granted("ROLE_ADMIN") %}
