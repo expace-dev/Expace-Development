@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UsersRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -118,9 +119,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         $this->temoignages = new ArrayCollection();
         $this->projets = new ArrayCollection();
         $this->devis = new ArrayCollection();
-        $this->fullName = $this->getNom(). ' ' .$this->getPrenom();
         $this->factures = new ArrayCollection();
         $this->paiements = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int
