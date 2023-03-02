@@ -23,6 +23,7 @@ class ProfilType extends AbstractType
         $builder
             ->add('societe', TextType::class, [
                 'label' => 'Nom de l’entreprise',
+                'trim' => false,
                 'required' => false,
                 'attr' => [
                     'autocomplete' => 'off',
@@ -85,6 +86,7 @@ class ProfilType extends AbstractType
             ])
             ->add('codePostal', TextType::class, [
                 'label' => 'Code postal*',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                     'data-live-ignore' => 'true',
@@ -101,6 +103,7 @@ class ProfilType extends AbstractType
             ])
             ->add('ville', TextType::class, [
                 'label' => 'Ville*',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                     'data-live-ignore' => 'true'
@@ -113,6 +116,7 @@ class ProfilType extends AbstractType
             ])
             ->add('etat', TextType::class, [
                 'required' => false,
+                'trim' => false,
                 'label' => 'Etat',
                 'attr' => [
                     'autocomplete' => 'off',
@@ -121,6 +125,7 @@ class ProfilType extends AbstractType
             ])
             ->add('pays', TextType::class, [
                 'label' => 'Pays*',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                     'data-live-ignore' => 'true'
@@ -137,6 +142,7 @@ class ProfilType extends AbstractType
             ])
             ->add('telephone', TelType::class, [
                 'label' => 'Téléphone*',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                 ],
@@ -152,6 +158,7 @@ class ProfilType extends AbstractType
             ])
             ->add('mobile', TelType::class, [
                 'label' => 'Mobile',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                 ],
@@ -159,6 +166,7 @@ class ProfilType extends AbstractType
             ])
             ->add('fax', TelType::class, [
                 'label' => 'Fax',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                 ],
