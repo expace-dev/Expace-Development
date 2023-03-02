@@ -17,15 +17,6 @@ class CredentialsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username', TextType::class, [
-                'label' => 'Nom d’utilisateur*',
-                'attr' => [
-                    'autocomplete' => 'off',
-                ],
-                'constraints' => [
-                    new NotNull(['message' => 'Entrez un nom d\'utilisateur'])
-                ]
-            ])
             ->add('ancienPassword', PasswordType::class, [
                 'label' => 'Ancien mot de passe*',
                 'always_empty' => false,
