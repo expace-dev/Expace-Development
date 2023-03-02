@@ -48,6 +48,7 @@
         </tbody>
     </table>
     <div style="padding-right: 10px;">
+    {% if this.allPortfolios %}
         {{ component('pagination', {
             'pages': this.allPortfolios.pages,
             'currentPage': this.allPortfolios.page,
@@ -55,6 +56,7 @@
             'path': 'app_admin_portfolios_index',
             'position': 'justify-content-end'
         }) }}
+    {% endif %}
     </div>
 </div>
 <script>
