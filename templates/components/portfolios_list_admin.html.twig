@@ -24,6 +24,7 @@
             </tr>
         </thead>
         <tbody>
+            {% if this.allPortfolios.data %}
             {% for portfolio in this.allPortfolios.data %}
                 <tr>
                     <td>{{ portfolio.client }}</td>
@@ -37,6 +38,13 @@
                     </td>
                 </tr>
             {% endfor %}
+            {% else %}
+            <tr>
+            <td colspan="4">Aucune donnée</td>
+            </tr> 
+            {% endif %}
+            
+            
         </tbody>
     </table>
     <div style="padding-right: 10px;">
