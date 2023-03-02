@@ -28,6 +28,7 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('societe', TextType::class, [
                 'label' => 'Nom de l’entreprise',
+                'trim' => false,
                 'required' => false,
                 'attr' => [
                     'autocomplete' => 'off',
@@ -35,6 +36,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('nom', TextType::class, [
                 'label' => 'Nom*',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                 ],
@@ -56,6 +58,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('prenom', TextType::class, [
                 'label' => 'Prénom*',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                 ],
@@ -90,6 +93,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('codePostal', TextType::class, [
                 'label' => 'Code postal*',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                     'data-live-ignore' => 'true',
@@ -106,6 +110,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('ville', TextType::class, [
                 'label' => 'Ville*',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                     'data-live-ignore' => 'true'
@@ -118,6 +123,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('etat', TextType::class, [
                 'required' => false,
+                'trim' => false,
                 'label' => 'Etat',
                 'attr' => [
                     'autocomplete' => 'off',
@@ -126,6 +132,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('pays', TextType::class, [
                 'label' => 'Pays*',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                     'data-live-ignore' => 'true'
@@ -142,6 +149,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('telephone', TelType::class, [
                 'label' => 'Téléphone*',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                 ],
@@ -157,6 +165,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('mobile', TelType::class, [
                 'label' => 'Mobile',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                 ],
@@ -192,6 +201,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('username', TextType::class, [
                 'label' => 'Nom d’utilisateur*',
+                'trim' => false,
                 'attr' => [
                     'autocomplete' => 'off',
                 ],
