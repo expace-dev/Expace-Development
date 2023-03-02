@@ -97,7 +97,11 @@
             <div class="col-md-10 text-end">
                 <div style="padding-top: 1rem; padding-bottom: 1rem;">
                     <button class="btn btn-success">Enregistrer</button>
-                    <a href="{{ path('app_admin_users_index') }}" class="btn btn-secondary">Annuler</a>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <a href="{{ path('app_admin_users_index') }}" class="btn btn-secondary">Annuler</a>
+                    {% else %}
+                        <a href="{{ path('app_home') }}" class="btn btn-secondary">Annuler</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

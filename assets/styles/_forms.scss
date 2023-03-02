@@ -1,3 +1,30 @@
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--gray-ldark);
+  background-color: var(--white);
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 40, 100, 0.12);
+  border-radius: 3px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.form-control:focus {
+  color: var(--gray-ldark);
+  background-color: var(--white);
+  border-color: var(--azure);
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(70, 127, 207, 0.25);
+}
+.form-control.is-invalid:focus {
+  color: var(--gray-ldark);
+  background-color: var(--white);
+  border-color: var(--bs-danger);
+  outline: 0;
+  box-shadow: 0 0 0 0;
+}
 .input-icon {
     position: relative;
   }
