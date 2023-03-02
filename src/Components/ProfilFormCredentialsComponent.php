@@ -3,9 +3,7 @@
 namespace App\Components;
 
 use App\Entity\Users;
-use App\Form\ProfilCreateType;
-use App\Form\ProfilUpdateCredentialsType;
-use App\Form\ProfilUpdateType;
+use App\Form\CredentialsType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
@@ -24,7 +22,7 @@ class ProfilFormCredentialsComponent extends AbstractController {
 
     protected function instantiateForm(): FormInterface
     {
-        return $this->createForm(ProfilUpdateCredentialsType::class, $this->user);
+        return $this->createForm(CredentialsType::class, $this->user);
     }
     
 }
