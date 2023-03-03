@@ -4,17 +4,19 @@ namespace App\Form\Admin;
 
 use App\Entity\Users;
 use App\Entity\Projets;
+use App\Form\UsersAutocompleteField;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\Validator\Constraints\Length;
 
 class ProjetsType extends AbstractType
 {
@@ -94,16 +96,10 @@ class ProjetsType extends AbstractType
                     ])
                 ]
             ])
-            ->add('client', EntityType::class, [
-                'class' => Users::class,
-                'choice_label' => 'email',
-                'label' => 'Choisir le client',
-                'placeholder' => 'Sélectionnez une option...',
+            ->add('client', UsersAutocompleteField::class, [
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez sélectionner un client'
-                    ]),
-                ]
+                    new NotNull(['message' => 'Veuillez sélectionner un client'])
+                ],
             ])
         ;
     }

@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Users;
 use App\Repository\UsersRepository;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\Autocomplete\Form\AsEntityAutocompleteField;
 use Symfony\UX\Autocomplete\Form\ParentEntityAutocompleteType;
@@ -16,9 +17,8 @@ class UsersAutocompleteField extends AbstractType
     {
         $resolver->setDefaults([
             'class' => Users::class,
-            'placeholder' => 'Choose a Users',
-            //'choice_label' => 'name',
-
+            'placeholder' => 'Sélectionnez une option',
+            'choice_label' => 'fullName',
             'query_builder' => function(UsersRepository $usersRepository) {
                 return $usersRepository->createQueryBuilder('users');
             },
