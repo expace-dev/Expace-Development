@@ -99,8 +99,7 @@ class ProjetsController extends AbstractController
                 $mailer->sendDocument(
                     from: 'noreply@expace-development.fr',
                     name: 'Expace Development',
-                    to: 'mega-services@hotmail.fr',
-                    //to: $projet->getClient()->getEmail(),
+                    to: $projet->getClient()->getEmail(),
                     template: 'emails/_new_doc.html.twig',
                     subject: 'Nouveau document',
                     attache: $this->getParameter('clients_directory') . '/' . $fichier,
