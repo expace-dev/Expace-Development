@@ -10,6 +10,8 @@ use App\Repository\UsersRepository;
 use Symfony\UX\Chartjs\Model\Chart;
 use App\Repository\FacturesRepository;
 use App\Repository\PaiementsRepository;
+use App\Repository\ProjetsRepository;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 
 class DashboardAdminService {
@@ -21,7 +23,9 @@ class DashboardAdminService {
         private PaiementsRepository $paiementsRepository,
         private ChartBuilderInterface $chartBuilder,
         private ArticlesRepository $articlesRepository,
-        private CommentsRepository $commentsRepository
+        private CommentsRepository $commentsRepository,
+        private ProjetsRepository $projetsRepository,
+        private Security $security
     )
     {
     }
@@ -158,5 +162,131 @@ class DashboardAdminService {
         ]);
 
         return $chartBlog;
+    }
+
+    public function chartClientDevis($annee) {
+        
+        $amountDevis = [];
+
+        
+
+        for ($i=1; $i < 13; $i++) {
+
+            $date = new DateTime($annee . '-' . $i . '-01');
+
+            if ($this->devisRepository->amountDevisMensuelClient($date->format('Y'), $date->format('m'), $this->security->getUser()) === null) {
+                $amountDevis[] = "0";
+            }
+            else {
+                $amountDevis[] = $this->devisRepository->amountDevisMensuelClient($date->format('Y'), $date->format('m'), $this->security->getUser());
+            }
+        }
+
+        $chartDevis = $this->chartBuilder->createChart(Chart::TYPE_BAR);
+
+        $chartDevis->setData([
+            'labels' => ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            'datasets' => [
+                [
+                    'label' => 'Devis',
+                    'tension' => 0.2,
+                    'radius' => 5,
+                    'borderWidth' => 3,
+                    'backgroundColor' => 'rgb(54, 162, 235)',
+                    'borderColor' => 'rgb(54, 162, 235)',
+                    'data' => $amountDevis 
+                ],
+            ]
+        ]);
+
+        $chartDevis->setOptions([
+            'maintainAspectRatio' => false,
+        ]);
+
+        return $chartDevis;
+    }
+
+    public function chartClientFactures($annee) {
+        
+        $amountFactures = [];
+
+        
+
+        for ($i=1; $i < 13; $i++) {
+
+            $date = new DateTime($annee . '-' . $i . '-01');
+
+            if ($this->facturesRepository->amountFacturesMensuelClient($date->format('Y'), $date->format('m'), $this->security->getUser()) === null) {
+                $amountFactures[] = "0";
+            }
+            else {
+                $amountFactures[] = $this->facturesRepository->amountFacturesMensuelClient($date->format('Y'), $date->format('m'), $this->security->getUser());
+            }
+        }
+
+        $chartFactures = $this->chartBuilder->createChart(Chart::TYPE_BAR);
+
+        $chartFactures->setData([
+            'labels' => ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            'datasets' => [
+                [
+                    'label' => 'Factures',
+                    'tension' => 0.2,
+                    'radius' => 5,
+                    'borderWidth' => 3,
+                    'backgroundColor' => 'rgb(54, 162, 235)',
+                    'borderColor' => 'rgb(54, 162, 235)',
+                    'data' => $amountFactures 
+                ],
+            ]
+        ]);
+
+        $chartFactures->setOptions([
+            'maintainAspectRatio' => false,
+        ]);
+
+        return $chartFactures;
+    }
+
+    public function chartClientProjets($annee) {
+        
+        $projets = [];
+
+        
+
+        for ($i=1; $i < 13; $i++) {
+
+            $date = new DateTime($annee . '-' . $i . '-01');
+
+            if ($this->projetsRepository->nombreProjetsMensuelClient($date->format('Y'), $date->format('m'), $this->security->getUser()) === null) {
+                $projets[] = "0";
+            }
+            else {
+                $projets[] = $this->projetsRepository->nombreProjetsMensuelClient($date->format('Y'), $date->format('m'), $this->security->getUser());
+            }
+        }
+
+        $chartProjets = $this->chartBuilder->createChart(Chart::TYPE_BAR);
+
+        $chartProjets->setData([
+            'labels' => ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            'datasets' => [
+                [
+                    'label' => 'Projets',
+                    'tension' => 0.2,
+                    'radius' => 5,
+                    'borderWidth' => 3,
+                    'backgroundColor' => 'rgb(54, 162, 235)',
+                    'borderColor' => 'rgb(54, 162, 235)',
+                    'data' => $projets 
+                ],
+            ]
+        ]);
+
+        $chartProjets->setOptions([
+            'maintainAspectRatio' => false,
+        ]);
+
+        return $chartProjets;
     }
 }

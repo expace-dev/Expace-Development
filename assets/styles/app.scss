@@ -27,4 +27,29 @@
 @import './statistiques';
 @import './procedure';
 @import './footer';
+i {   
+ 
+    text-align:center;
+    vertical-align:middle;
+    position: relative;
+}
+.badger:after{
+    content:attr(data-count);
+    position: absolute;
+    background:rgba(255,0,0,.85);
+    height:1rem;
+    right:-5px;
+    top: -20px;
+    width:1rem;
+    text-align: center;
+    line-height: 1rem;;
+    font-size: 0.5rem;
+    border-radius: 50%;
+    color:white;
 
+}
+
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-primary);
+  }
+  

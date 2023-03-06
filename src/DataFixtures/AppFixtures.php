@@ -118,7 +118,7 @@ class AppFixtures extends Fixture
         }
         
         // Nous gérons le portfolio
-
+/*
         $realisations = [];
 
         for ($i=1; $i<=50; $i++) {
@@ -150,7 +150,7 @@ class AppFixtures extends Fixture
 
             }
         }
-
+*/
         $projets = [];
 
         for ($n=1; $n<=50; $n++) {

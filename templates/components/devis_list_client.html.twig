@@ -21,36 +21,42 @@
             </tr>
         </thead>
         <tbody>
+        {% if this.allDevis %}
             {% for devis in this.allDevis.data %}
-                <tr>
-                    <td>
-                    {% if devis.statut == 'en_attente' %}
-                            <div class="badge bg-warning" style="min-width:110px">Non signé</div>
-                        {% elseif devis.statut == 'accepte' %}
-                            <div class="badge bg-success" style="min-width:110px">Accepté</div>
-                        {% else %}
-                            <div class="badge bg-danger" style="min-width:110px">Refusé</div>    
-                        {% endif %}
-                    </td>
-                    <td>{{ devis.date|date('d-m-Y') }}</td>
-                    <td>{{ devis.projet.titre }}</td>
-                    <td class="text-end">
-                        <div class="btn-group">
-                            <a class="btn btn-secondary" target="_blank" href="{{ path('app_client_devis_show', {'slug': devis.slug}) }}"><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-success" href=""><i class="fa-solid fa-signature"></i></a>
-                        </div>
-                    </td>
-                </tr>
-            {% endfor %}
+                    <tr>
+                        <td>
+                        {% if devis.statut == 'en_attente' %}
+                                <div class="badge bg-warning" style="min-width:110px">Non signé</div>
+                            {% elseif devis.statut == 'accepte' %}
+                                <div class="badge bg-success" style="min-width:110px">Accepté</div>
+                            {% else %}
+                                <div class="badge bg-danger" style="min-width:110px">Refusé</div>    
+                            {% endif %}
+                        </td>
+                        <td>{{ devis.date|date('d-m-Y') }}</td>
+                        <td>{{ devis.projet.titre }}</td>
+                        <td class="text-end">
+                            <div class="btn-group">
+                                <a class="btn btn-secondary" target="_blank" href="{{ path('app_client_devis_show', {'slug': devis.slug}) }}"><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-success" href=""><i class="fa-solid fa-signature"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <td colspan="4" class="text-center">Aucune donnée dans le tableau</td>
+        {% endif %}
         </tbody>
     </table>
-    <div style="padding-right: 10px;">
-        {{ component('pagination', {
-            'pages': this.allDevis.pages,
-            'currentPage': this.allDevis.page,
-            'limit': this.allDevis.limit,
-            'path': 'app_client_devis_index',
-            'position': 'justify-content-end'
-        }) }}
-    </div>
+    {% if this.allDevis %}
+        <div style="padding-right: 10px;">
+            {{ component('pagination', {
+                'pages': this.allDevis.pages,
+                'currentPage': this.allDevis.page,
+                'limit': this.allDevis.limit,
+                'path': 'app_client_devis_index',
+                'position': 'justify-content-end'
+            }) }}
+        </div>
+    {% endif %}
 </div>

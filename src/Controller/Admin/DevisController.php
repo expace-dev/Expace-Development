@@ -6,6 +6,7 @@ use App\Entity\Devis;
 use App\Form\DevisType;
 use App\Repository\DevisRepository;
 use App\Services\InvoiceService;
+use App\Services\MailerService;
 use App\Services\NumInvoiceService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +25,7 @@ class DevisController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_devis_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, DevisRepository $devisRepository, InvoiceService $invoiceService, NumInvoiceService $numInvoiceService): Response
+    public function new(Request $request, DevisRepository $devisRepository, InvoiceService $invoiceService, NumInvoiceService $numInvoiceService, MailerService $mailer): Response
     {
         $devis = new Devis();
         $form = $this->createForm(DevisType::class, $devis);
@@ -65,7 +66,26 @@ class DevisController extends AbstractController
 
             $devisRepository->save($devis, true);
 
+            $mailer->sendDocument(
+                from: 'noreply@expace-development.fr',
+                name: 'Expace Development',
+                to: $devis->getClient()->getEmail(),
+                template: 'emails/_new_doc.html.twig',
+                subject: 'Nouveau document',
+                attache: $this->getParameter('clients_directory') . '/' . $slug,
+                mime: 'application/pdf',
+                docAttache: $slug .'.pdf',
+                client: $devis->getClient()->getPrenom(),
+                document: 'Devis'
+            );
+        
+            $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Le devis a été enregistré avec succès');
+
             return $this->redirectToRoute('app_admin_devis_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        if ($form->isSubmitted() && !$form->isValid()) {
+            $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span> Des erreurs subsistent, veuillez modifier votre saisie');
         }
 
         return $this->render('admin/devis/edit.html.twig', [
@@ -87,7 +107,7 @@ class DevisController extends AbstractController
 
 
     #[Route('/{id}/edit', name: 'app_admin_devis_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Devis $devis, DevisRepository $devisRepository, NumInvoiceService $numInvoiceService, InvoiceService $invoiceService): Response
+    public function edit(Request $request, Devis $devis, DevisRepository $devisRepository, NumInvoiceService $numInvoiceService, InvoiceService $invoiceService, MailerService $mailer): Response
     {
         $form = $this->createForm(DevisType::class, $devis);
         $form->handleRequest($request);
@@ -95,19 +115,13 @@ class DevisController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            
 
-            $numero = $numInvoiceService->Generate(
-                numInvoice: $devis->getId(),
-                type: 'DEVIS'
-            );
-
-            
-            $url = 'documents_clients/' . $numero . '.pdf';
+                       
+            $url = 'documents_clients/' . $devis->getSlug();
             $devis->setClient($devis->getProjet()->getClient());
             
             $invoiceService->CreateDevis(
-                numero: $numero,
+                numero: $devis->getSlug(),
                 url: $url,
                 type: 'DEVIS',
                 document: $devis
@@ -124,6 +138,21 @@ class DevisController extends AbstractController
 
 
             $devisRepository->save($devis, true);
+
+            $mailer->sendDocument(
+                from: 'noreply@expace-development.fr',
+                name: 'Expace Development',
+                to: $devis->getClient()->getEmail(),
+                template: 'emails/_new_doc.html.twig',
+                subject: 'Nouveau document',
+                attache: $this->getParameter('clients_directory') . '/' . $devis->getSlug(),
+                mime: 'application/pdf',
+                docAttache: $devis->getSlug(),
+                client: $devis->getClient()->getPrenom(),
+                document: 'Devis'
+            );
+
+            $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Le devis a été enregistré avec succès');
 
             return $this->redirectToRoute('app_admin_devis_index', [], Response::HTTP_SEE_OTHER);
         }

@@ -18,9 +18,6 @@ class Portfolios
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $client = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $url = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -32,6 +29,10 @@ class Portfolios
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'portfolios')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Projets $projet = null;
+
     public function __construct()
     {
         $this->imagesPortfolios = new ArrayCollection();
@@ -41,18 +42,6 @@ class Portfolios
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getClient(): ?string
-    {
-        return $this->client;
-    }
-
-    public function setClient(string $client): self
-    {
-        $this->client = $client;
-
-        return $this;
     }
 
     public function getUrl(): ?string
@@ -117,6 +106,18 @@ class Portfolios
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getProjet(): ?Projets
+    {
+        return $this->projet;
+    }
+
+    public function setProjet(?Projets $projet): self
+    {
+        $this->projet = $projet;
 
         return $this;
     }

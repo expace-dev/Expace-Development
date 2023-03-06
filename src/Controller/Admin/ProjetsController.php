@@ -16,11 +16,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProjetsController extends AbstractController
 {
     #[Route('/', name: 'app_admin_projets_index', methods: ['GET'])]
-    public function index(ProjetsRepository $projetsRepository): Response
+    public function index(): Response
     {
-        return $this->render('admin/projets/index.html.twig', [
-            'projets' => $projetsRepository->findAll(),
-        ]);
+        return $this->render('admin/projets/index.html.twig');
     }
 
     #[Route('/new', name: 'app_admin_projets_new', methods: ['GET', 'POST'])]
@@ -130,7 +128,7 @@ class ProjetsController extends AbstractController
     }
 
     #[Route('/{id}/delete', name: 'app_admin_projets_delete', methods: ['GET'])]
-    public function delete(Request $request, Projets $projet, ProjetsRepository $projetsRepository): Response
+    public function delete(Projets $projet, ProjetsRepository $projetsRepository): Response
     {
         if ($projet->getStatut() === 'ouverture') {
 

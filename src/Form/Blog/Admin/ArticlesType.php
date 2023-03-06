@@ -71,6 +71,15 @@ class ArticlesType extends AbstractType
                 'data_class' => null,
                 'mapped' => false,
                 'required' => false,
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png'
+                        ],
+                        'mimeTypesMessage' => 'Seul les images sont acceptés'
+                    ])
+                ]
             ])
         ;
     }

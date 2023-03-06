@@ -23,6 +23,9 @@ class DevisType extends AbstractType
         ])
         ->add('services', LiveCollectionType::class, [
             'entry_type' => ServicesType::class,
+            'constraints' => [
+                new NotBlank(['message' => 'veuillez donner des infos'])
+            ]
         ])
             
         ;

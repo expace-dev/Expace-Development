@@ -1,7 +1,7 @@
 <div {{ attributes }}>
     {{ form_start(form, {attr: {'data-model': '*'}}) }}
         <div class="row">
-            <div class="col-lg-6">{{ form_row(form.client) }}</div>
+            <div class="col-lg-6">{{ form_row(form.projet) }}</div>
             <div class="col-lg-6">{{ form_row(form.url) }}</div>
             <div class="col-lg-12">{{ form_row(form.details) }}</div>
             {% if app.request.attributes.get('_route') == 'app_admin_portfolios_edit' %}

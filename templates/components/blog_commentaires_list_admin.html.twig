@@ -22,31 +22,37 @@
             </tr>
         </thead>
         <tbody>
+        {% if this.allCommentaires %}
             {% for commentaire in this.allCommentaires.data %}
-                <tr>
-                    <td>{{ commentaire.articles.title }}</td>
-                    <td>{{ commentaire.auteur.username }}</td>
-                    <td>{{ commentaire.createdAt ? commentaire.createdAt|date('j F Y') : '' }}</td>
-                    <td>{{ commentaire.active ? 'Oui' : 'Non' }}</td>
-                    <td class="text-end">
-                        <div class="btn-group">
-                            <a href="{{ path('app_admin_comments_blog_edit', {'id': commentaire.id}) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
-                            <a class="btn btn-danger" href="{{ path('app_admin_comments_blog_delete', {'id': commentaire.id}) }}"><i class="fa-solid fa-trash-can"></i></i></a>
-                        </div>
-                    </td>
-                </tr>
-            {% endfor %}
+                    <tr>
+                        <td>{{ commentaire.articles.title }}</td>
+                        <td>{{ commentaire.auteur.username }}</td>
+                        <td>{{ commentaire.createdAt ? commentaire.createdAt|date('j F Y') : '' }}</td>
+                        <td>{{ commentaire.active ? 'Oui' : 'Non' }}</td>
+                        <td class="text-end">
+                            <div class="btn-group">
+                                <a href="{{ path('app_admin_comments_blog_edit', {'id': commentaire.id}) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-danger" href="{{ path('app_admin_comments_blog_delete', {'id': commentaire.id}) }}"><i class="fa-solid fa-trash-can"></i></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <td colspan="5" class="text-center"></td>
+        {% endif %}
         </tbody>
     </table>
-    <div style="padding-right: 10px;">
-        {{ component('pagination', {
-            'pages': this.allCommentaires.pages,
-            'currentPage': this.allCommentaires.page,
-            'limit': this.allCommentaires.limit,
-            'path': 'app_admin_comments_blog_index',
-            'position': 'justify-content-end'
-        }) }}
-    </div>
+    {% if this.allCommentaires %}
+        <div style="padding-right: 10px;">
+            {{ component('pagination', {
+                'pages': this.allCommentaires.pages,
+                'currentPage': this.allCommentaires.page,
+                'limit': this.allCommentaires.limit,
+                'path': 'app_admin_comments_blog_index',
+                'position': 'justify-content-end'
+            }) }}
+        </div>
+    {% endif %}
 </div>
 
 <script>

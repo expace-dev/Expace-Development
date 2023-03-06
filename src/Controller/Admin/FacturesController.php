@@ -6,6 +6,7 @@ use App\Entity\Factures;
 use App\Form\FacturesType;
 use App\Repository\FacturesRepository;
 use App\Services\InvoiceService;
+use App\Services\MailerService;
 use App\Services\NumInvoiceService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +25,7 @@ class FacturesController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_factures_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, FacturesRepository $facturesRepository, NumInvoiceService $numInvoiceService, InvoiceService $invoiceService): Response
+    public function new(Request $request, FacturesRepository $facturesRepository, NumInvoiceService $numInvoiceService, InvoiceService $invoiceService, MailerService $mailer): Response
     {
         $facture = new Factures();
         $form = $this->createForm(FacturesType::class, $facture);
@@ -62,6 +63,21 @@ class FacturesController extends AbstractController
 
             $facturesRepository->save($facture, true);
 
+            $mailer->sendDocument(
+                from: 'noreply@expace-development.fr',
+                name: 'Expace Development',
+                to: $facture->getClient()->getEmail(),
+                template: 'emails/_new_doc.html.twig',
+                subject: 'Nouveau document',
+                attache: $this->getParameter('clients_directory') . '/' . $numero .'.pdf',
+                mime: 'application/pdf',
+                docAttache: $numero .'.pdf',
+                client: $facture->getClient()->getPrenom(),
+                document: 'Facture'
+            );
+
+            $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>La facture a été enregistré avec succès');
+
             return $this->redirectToRoute('app_admin_factures_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -84,27 +100,19 @@ class FacturesController extends AbstractController
 
 
     #[Route('/{id}/edit', name: 'app_admin_factures_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Factures $facture, FacturesRepository $facturesRepository, NumInvoiceService $numInvoiceService, InvoiceService $invoiceService): Response
+    public function edit(Request $request, Factures $facture, FacturesRepository $facturesRepository, NumInvoiceService $numInvoiceService, InvoiceService $invoiceService, MailerService $mailer): Response
     {
         $form = $this->createForm(FacturesType::class, $facture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $numero = $numInvoiceService->Generate(
-                numInvoice: $facturesRepository->count([])+1,
-                type: 'FACTURE'
-            );
-
             
-            $url = 'documents_clients/' . $numero . '.pdf';
+            $url = 'documents_clients/' . $facture->getSlug();
             
-            $facture->setClient($facture->getProjet()->getClient());
-            $slug = $numero . '.pdf';
-            $facture->setSlug($slug);
 
             $invoiceService->CreateDevis(
-                numero: $numero,
+                numero: $facture->getSlug(),
                 url: $url,
                 type: 'FACTURE',
                 document: $facture
@@ -120,6 +128,21 @@ class FacturesController extends AbstractController
             $facture->setAmount($tarif_total);
 
             $facturesRepository->save($facture, true);
+
+            $mailer->sendDocument(
+                from: 'noreply@expace-development.fr',
+                name: 'Expace Development',
+                to: $facture->getClient()->getEmail(),
+                template: 'emails/_new_doc.html.twig',
+                subject: 'Nouveau document',
+                attache: $this->getParameter('clients_directory') . '/' . $facture->getSlug(),
+                mime: 'application/pdf',
+                docAttache: $facture->getSlug(),
+                client: $facture->getClient()->getPrenom(),
+                document: 'Facture'
+            );
+
+            $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>La facture a été enregistré avec succès');
 
             return $this->redirectToRoute('app_admin_factures_index', [], Response::HTTP_SEE_OTHER);
         }

@@ -18,7 +18,8 @@ class ServicesType extends AbstractType
                 'label' => 'Type d\'évènement',
                 'constraints' => [
                     new NotBlank(['message' => "Veuillez préciser le type d'évènement"]),
-                ]
+                ],
+                'trim' => false
             ])
             ->add('quantite', TextType::class, [
                 'label' => 'Quantité',

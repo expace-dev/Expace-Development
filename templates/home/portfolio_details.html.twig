@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réalisations{% endblock %}
+{% block title %}Nos réalisations{% endblock %}
 
 {% block body %}
+{% if portfolio.projet.client.societe %}
+  {% set client = portfolio.projet.client.societe %}
+{% else %}
+  {% set client = portfolio.projet.client.nom ~ ' ' ~ portfolio.projet.client.prenom %}
+{% endif %}
 {{ component('breadcrumbs', {'title': block('title')}) }}
 
 <section id="portfolio-details" class="portfolio-details">
@@ -14,17 +19,13 @@
             <div class="portfolio-details-slider swiper">
               <div class="swiper-wrapper align-items-center">
 
+              {% for image in portfolio.imagesPortfolios %}
                 <div class="swiper-slide">
-                  <img src="/images/portfolios/portfolio-1.jpg" alt="">
-                </div>
+                  <img src="/{{ image.url }}" alt="">
+                </div>  
+              {% endfor %}
 
-                <div class="swiper-slide">
-                  <img src="/images/portfolios/portfolio-2.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="/images/portfolios/portfolio-3.jpg" alt="">
-                </div>
+                
 
               </div>
               <div class="swiper-pagination"></div>
@@ -35,15 +36,15 @@
             <div class="portfolio-info">
               <h3>Information</h3>
               <ul>
-                <li><strong>Client</strong>: ASU Company</li>
-                <li><strong>Project date</strong>: 01 March, 2020</li>
-                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+                <li><strong>Client</strong>: {{ client }}</li>
+                <li><strong>Date du projet</strong>: {{ portfolio.createdAt ? portfolio.createdAt|format_datetime(locale='fr',pattern="dd MMMM YYYY") : '' }}</li>
+                <li><strong>Url du projet</strong>: <a href="{{ portfolio.url }}">{{ portfolio.url }}</a></li>
               </ul>
             </div>
             <div class="portfolio-description">
-              <h2>This is an example of portfolio detail</h2>
+              <h2>{{ portfolio.projet.titre }}</h2>
               <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                {{ portfolio.details|raw }}
               </p>
             </div>
           </div>

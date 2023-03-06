@@ -1,11 +1,9 @@
-<li><a href="{{path('app_home')}}">Accueil</a></li>
-<li><a href="{{ path('app_home', {'_fragment': 'portfolio'}) }}">Portfolio</a></li>
-<li><a href="{{ path('app_home', {'_fragment': 'temoignages'}) }}">Temoignages</a></li>
-<li><a href="{{ path('app_home', {'_fragment': 'statistiques'}) }}">Statistiques</a></li>
-<li><a href="{{ path('app_home', {'_fragment': 'about'}) }}">Fonctionnement</a></li>
-<li><a href="{{path('app_contact')}}">Contact</a></li>
-<!--<li><a href="{{ path('app_home', {'_fragment': 'team'}) }}" class="">Team</a></li>-->
 {% if is_granted("ROLE_USER") %}
+    <li><a href="{{ path('app_portfolios_index') }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Voir les projets réalisés" data-bs-custom-class="custom-tooltip"><i class="fas fa-briefcase fa-2x" style="font-size: 24px;"></i></a></li>
+    <li><a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Voir nos articles" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-blog fa-2x" style="font-size: 24px;"></i></a></li>
+    <li><a href=""><i data-count="48" class="fa-brands fa-facebook-messenger fa-2x badger" style="font-size: 24px;"></i></a></li>
+    <li><a href=""><i data-count="8" class="fa-solid fa-bell fa-2x badger" style="font-size: 24px;"></i></a></li>
+    <li><a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Voir mes documents" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-folder fa-2x" style="font-size: 24px;"></i></a></li>
     {% if app.user.avatar %}
     <li class="dropdown"><a href="#"><img src="{{ app.user.avatar }}" class="avatar avatar-mini"> <i class="bi bi-chevron-down"></i></a>
     {% else %}
@@ -45,4 +43,11 @@
             {% endif %}
         </ul>
     </li>
+{% else %}
+    <li><a href="{{path('app_home')}}">Accueil</a></li>
+    <li><a href="{{ path('app_home', {'_fragment': 'portfolio'}) }}">Portfolio</a></li>
+    <li><a href="{{ path('app_home', {'_fragment': 'temoignages'}) }}">Temoignages</a></li>
+    <li><a href="{{ path('app_home', {'_fragment': 'statistiques'}) }}">Statistiques</a></li>
+    <li><a href="{{ path('app_home', {'_fragment': 'about'}) }}">Fonctionnement</a></li>
+    <li><a href="{{path('app_contact')}}">Contact</a></li>
 {% endif %}

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Articles index{% endblock %}
+{% block title %}Articles{% endblock %}
 
 {% block body %}
     {{ component('breadcrumbs', {'title': block('title')}) }}
@@ -17,7 +17,7 @@
                                 {% endfor %}
                             </div>
                         {% endfor %}
-                        {{component('blog_list_admin')}}
+                        {{component('blog_articles_list_admin')}}
                     </div>
                 </div>
             </div>

@@ -117,6 +117,21 @@ class DevisRepository extends ServiceEntityRepository
     
     }
 
+    public function amountDevisMensuelClient($year, $month, $user) {
+
+        return $this->createQueryBuilder('p')
+                    ->select('SUM(p.amount)')
+                    ->Where('YEAR(p.date) = :year')
+                    ->setParameter('year', $year)
+                    ->andWhere('MONTH(p.date) = :month')
+                    ->setParameter('month', $month)
+                    ->andWhere('p.client = :val')
+                    ->setParameter('val', $user)
+                    ->getQuery()
+                    ->getSingleScalarResult(); 
+    
+    }
+
 
 //    /**
 //     * @return Devis[] Returns an array of Devis objects

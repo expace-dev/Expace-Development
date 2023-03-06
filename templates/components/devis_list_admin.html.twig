@@ -25,10 +25,11 @@
             </tr>
         </thead>
         <tbody>
+        {% if this.allDevis %}
             {% for devis in this.allDevis.data %}
                 <tr>
                     <td>
-                    {% if devis.statut == 'en_attente' %}
+                        {% if devis.statut == 'en_attente' %}
                             <div class="badge bg-warning" style="min-width:110px">Non signé</div>
                         {% elseif devis.statut == 'accepte' %}
                             <div class="badge bg-success" style="min-width:110px">Accepté</div>
@@ -47,15 +48,22 @@
                     </td>
                 </tr>
             {% endfor %}
+        {% else %}
+            <td colspan="5" class="text-center">Aucune donnée dans le tableau</td>
+        {% endif %}
         </tbody>
     </table>
-    <div style="padding-right: 10px;">
-        {{ component('pagination', {
-            'pages': this.allDevis.pages,
-            'currentPage': this.allDevis.page,
-            'limit': this.allDevis.limit,
-            'path': 'app_admin_devis_index',
-            'position': 'justify-content-end'
-        }) }}
-    </div>
+    {% if this.allDevis %}
+        <div style="padding-right: 10px;">
+            {{ component('pagination', {
+                'pages': this.allDevis.pages,
+                'currentPage': this.allDevis.page,
+                'limit': this.allDevis.limit,
+                'path': 'app_admin_devis_index',
+                'position': 'justify-content-end'
+            }) }}
+        </div>
+    {% endif %}
+    
+    
 </div>

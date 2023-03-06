@@ -14,11 +14,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CategoriesController extends AbstractController
 {
     #[Route('/', name: 'app_admin_categories_blog_index')]
-    public function index(CategoriesRepository $categoriesRepository): Response
+    public function index(): Response
     {
-        return $this->render('admin/blog/categories/index.html.twig', [
-            'categories' => $categoriesRepository->findAll(),
-        ]);
+        return $this->render('admin/blog/categories/index.html.twig');
     }
 
     #[Route('/new', name: 'app_admin_categories_blog_new', methods: ['GET', 'POST'])]
@@ -63,7 +61,7 @@ class CategoriesController extends AbstractController
     }
 
     #[Route('/delete/{id}', name: 'app_admin_categories_blog_delete', methods: ['GET'])]
-    public function CategoriesDelete(Request $request, Categories $categorie, CategoriesRepository $categoriesRepository): Response
+    public function CategoriesDelete(Categories $categorie, CategoriesRepository $categoriesRepository): Response
     {
         $categoriesRepository->remove($categorie, true);
 

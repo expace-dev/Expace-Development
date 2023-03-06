@@ -23,29 +23,37 @@
             </tr>
         </thead>
         <tbody>
-            {% for categorie in this.allCategories.data %}
-                <tr>
-                    <td>{{ categorie.name }}</td>
-                    <td>{{ categorie.slug }}</td>
-                    <td class="text-end">
-                        <div class="btn-group">
-                            <a href="{{ path('app_admin_categories_blog_edit', {'id': categorie.id}) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
-                            <a class="btn btn-danger" href="{{ path('app_admin_categories_blog_delete', {'id': categorie.id}) }}"><i class="fa-solid fa-trash-can"></i></i></a>
-                        </div>
-                    </td>
-                </tr>
-            {% endfor %}
+            {% if this.allCategories %}
+                {% for categorie in this.allCategories.data %}
+                    <tr>
+                        <td>{{ categorie.name }}</td>
+                        <td>{{ categorie.slug }}</td>
+                        <td class="text-end">
+                            <div class="btn-group">
+                                <a href="{{ path('app_admin_categories_blog_edit', {'id': categorie.id}) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-danger" href="{{ path('app_admin_categories_blog_delete', {'id': categorie.id}) }}"><i class="fa-solid fa-trash-can"></i></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <td colspan="3" class="text-center">Aucune donnée dans le tableau</td>
+            {% endif %}
         </tbody>
     </table>
-    <div style="padding-right: 10px;">
-        {{ component('pagination', {
-            'pages': this.allCategories.pages,
-            'currentPage': this.allCategories.page,
-            'limit': this.allCategories.limit,
-            'path': 'app_admin_categories_blog_index',
-            'position': 'justify-content-end'
-        }) }}
-    </div>
+    {% if this.allCategories %}
+        <div style="padding-right: 10px;">
+            {{ component('pagination', {
+                'pages': this.allCategories.pages,
+                'currentPage': this.allCategories.page,
+                'limit': this.allCategories.limit,
+                'path': 'app_admin_categories_blog_index',
+                'position': 'justify-content-end'
+            }) }}
+        </div>
+    {% endif %}
+    
+    
 </div>
 
 <script>

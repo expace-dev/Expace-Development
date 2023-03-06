@@ -22,45 +22,51 @@
             </tr>
         </thead>
         <tbody>
-            {% for temoignage in this.allTemoignages.data %}
-                <tr>
-                    <td>{{ temoignage.client.nom }} {{ temoignage.client.prenom }}</td>
-                    <td>{{ temoignage.createdAt|date('d-m-Y') }}</td>
-                    <td>{{ temoignage.note }}</td>
-                    <td>
-                        {% if temoignage.actif == true %}
-                            <div class="badge bg-success" style="min-width:110px">Actif</div>
-                        {% else %}
-                            <div class="badge bg-danger" style="min-width:110px">Inactif</div>
-                        {% endif %}
-                        
-                    </td>
-                    <td class="text-end">
-                        <div class="btn-group">
-                            <a href="{{ path('app_admin_temoignages_edit', {'id': temoignage.id}) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+            {% if this.allTemoignages %}
+                {% for temoignage in this.allTemoignages.data %}
+                    <tr>
+                        <td>{{ temoignage.client.nom }} {{ temoignage.client.prenom }}</td>
+                        <td>{{ temoignage.createdAt|date('d-m-Y') }}</td>
+                        <td>{{ temoignage.note }}</td>
+                        <td>
                             {% if temoignage.actif == true %}
-                                <a href="{{ path('app_admin_temoignages_update', {'id': temoignage.id}) }}" class="btn btn-secondary"><i class="fa-solid fa-stop"></i></a>
+                                <div class="badge bg-success" style="min-width:110px">Actif</div>
                             {% else %}
-                                <a href="{{ path('app_admin_temoignages_update', {'id': temoignage.id}) }}" class="btn btn-success"><i class="fa-solid fa-play"></i></a>
+                                <div class="badge bg-danger" style="min-width:110px">Inactif</div>
                             {% endif %}
                             
-                            
-                            <a class="btn btn-danger" href="{{ path('app_admin_temoignages_delete', {'id': temoignage.id}) }}"><i class="fa-solid fa-trash-can"></i></i></a>
-                        </div>
-                    </td>
-                </tr>
-            {% endfor %}
+                        </td>
+                        <td class="text-end">
+                            <div class="btn-group">
+                                <a href="{{ path('app_admin_temoignages_edit', {'id': temoignage.id}) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+                                {% if temoignage.actif == true %}
+                                    <a href="{{ path('app_admin_temoignages_update', {'id': temoignage.id}) }}" class="btn btn-secondary"><i class="fa-solid fa-stop"></i></a>
+                                {% else %}
+                                    <a href="{{ path('app_admin_temoignages_update', {'id': temoignage.id}) }}" class="btn btn-success"><i class="fa-solid fa-play"></i></a>
+                                {% endif %}
+                                
+                                
+                                <a class="btn btn-danger" href="{{ path('app_admin_temoignages_delete', {'id': temoignage.id}) }}"><i class="fa-solid fa-trash-can"></i></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <td colspan="5" class="text-center">Aucune donnée dans le tableau</td>
+            {% endif %}
         </tbody>
     </table>
-    <div style="padding-right: 10px;">
-        {{ component('pagination', {
-            'pages': this.allTemoignages.pages,
-            'currentPage': this.allTemoignages.page,
-            'limit': this.allTemoignages.limit,
-            'path': 'app_admin_temoignages_index',
-            'position': 'justify-content-end'
-        }) }}
-    </div>
+    {% if this.allTemoignages %}
+        <div style="padding-right: 10px;">
+            {{ component('pagination', {
+                'pages': this.allTemoignages.pages,
+                'currentPage': this.allTemoignages.page,
+                'limit': this.allTemoignages.limit,
+                'path': 'app_admin_temoignages_index',
+                'position': 'justify-content-end'
+            }) }}
+        </div>
+    {% endif %}
 </div>
 <script>
     $(document).ready( function () {

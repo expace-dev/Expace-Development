@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Portfolios;
 use App\Form\ContactType;
 use App\Services\MailerService;
 use App\Repository\PortfoliosRepository;
@@ -66,9 +67,13 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/portfolio/details', name: 'app_portfolios_details')]
-    public function portfolioDetails(PortfoliosRepository $portfoliosRepository): Response
+    #[Route('/portfolio/details/{id}', name: 'app_portfolios_details')]
+    public function portfolioDetails(Portfolios $portfolios): Response
     {
-        return $this->render('home/portfolio_details.html.twig');
+        
+
+        return $this->render('home/portfolio_details.html.twig', [
+            'portfolio' => $portfolios
+        ]);
     }
 }

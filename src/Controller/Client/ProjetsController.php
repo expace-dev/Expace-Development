@@ -16,11 +16,9 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class ProjetsController extends AbstractController
 {
     #[Route('/', name: 'app_client_projets_index', methods: ['GET'])]
-    public function index(ProjetsRepository $projetsRepository): Response
+    public function index(): Response
     {
-        return $this->render('client/projets/index.html.twig', [
-            'projets' => $projetsRepository->findAll(),
-        ]);
+        return $this->render('client/projets/index.html.twig');
     }
 
     #[Route('/new', name: 'app_client_projets_new', methods: ['GET', 'POST'])]
@@ -55,14 +53,22 @@ class ProjetsController extends AbstractController
         if ($projet->getClient() !== $this->getUser()) {
             throw new AccessDeniedException("Vous n'avez pas l'autorisation d'accéder à cette page");
         }
+        
         $form = $this->createForm(ProjetsType::class, $projet);
         $form->handleRequest($request);
+        
+        if ($projet->getStatut() !== 'ouverture') {
+                $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Vous ne pouvez plus modifier ce projet');
+                return $this->redirectToRoute('app_client_projets_index', [], Response::HTTP_SEE_OTHER);
+            }
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            $projetsRepository->save($projet, true);
 
-            $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Votre projet a été enregistré avec succès');
+            
+            
+                $projetsRepository->save($projet, true);
+
+                $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Votre projet a été enregistré avec succès');
 
             return $this->redirectToRoute('app_client_projets_index', [], Response::HTTP_SEE_OTHER);
         }

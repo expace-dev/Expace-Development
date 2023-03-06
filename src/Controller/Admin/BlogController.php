@@ -30,26 +30,28 @@ class BlogController extends AbstractController
         $form = $this->createForm(ArticlesType::class, $article);
         $form->handleRequest($request);
 
-        if ($form->get('img')->getData()) {
             if ($form->isSubmitted() && $form->isValid()) {
+                if ($form->get('img')->getData()) {
+                    $fichier = $form->get('img')->getData();
+                    $directory = 'blog_directory';
+                    $article->setImg('images/blog/' .$uploadService->send($fichier, $directory))
+                            ->setAuteur($this->getUser());
 
-                $fichier = $form->get('img')->getData();
-                $directory = 'blog_directory';
-                $article->setImg('images/blog/' .$uploadService->send($fichier, $directory))
-                        ->setAuteur($this->getUser());
 
+                    $articlesRepository->save($article, true);
 
-                $articlesRepository->save($article, true);
+                    $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Votre article a été enregistré avec succès');
 
-                $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Votre article a été enregistré avec succès');
+                    return $this->redirectToRoute('app_admin_blog_index', [], Response::HTTP_SEE_OTHER);
+                }
+                else {
+                    $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Veuillez fournir une image d\'illustration');
+                }
+            }
 
-                return $this->redirectToRoute('app_admin_blog_index', [], Response::HTTP_SEE_OTHER);
-            }    
-        }
-        else {
-            $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Veuillez fournir une image d\'illustration');
-        }
-        
+            if ($form->isSubmitted() && !$form->isValid()) {
+                $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Des erreurs subsistent veuillez corriger votre saisie');
+            }
 
         return $this->render('admin/blog/edit.html.twig', [
             'article' => $article,
@@ -78,6 +80,10 @@ class BlogController extends AbstractController
             $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Votre article a été enregistré avec succès');
 
             return $this->redirectToRoute('app_admin_blog_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        if ($form->isSubmitted() && !$form->isValid()) {
+            $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Des erreurs subsistent veuillez corriger votre saisie');
         }
 
         return $this->render('admin/blog/edit.html.twig', [

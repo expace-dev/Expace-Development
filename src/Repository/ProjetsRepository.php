@@ -104,6 +104,21 @@ class ProjetsRepository extends ServiceEntityRepository
 
     }
 
+    public function nombreProjetsMensuelClient($year, $month, $user) {
+
+        return $this->createQueryBuilder('p')
+                    ->select('COUNT(p)')
+                    ->Where('YEAR(p.createdAt) = :year')
+                    ->setParameter('year', $year)
+                    ->andWhere('MONTH(p.createdAt) = :month')
+                    ->setParameter('month', $month)
+                    ->andWhere('p.client = :val')
+                    ->setParameter('val', $user)
+                    ->getQuery()
+                    ->getSingleScalarResult(); 
+    
+    }
+
 //    /**
 //     * @return Projets[] Returns an array of Projets objects
 //     */

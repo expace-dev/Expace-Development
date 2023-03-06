@@ -8,9 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProjetsRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ProjetsRepository::class)]
 #[ORM\HasLifecycleCallbacks]
+#[UniqueEntity(fields: ['titre'], message: 'Ce projet existe déjà')]
 class Projets
 {
     #[ORM\Id]
@@ -49,10 +51,14 @@ class Projets
     #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Factures::class, orphanRemoval: true)]
     private Collection $factures;
 
+    #[ORM\OneToMany(mappedBy: 'projet', targetEntity: Portfolios::class, orphanRemoval: true)]
+    private Collection $portfolios;
+
     public function __construct()
     {
         $this->devis = new ArrayCollection();
         $this->factures = new ArrayCollection();
+        $this->portfolios = new ArrayCollection();
     }
 
     /**
@@ -224,6 +230,36 @@ class Projets
             // set the owning side to null (unless already changed)
             if ($facture->getProjet() === $this) {
                 $facture->setProjet(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Portfolios>
+     */
+    public function getPortfolios(): Collection
+    {
+        return $this->portfolios;
+    }
+
+    public function addPortfolio(Portfolios $portfolio): self
+    {
+        if (!$this->portfolios->contains($portfolio)) {
+            $this->portfolios->add($portfolio);
+            $portfolio->setProjet($this);
+        }
+
+        return $this;
+    }
+
+    public function removePortfolio(Portfolios $portfolio): self
+    {
+        if ($this->portfolios->removeElement($portfolio)) {
+            // set the owning side to null (unless already changed)
+            if ($portfolio->getProjet() === $this) {
+                $portfolio->setProjet(null);
             }
         }
 

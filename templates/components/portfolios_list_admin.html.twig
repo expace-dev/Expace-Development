@@ -27,7 +27,7 @@
             {% if this.allPortfolios %}
             {% for portfolio in this.allPortfolios.data %}
                 <tr>
-                    <td>{{ portfolio.client }}</td>
+                    <td>{{ portfolio.projet.titre }}</td>
                     <td>{{ portfolio.createdAt|date('d-m-Y') }}</td>
                     <td>{{ portfolio.url }}</td>
                     <td class="text-end">

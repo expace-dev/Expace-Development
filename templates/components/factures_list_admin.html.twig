@@ -25,35 +25,43 @@
             </tr>
         </thead>
         <tbody>
-            {% for facture in this.allFactures.data %}
-                <tr>
-                    <td>
-                    {% if facture.statut == 'en_attente' %}
-                            <div class="badge bg-warning" style="min-width:110px">Non payé</div>
-                        {% else %}
-                            <div class="badge bg-success" style="min-width:110px">Règlé</div>    
-                        {% endif %}
-                    </td>
-                    <td>{{ facture.createdAt|date('d-m-Y') }}</td>
-                    <td>{{ facture.client.nom }} {{ facture.client.prenom }}</td>
-                    <td>{{ facture.projet.titre }}</td>
-                    <td class="text-end">
-                        <div class="btn-group">
-                            <a href="{{ path('app_admin_factures_edit', {'id': facture.id}) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
-                            <a class="btn btn-secondary" target="_blank" href="{{ path('app_admin_factures_show', {'slug': facture.slug}) }}"><i class="fas fa-eye"></i></a>
-                        </div>
-                    </td>
-                </tr>
-            {% endfor %}
+            {% if this.allFactures %}
+                {% for facture in this.allFactures.data %}
+                    <tr>
+                        <td>
+                        {% if facture.statut == 'en_attente' %}
+                                <div class="badge bg-warning" style="min-width:110px">Non payé</div>
+                            {% else %}
+                                <div class="badge bg-success" style="min-width:110px">Règlé</div>    
+                            {% endif %}
+                        </td>
+                        <td>{{ facture.createdAt|date('d-m-Y') }}</td>
+                        <td>{{ facture.client.nom }} {{ facture.client.prenom }}</td>
+                        <td>{{ facture.projet.titre }}</td>
+                        <td class="text-end">
+                            <div class="btn-group">
+                                <a href="{{ path('app_admin_factures_edit', {'id': facture.id}) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-secondary" target="_blank" href="{{ path('app_admin_factures_show', {'slug': facture.slug}) }}"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <td colspan="5" class="text-center">Aucune donnée dans le tableau</td>
+            {% endif %}
         </tbody>
     </table>
-    <div style="padding-right: 10px;">
-        {{ component('pagination', {
-            'pages': this.allFactures.pages,
-            'currentPage': this.allFactures.page,
-            'limit': this.allFactures.limit,
-            'path': 'app_admin_factures_index',
-            'position': 'justify-content-end'
-        }) }}
-    </div>
+    {% if this.allFactures %}
+        <div style="padding-right: 10px;">
+            {{ component('pagination', {
+                'pages': this.allFactures.pages,
+                'currentPage': this.allFactures.page,
+                'limit': this.allFactures.limit,
+                'path': 'app_admin_factures_index',
+                'position': 'justify-content-end'
+            }) }}
+        </div>
+    {% endif %}
+    
+    
 </div>

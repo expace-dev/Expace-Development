@@ -1,58 +1,46 @@
 <section id="portfolio" class="portfolio">
     <div class="container">
         <div class="row portfolio-container">
-            {% for portfolio in this.allPortfolios.data %}
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        {% for image in portfolio.imagesPortfolios %}
-                            {% if loop.first %}
-                                <img src="{{ image.url }}" class="img-fluid" alt="">
-                            {% endif %}
-                        {% endfor %}
-                        <div class="portfolio-info">
-                            <h4>{{ portfolio.client }}</h4>
-                            <div class="portfolio-links">
-                                <a href="images/portfolios/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ portfolio.client }}"><i class="bx bx-plus"></i></a>
-                                <a href="{{ path('app_portfolios_details') }}" title="More Details"><i class="bx bx-link"></i></a>
+            {% if this.allPortfolios %}
+                {% for portfolio in this.allPortfolios.data %}
+                    {% if portfolio.projet.client.societe %}
+                        {% set client = portfolio.projet.client.societe %}
+                    {% else %}
+                        {% set client = portfolio.projet.client.nom ~ ' ' ~ portfolio.projet.client.prenom %}
+                    {% endif %}
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            {% for image in portfolio.imagesPortfolios %}
+                                {% if loop.first %}
+                                    <img src="{{ image.url }}" class="img-fluid" alt="">
+                                {% endif %}
+                            {% endfor %}
+                            <div class="portfolio-info">
+                                <h4>{{ client }}</h4>
+                                <div class="portfolio-links">
+                                    {% for image in portfolio.imagesPortfolios %}
+                                        {% if loop.first %}
+                                            <a href="{{ image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ client }}"><i class="bx bx-plus"></i></a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <a href="{{ path('app_portfolios_details', {'id': portfolio.id}) }}" title="En savoir plus"><i class="bx bx-link"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
-        {% set pages = this.allPortfolios.pages %}
-{% set currentPage = this.allPortfolios.page %}
-{% if pages > 1 %}
-    <div class="paginate mb-5">
-        <ul class="justify-content-center">
-            {% if currentPage > 1 %}
-                <li><a href="{{ path('app_portfolios_index', {page: currentPage - 1}) }}">&laquo;</a></li>
-            {% else %}
-                <li><a href="{{ path('app_portfolios_index', {page: currentPage}) }}">&laquo;</a></li>
-            {% endif %}
-            {% set pageSupp = currentPage +4 %}
-            {% if pages > 5 and currentPage < pages %}
-                {% for page in currentPage..pageSupp %}
-                    {% if page <= pages %}
-                        <li class="{{ (page == currentPage) ? 'active' : '' }}">
-                            <a href="{{ path('app_portfolios_index', {page: page }) }}">{{ page }}</a>
-                        </li>
-                    {% endif %}
                 {% endfor %}
             {% else %}
-                <li class="active">
-                    <a href="{{ path('app_portfolios_index', {page: pages }) }}">{{ pages  }}</a>
-                </li>
+                <div class="mt-1 mb-5 text-center">Aucune données à afficher</div>
             {% endif %}
-
-            {% if currentPage < pages %}
-                <li><a href="{{ path('app_portfolios_index', {page: currentPage + 1}) }}">&raquo;</a></li>
-            {% else %}
-                <li><a href="{{ path('app_portfolios_index', {page: currentPage}) }}">&raquo;</a></li>    
-            {% endif %}
-        </ul>
         </div>
-{% endif %}
-    </div>
+        {% if this.allPortfolios %}
+            {{ component('pagination', {
+                'pages': this.allPortfolios.pages,
+                'currentPage': this.allPortfolios.page,
+                'limit': this.allPortfolios.limit,
+                'path': 'app_portfolios_index',
+                'position': 'justify-content-center'
+            }) }}
+        {% endif %}
     </div>
 </section>

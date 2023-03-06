@@ -11,8 +11,8 @@ use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsLiveComponent('blog_list_admin')]
-class BlogListAdminComponent {
+#[AsLiveComponent('blog_articles_list_admin')]
+class BlogArticlesListAdminComponent {
 
     use DefaultActionTrait;
 

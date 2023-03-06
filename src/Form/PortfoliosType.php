@@ -18,7 +18,7 @@ class PortfoliosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('client', UsersAutocompleteField::class)
+            ->add('projet', ProjetsAutocompleteField::class)
             ->add('url',UrlType::class, [
                 'label' => 'Url du projet',
             ])
