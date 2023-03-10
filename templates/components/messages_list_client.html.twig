@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-lg-3">
+        <form action="" class="input-icon my-3 my-lg-0">
+            <div class="gs-container">
+                <input type="text" class="form-control header-search">
+            </div>
+            <div class="input-icon-addon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg text-end">
+        <a href="{{ path('app_client_messages_new') }}" class="btn btn-success">Rédiger un nouveau message</a>
+    </div>
+</div>
+<div class="table-responsive mt-2">
+    <table class="table card-table table-vcenter table-hover">
+        <thead class="thead-dark form-group-sm">
+            <tr>
+                <th>De</th>
+                <th>Objet</th>
+                <th>Reçu le</th>
+                <th class="text-end"><select name="search_limit" class="search_limit" style="width: 60px;"><option value="5">5</option><option value="15" selected="selected">15</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="999999999">all</option></select></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if this.allMessages %}
+            {% for message in this.allMessages.data %}
+                <tr>
+                    {% if message.lu == false %}
+                        {% set bold = 'fw-bold' %}
+                    {% else %}
+                        {% set bold = null %}
+                    {% endif %}
+                    
+                    <td class="{{bold}}">{{ message.sender.nom }} {{ message.sender.prenom }}</td>
+                    <td class="{{bold}}">{{ message.sujet }}</td>
+                    <td class="{{bold}}">{{ message.createdAt ? message.createdAt|format_datetime(locale='fr',pattern="dd MMMM YYYY") : '' }} à {{ message.createdAt|date('H') }}h{{ message.createdAt|date('i') }}</td>
+                    <td class="text-end">
+                        <div class="btn-group">
+                            <a href="{{ path('app_client_messages_show', {'id': message.id}) }}" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Lire le message" data-bs-custom-class="custom-tooltip">
+                                {% if message.lu == false %}
+                                    <i class="fa-solid fa-envelope" style="color: white;"></i>
+                                {% else %}
+                                    <i class="fa-solid fa-envelope-open"></i>
+                                {% endif %}
+                            </a>
+                            <a class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Répondre au message" data-bs-custom-class="custom-tooltip" href="{{ path('app_client_messages_reponse', {'id': message.id}) }}"><i class="fa-solid fa-reply"></i></a>
+                            <!--
+                            <a class="btn btn-danger" href="{{ path('app_admin_messages_delete', {'id': message.id}) }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Supprimmer le message" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-trash-can"></i></i></a>
+                            -->
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <td colspan="5" class="text-center">Aucune donnée dans le tableau</td>
+        {% endif %}
+        </tbody>
+    </table>
+    {% if this.allMessages %}
+        <div style="padding-right: 10px;">
+            {{ component('pagination', {
+                'pages': this.allMessages.pages,
+                'currentPage': this.allMessages.page,
+                'limit': this.allMessages.limit,
+                'path': 'app_admin_messages_index',
+                'position': 'justify-content-end'
+            }) }}
+        </div>
+    {% endif %}
+</div>
+<script>
+    $(document).ready( function () {
+
+        $(".btn-danger").click(function (event) {
+            event.preventDefault();
+
+            url = $(this).attr('href');
+
+            console.log(url);
+
+            Swal.fire({
+                text: "Voulez vous vraiment supprimer ce message ?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'supprimer'
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    document.location.href = url;
+                }
+            })
+        });
+
+    });
+</script>

@@ -1,0 +1,19 @@
+<div {{ attributes }}>
+    {{ form_start(form, {attr: {'data-model': '*'}}) }}
+
+        <div class="row">
+            <div class="col-lg-12">{{ form_row(form.sujet) }}</div>
+            <div class="col-lg-12">{{ form_row(form.message) }}</div>
+            <div class="col-lg-12">{{ form_row(form.docsMessages) }}</div>
+            <div class="col-lg-12 text-end">
+                <div style="padding-top: 1rem; padding-bottom: 1rem;">
+                    <button class="btn btn-success">Enregistrer</button>
+                    <a href="{{ path('app_admin_messages_index') }}" class="btn btn-secondary">Annuler</a>
+                </div>
+            </div>
+        </div>
+
+        
+    {{ form_end(form) }}
+
+</div>

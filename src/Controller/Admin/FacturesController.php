@@ -3,11 +3,14 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Factures;
+use App\Entity\Notifications;
 use App\Form\FacturesType;
 use App\Repository\FacturesRepository;
+use App\Repository\NotificationsRepository;
 use App\Services\InvoiceService;
 use App\Services\MailerService;
 use App\Services\NumInvoiceService;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,7 +28,7 @@ class FacturesController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_factures_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, FacturesRepository $facturesRepository, NumInvoiceService $numInvoiceService, InvoiceService $invoiceService, MailerService $mailer): Response
+    public function new(Request $request, NotificationsRepository $notificationsRepository, FacturesRepository $facturesRepository, NumInvoiceService $numInvoiceService, InvoiceService $invoiceService, MailerService $mailer): Response
     {
         $facture = new Factures();
         $form = $this->createForm(FacturesType::class, $facture);
@@ -76,6 +79,16 @@ class FacturesController extends AbstractController
                 document: 'Facture'
             );
 
+            $notification = new Notifications();
+
+            $notification->setSender($this->getUser())
+                         ->setRecipient($facture->getClient())
+                         ->setMessage('Votre facture' .' ' .$numero .' ' .'a été créé')
+                         ->setDocument('teste')
+                         ->setCreatedAt(new DateTime());
+
+            $notificationsRepository->save($notification, true);
+
             $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>La facture a été enregistré avec succès');
 
             return $this->redirectToRoute('app_admin_factures_index', [], Response::HTTP_SEE_OTHER);
@@ -100,7 +113,7 @@ class FacturesController extends AbstractController
 
 
     #[Route('/{id}/edit', name: 'app_admin_factures_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Factures $facture, FacturesRepository $facturesRepository, NumInvoiceService $numInvoiceService, InvoiceService $invoiceService, MailerService $mailer): Response
+    public function edit(Request $request, Factures $facture, FacturesRepository $facturesRepository, NotificationsRepository $notificationsRepository, InvoiceService $invoiceService, MailerService $mailer): Response
     {
         $form = $this->createForm(FacturesType::class, $facture);
         $form->handleRequest($request);
@@ -124,7 +137,7 @@ class FacturesController extends AbstractController
             foreach ($facture->getServices() as $values) {
                 $tarif_total += $values['tarif']*$values['quantite'];
             }
-
+            
             $facture->setAmount($tarif_total);
 
             $facturesRepository->save($facture, true);
@@ -141,6 +154,20 @@ class FacturesController extends AbstractController
                 client: $facture->getClient()->getPrenom(),
                 document: 'Facture'
             );
+
+            $notification = new Notifications();
+            $numero = substr($facture->getSlug(), 0, -4);
+
+
+            $notification->setSender($this->getUser())
+                         ->setRecipient($facture->getClient())
+                         ->setMessage('Votre facture' .' ' .$numero .' ' .'a été modifié')
+                         ->setDocument('teste')
+                         ->setCreatedAt(new DateTime());
+
+            $notificationsRepository->save($notification, true);
+
+
 
             $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>La facture a été enregistré avec succès');
 

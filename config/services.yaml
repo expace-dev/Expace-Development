@@ -7,6 +7,7 @@ parameters:
     clients_directory: '%kernel.project_dir%/public/documents_clients'
     portfolios_directory: '%kernel.project_dir%/public/images/portfolios'
     blog_directory: '%kernel.project_dir%/public/images/blog'
+    messages_directory: '%kernel.project_dir%/public/documents/messagerie'
 services:
     # default configuration for services in *this* file
     _defaults:

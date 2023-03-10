@@ -2,15 +2,17 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Projets;
-use App\Form\Admin\ProjetsType;
-use App\Repository\ProjetsRepository;
-use App\Services\MailerService;
 use DateTime;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Projets;
+use App\Entity\Notifications;
+use App\Form\Admin\ProjetsType;
+use App\Repository\NotificationsRepository;
+use App\Services\MailerService;
+use App\Repository\ProjetsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/projets')]
 class ProjetsController extends AbstractController
@@ -47,7 +49,7 @@ class ProjetsController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_admin_projets_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Projets $projet, ProjetsRepository $projetsRepository, MailerService $mailer): Response
+    public function edit(Request $request, Projets $projet, ProjetsRepository $projetsRepository, MailerService $mailer, NotificationsRepository $notificationsRepository): Response
     {
         $form = $this->createForm(ProjetsType::class, $projet);
         $form->handleRequest($request);
@@ -81,6 +83,17 @@ class ProjetsController extends AbstractController
                     document: 'proposition commerciale'
                 );
 
+                $notification = new Notifications();
+
+
+                $notification->setSender($this->getUser())
+                            ->setRecipient($projet->getClient())
+                            ->setMessage('Réception d\'une proposition commerciale')
+                            ->setDocument('teste')
+                            ->setCreatedAt(new DateTime());
+
+                $notificationsRepository->save($notification, true);
+
 
             }
             
@@ -106,6 +119,17 @@ class ProjetsController extends AbstractController
                     client: $projet->getClient()->getPrenom(),
                     document: 'cahier des charges'
                 );
+
+                $notification = new Notifications();
+
+
+                $notification->setSender($this->getUser())
+                            ->setRecipient($projet->getClient())
+                            ->setMessage('Réception d\'un cahier des charges')
+                            ->setDocument('teste')
+                            ->setCreatedAt(new DateTime());
+
+                $notificationsRepository->save($notification, true);
             }
             
             

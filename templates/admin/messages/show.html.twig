@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messages{% endblock %}
+
+{% block body %}
+    {{ component('breadcrumbs', {'title': block('title')}) }}
+    <section class="auth">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="info-box mb-4">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg">
+                                    <h5>{{ message.sujet }}</h5>
+                                </div>
+                                <div class="col-lg text-end">
+                                    {{ message.createdAt ? message.createdAt|format_datetime(locale='fr',pattern="dd MMMM YYYY") : '' }} à {{ message.createdAt|date('H') }}h{{ message.createdAt|date('i') }}
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                {{ message.message|raw }}
+                            </div>
+                            {% if message.docsMessages|length > 0 %}
+                            <div class="mt-5">
+                            <p><b><u>Fichiers joints:</u></b></p>
+                            {% for document in message.docsMessages %}
+                                <div class="col-12">
+                                    <a href="{{ path('app_admin_messages_voir_doc', {'nom': document.nom}) }}" target="_blank">{{ document.nom }}</a>
+                                 </div>   
+                                {% endfor %}
+                            </div>
+                                
+                                
+                            
+                            {% endif %}
+                            <div class="col-lg-12 text-end">
+                                <div style="padding-top: 1rem;">
+                                    <a href="{{ path('app_admin_portfolios_index') }}" class="btn btn-success">Répondre au message</a>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

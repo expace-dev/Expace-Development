@@ -1,0 +1,20 @@
+<div
+    {{ attributes }}
+    {% if APP_ENV == 'dev' %}
+        data-poll="delay(10000)|$render"
+    {% else %}
+        data-poll
+    {% endif %}
+>
+    {% if is_granted("ROLE_ADMIN") %}
+        {% set route = 'app_admin_messages_index' %}
+    {% else %}
+        {% set route = 'app_client_messages_index' %}
+    {% endif %}
+    
+    {% if this.allMessages %}
+        <li><a href="{{ path(route) }}"><i data-count="{{ this.allMessages }}" class="fa-brands fa-facebook-messenger fa-2x badger" style="font-size: 24px;"></i></a></li>
+    {% else %}
+        <li><a href="{{ path(route) }}"><i class="fa-brands fa-facebook-messenger fa-2x" style="font-size: 24px;"></i></a></li>
+    {% endif %}
+</div>
