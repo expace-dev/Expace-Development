@@ -3,7 +3,6 @@
     <li><a href="{{ path('app_blog_index') }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Voir nos articles" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-blog fa-2x" style="font-size: 24px;"></i></a></li>
     {{ component('messages_count', {'id': app.user.id}) }}
     {{ component('notifications_count', {'id': app.user.id}) }}
-    <li><a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Voir mes documents" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-folder fa-2x" style="font-size: 24px;"></i></a></li>
     {% if app.user.avatar %}
     <li class="dropdown"><a href="#"><img src="{{ app.user.avatar }}" class="avatar avatar-mini"> <i class="bi bi-chevron-down"></i></a>
     {% else %}
@@ -11,7 +10,7 @@
     {% endif %}
         <ul>
             {% if is_granted("ROLE_ADMIN") %}
-            <li><a href="{{ path('app_admin_dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ path('app_admin_dashboard') }}">Statistiques</a></li>
             <li><a href="{{ path('app_admin_users_index') }}">Clients</a></li>
             <li><a href="{{ path('app_admin_portfolios_index') }}">Réalisations</a></li>
             <li><a href="{{ path('app_admin_projets_index') }}">Projets</a></li>
@@ -34,7 +33,7 @@
             <li><a href="{{ path('app_admin_activites_new') }}">Activités</a></li>
             <li><a href="{{ path('app_profil_edit') }}">Profil</a></li>
             {% else %}
-            <li><a href="">Dashboard</a></li>
+            <li><a href="{{ path('app_client_dashboard') }}">Statistiques</a></li>
             <li><a href="{{ path('app_client_projets_index') }}">Mes projets</a></li>
             <li><a href="{{ path('app_client_devis_index') }}">Mes devis</a></li>
             <li><a href="{{ path('app_client_factures_index') }}">Mes factures</a></li>

@@ -2,10 +2,12 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Documents;
 use DateTime;
 use App\Entity\Projets;
 use App\Entity\Notifications;
 use App\Form\Admin\ProjetsType;
+use App\Repository\DocumentsRepository;
 use App\Repository\NotificationsRepository;
 use App\Services\MailerService;
 use App\Repository\ProjetsRepository;
@@ -49,26 +51,32 @@ class ProjetsController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_admin_projets_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Projets $projet, ProjetsRepository $projetsRepository, MailerService $mailer, NotificationsRepository $notificationsRepository): Response
+    public function edit(
+        Request $request, 
+        Projets $projet, 
+        ProjetsRepository $projetsRepository, 
+        MailerService $mailer, 
+        NotificationsRepository $notificationsRepository,
+    ): Response
     {
         $form = $this->createForm(ProjetsType::class, $projet);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            
 
             $propositionCommercial = $form->get('propositionCommercial')->getData();
             $titre = str_replace(" ", "-", $projet->getTitre());
             
             if ($propositionCommercial) {
                 
-                $fichier = 'propositionCommerciale-' . $titre . '.' . $propositionCommercial->guessExtension();
+                $fichier = 'propositionCommerciale-' .$titre  .$propositionCommercial->guessExtension();
                 $propositionCommercial->move(
-                    $this->getParameter('clients_directory'),
+                    $this->getParameter('propositions_commerciales_directory'),
                     $fichier
                 );
-                $projet->setPropositionCommercial($fichier);
+                $projet->setPropositionCommercial('documents/propositions_commerciales/' .$fichier);
+
 
                 $mailer->sendDocument(
                     from: 'noreply@expace-development.fr',
@@ -76,7 +84,7 @@ class ProjetsController extends AbstractController
                     to: $projet->getClient()->getEmail(),
                     template: 'emails/_new_doc.html.twig',
                     subject: 'Nouveau document',
-                    attache: $this->getParameter('clients_directory') . '/' . $fichier,
+                    attache: $this->getParameter('propositions_commerciales_directory') . '/' . $fichier,
                     mime: 'application/pdf',
                     docAttache: 'Proposition-commerciale.pdf',
                     client: $projet->getClient()->getPrenom(),
@@ -100,12 +108,12 @@ class ProjetsController extends AbstractController
 
             $cahierCharge = $form->get('cahierCharge')->getData();
             if ($cahierCharge) {
-                $fichier = 'cahierCharge-' . $titre . '.' . $cahierCharge->guessExtension();
+                $fichier = 'cahierCharge-' .$titre .$cahierCharge->guessExtension();
                 $cahierCharge->move(
-                    $this->getParameter('clients_directory'),
+                    $this->getParameter('cahiers_charges_directory'),
                     $fichier
                 );
-                $projet->setCahierCharge($fichier);
+                $projet->setCahierCharge('documents/cahiers_charges/' .$fichier);
 
                 $mailer->sendDocument(
                     from: 'noreply@expace-development.fr',
@@ -113,7 +121,7 @@ class ProjetsController extends AbstractController
                     to: $projet->getClient()->getEmail(),
                     template: 'emails/_new_doc.html.twig',
                     subject: 'Nouveau document',
-                    attache: $this->getParameter('clients_directory') . '/' . $fichier,
+                    attache: $this->getParameter('cahiers_charges_directory') . '/' . $fichier,
                     mime: 'application/pdf',
                     docAttache: 'Cahier-des-charges.pdf',
                     client: $projet->getClient()->getPrenom(),
@@ -178,5 +186,29 @@ class ProjetsController extends AbstractController
           $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Le projet a été modifié avec succès');
 
         return $this->redirectToRoute('app_admin_projets_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/voir/proposition-commerciale/{slug}', name: 'app_admin_projets_voir_pc', methods: ['GET'])]
+    public function viewPropositionCommerciale(Projets $projet)
+    {
+
+        $mime = "application/pdf";
+        $fichier = $projet->getPropositionCommercial();
+
+
+            header('Content-type: ' . $mime);
+            readfile($fichier);
+    }
+
+    #[Route('/voir/cahier-des-charges/{slug}', name: 'app_admin_projets_voir_cdc', methods: ['GET'])]
+    public function viewCahierDesCharges(Projets $projet)
+    {
+
+        $mime = "application/pdf";
+        $fichier = $projet->getCahierCharge();
+
+
+            header('Content-type: ' . $mime);
+            readfile($fichier);
     }
 }

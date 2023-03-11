@@ -3,9 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Activites;
-use App\Form\ActivitesType;
+use App\Form\Admin\ActivitesType;
 use App\Repository\ActivitesRepository;
-use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

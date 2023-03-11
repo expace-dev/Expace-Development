@@ -43,7 +43,7 @@ class DevisController extends AbstractController
             );
 
             
-            $url = 'documents_clients/' . $numero . '.pdf';
+            $url = 'documents/devis/' . $numero . '.pdf';
             
             $devis->setClient($devis->getProjet()->getClient());
             $slug = $numero . '.pdf';
@@ -75,7 +75,7 @@ class DevisController extends AbstractController
                 to: $devis->getClient()->getEmail(),
                 template: 'emails/_new_doc.html.twig',
                 subject: 'Nouveau document',
-                attache: $this->getParameter('clients_directory') . '/' . $slug,
+                attache: $this->getParameter('devis_directory') . '/' . $slug,
                 mime: 'application/pdf',
                 docAttache: $slug .'.pdf',
                 client: $devis->getClient()->getPrenom(),
@@ -130,7 +130,7 @@ class DevisController extends AbstractController
 
 
                        
-            $url = 'documents_clients/' . $devis->getSlug();
+            $url = 'documents/devis/' . $devis->getSlug();
             $devis->setClient($devis->getProjet()->getClient());
             
             $invoiceService->CreateDevis(
@@ -158,7 +158,7 @@ class DevisController extends AbstractController
                 to: $devis->getClient()->getEmail(),
                 template: 'emails/_new_doc.html.twig',
                 subject: 'Nouveau document',
-                attache: $this->getParameter('clients_directory') . '/' . $devis->getSlug(),
+                attache: $this->getParameter('devis_directory') . '/' . $devis->getSlug(),
                 mime: 'application/pdf',
                 docAttache: $devis->getSlug(),
                 client: $devis->getClient()->getPrenom(),

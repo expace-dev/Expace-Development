@@ -40,6 +40,20 @@
                         </td>
                         <td class="text-end">
                             <div class="btn-group">
+                                {% if projet.propositionCommercial %}
+                                    {% set disabled = null %}
+                                {% else %}
+                                    {% set disabled = 'disabled' %}
+                                {% endif %}
+
+                                {% if projet.cahierCharge %}
+                                    {% set disabled = null %}
+                                {% else %}
+                                    {% set disabled = 'disabled' %}
+                                {% endif %}
+                                
+                                <a href="{{ path('app_client_projets_voir_pc', {'slug': projet.slug}) }}" target="_blank" class="btn btn-secondary {{disabled}}"><i class="fa-solid fa-gavel"></i></a>
+                                <a href="{{ path('app_client_projets_voir_cdc', {'slug': projet.slug}) }}" target="_blank" class="btn btn-secondary {{disabled}}"><i class="bi bi-book-fill"></i></a>
                                 <a href="{{ path('app_client_projets_edit', {'slug': projet.slug}) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-danger" href="{{ path('app_client_projets_delete', {'slug': projet.slug}) }}"><i class="fa-solid fa-trash-can"></i></i></a>
                             </div>

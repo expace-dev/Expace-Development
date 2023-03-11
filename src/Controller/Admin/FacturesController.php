@@ -42,7 +42,7 @@ class FacturesController extends AbstractController
             );
 
             
-            $url = 'documents_clients/' . $numero . '.pdf';
+            $url = 'documents/factures/' . $numero . '.pdf';
             
             $facture->setClient($facture->getProjet()->getClient());
             $slug = $numero . '.pdf';
@@ -72,7 +72,7 @@ class FacturesController extends AbstractController
                 to: $facture->getClient()->getEmail(),
                 template: 'emails/_new_doc.html.twig',
                 subject: 'Nouveau document',
-                attache: $this->getParameter('clients_directory') . '/' . $numero .'.pdf',
+                attache: $this->getParameter('factures_directory') . '/' . $numero .'.pdf',
                 mime: 'application/pdf',
                 docAttache: $numero .'.pdf',
                 client: $facture->getClient()->getPrenom(),
@@ -121,7 +121,7 @@ class FacturesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             
-            $url = 'documents_clients/' . $facture->getSlug();
+            $url = 'documents/factures/' . $facture->getSlug();
             
 
             $invoiceService->CreateDevis(
@@ -148,7 +148,7 @@ class FacturesController extends AbstractController
                 to: $facture->getClient()->getEmail(),
                 template: 'emails/_new_doc.html.twig',
                 subject: 'Nouveau document',
-                attache: $this->getParameter('clients_directory') . '/' . $facture->getSlug(),
+                attache: $this->getParameter('factures_directory') . '/' . $facture->getSlug(),
                 mime: 'application/pdf',
                 docAttache: $facture->getSlug(),
                 client: $facture->getClient()->getPrenom(),

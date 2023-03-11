@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Admin;
 
 use App\Entity\Activites;
 use DateTime;
@@ -9,9 +9,6 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Date;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Time;
 
 class ActivitesType extends AbstractType
 {

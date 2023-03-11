@@ -96,4 +96,34 @@ class ProjetsController extends AbstractController
 
         return $this->redirectToRoute('app_client_projets_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/voir/proposition-commerciale/{slug}', name: 'app_client_projets_voir_pc', methods: ['GET'])]
+    public function viewPropositionCommerciale(Projets $projet)
+    {
+        if ($projet->getClient() !== $this->getUser()) {
+            throw new AccessDeniedException("Vous n'avez pas l'autorisation d'accéder à cette page");
+        }
+
+        $mime = "application/pdf";
+        $fichier = $projet->getPropositionCommercial();
+
+
+            header('Content-type: ' . $mime);
+            readfile($fichier);
+    }
+
+    #[Route('/voir/cahier-des-charges/{slug}', name: 'app_client_projets_voir_cdc', methods: ['GET'])]
+    public function viewCahierDesCharges(Projets $projet)
+    {
+        if ($projet->getClient() !== $this->getUser()) {
+            throw new AccessDeniedException("Vous n'avez pas l'autorisation d'accéder à cette page");
+        }
+
+        $mime = "application/pdf";
+        $fichier = $projet->getCahierCharge();
+
+
+            header('Content-type: ' . $mime);
+            readfile($fichier);
+    }
 }

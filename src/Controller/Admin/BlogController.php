@@ -6,7 +6,6 @@ use App\Entity\Articles;
 use App\Services\UploadService;
 use App\Form\Blog\Admin\ArticlesType;
 use App\Repository\ArticlesRepository;
-use App\Repository\CategoriesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,11 +15,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BlogController extends AbstractController
 {
     #[Route('/', name: 'app_admin_blog_index', methods: ['GET'])]
-    public function index(ArticlesRepository $articlesRepository): Response
+    public function index(): Response
     {
-        return $this->render('admin/blog/index.html.twig', [
-            'articles' => $articlesRepository->findAll(),
-        ]);
+        return $this->render('admin/blog/index.html.twig');
     }
 
     #[Route('/new', name: 'app_admin_blog_new', methods: ['GET', 'POST'])]
