@@ -4,8 +4,11 @@ namespace App\Controller\Client;
 
 use DateTime;
 use App\Entity\Projets;
+use App\Entity\Notifications;
 use App\Form\Client\ProjetsType;
 use App\Repository\ProjetsRepository;
+use App\Repository\NotificationsRepository;
+use App\Repository\UsersRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,7 +25,7 @@ class ProjetsController extends AbstractController
     }
 
     #[Route('/new', name: 'app_client_projets_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ProjetsRepository $projetsRepository): Response
+    public function new(Request $request, ProjetsRepository $projetsRepository, NotificationsRepository $notificationsRepository, UsersRepository $usersRepository): Response
     {
         $projet = new Projets();
         $form = $this->createForm(ProjetsType::class, $projet);
@@ -35,6 +38,27 @@ class ProjetsController extends AbstractController
             $projet->setClient($this->getUser());
 
             $projetsRepository->save($projet, true);
+
+            $users = $usersRepository->findAllUsers('["ROLE_ADMIN"]');
+
+
+            foreach ($users as $user) {
+                $notification = new Notifications();
+
+
+                $notification->setSender($this->getUser())
+                            ->setRecipient($user)
+                            ->setMessage('Réception d\'un nouveau projet')
+                            ->setDocument('teste')
+                            ->setCreatedAt(new DateTime());
+
+
+                $notificationsRepository->save($notification, true);
+            }
+
+            
+
+            
 
             $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Votre projet a été enregistré avec succès');
 
