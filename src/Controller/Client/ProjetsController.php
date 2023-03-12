@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-#[Route('/client/projets')]
+#[Route('/profile/projets')]
 class ProjetsController extends AbstractController
 {
     #[Route('/', name: 'app_client_projets_index', methods: ['GET'])]
