@@ -1,0 +1,380 @@
+"filename", "language", "Properties", "JavaScript", "PHP", "YAML", "Markdown", "JSON", "HTML (Twig)", "SCSS", "CSS", "HTML", "XML", "comment", "blank", "total"
+"d:\Expace_Development\Mes_projets\expace-dev\.env", "Properties", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 33, 5, 41
+"d:\Expace_Development\Mes_projets\expace-dev\README.md", "Markdown", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"d:\Expace_Development\Mes_projets\expace-dev\assets\app.js", "JavaScript", 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 7, 24
+"d:\Expace_Development\Mes_projets\expace-dev\assets\bootstrap.js", "JavaScript", 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 12
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\animate.css\animate.compat.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 5, 0, 7
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\animate.css\animate.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 3693, 0, 0, 26, 354, 4073
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\animate.css\animate.min.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 5, 0, 7
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\bootstrap-icons\bootstrap-icons.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 1388, 0, 0, 0, 3, 1391
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\bootstrap-icons\bootstrap-icons.json", "JSON", 0, 0, 0, 0, 0, 1372, 0, 0, 0, 0, 0, 0, 0, 1372
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\bootstrap-icons\index.html", "HTML", 0, 0, 0, 0, 0, 0, 0, 0, 0, 5522, 0, 0, 6, 5528
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\boxicons\css\animations.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 354, 0, 0, 0, 32, 386
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\boxicons\css\boxicons.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 5046, 0, 0, 0, 52, 5098
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\boxicons\css\boxicons.min.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\boxicons\css\transformations.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 6, 31
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\boxicons\fonts\boxicons.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1551, 0, 0, 1551
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\glightbox\css\glightbox.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 822, 0, 0, 8, 113, 943
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\glightbox\css\glightbox.min.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\glightbox\js\glightbox.js", "JavaScript", 0, 3097, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 597, 3694
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\glightbox\js\glightbox.min.js", "JavaScript", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\icomoon\fonts\icomoon.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 98, 0, 0, 98
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\icomoon\icomoon.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 292, 0, 0, 4, 92, 388
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\isotope-layout\isotope.pkgd.js", "JavaScript", 0, 2198, 0, 0, 0, 0, 0, 0, 0, 0, 0, 830, 536, 3564
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\isotope-layout\isotope.pkgd.min.js", "JavaScript", 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 1, 12
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\purecounter\purecounter.js", "JavaScript", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 8
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\swiper\swiper-bundle.min.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 11, 1, 13
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\swiper\swiper-bundle.min.js", "JavaScript", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 1, 14
+"d:\Expace_Development\Mes_projets\expace-dev\assets\components\waypoints\noframework.waypoints.js", "JavaScript", 0, 583, 0, 0, 0, 0, 0, 0, 0, 0, 0, 71, 104, 758
+"d:\Expace_Development\Mes_projets\expace-dev\assets\controllers.json", "JSON", 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 1, 31
+"d:\Expace_Development\Mes_projets\expace-dev\assets\controllers\hello_controller.js", "JavaScript", 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 2, 17
+"d:\Expace_Development\Mes_projets\expace-dev\assets\navbar-mobile.js", "JavaScript", 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 33
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_articles.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 421, 0, 0, 0, 3, 92, 516
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_auth.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 35, 0, 0, 0, 0, 2, 37
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_breadcrumbs.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 9, 59
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_button.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 69, 0, 0, 0, 0, 1, 70
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_carousel.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 0, 2, 193
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_contact.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 30
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_dashboard.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 51, 0, 0, 0, 0, 0, 51
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_featured.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 52, 0, 0, 0, 0, 0, 52
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_footer.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 109, 0, 0, 0, 0, 0, 109
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_forms.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 55, 0, 0, 0, 0, 5, 60
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_general-section.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 0, 31
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_general.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 1, 0, 20
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_pagination.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 28, 0, 0, 0, 0, 5, 33
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_portfolio-details.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 11, 61
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_portfolio.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 137, 0, 0, 0, 0, 19, 156
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_procedure.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 27, 0, 0, 0, 3, 0, 30
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_statistiques.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 38, 0, 0, 0, 0, 0, 38
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_tables.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 45, 0, 0, 0, 0, 0, 45
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_testimonials.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 66, 0, 0, 0, 0, 0, 66
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\_topbar.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 174, 0, 0, 0, 0, 23, 197
+"d:\Expace_Development\Mes_projets\expace-dev\assets\styles\app.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 47, 0, 0, 0, 0, 7, 54
+"d:\Expace_Development\Mes_projets\expace-dev\composer.json", "JSON", 0, 0, 0, 0, 0, 119, 0, 0, 0, 0, 0, 0, 1, 120
+"d:\Expace_Development\Mes_projets\expace-dev\composer.lock", "JSON", 0, 0, 0, 0, 0, 10877, 0, 0, 0, 0, 0, 0, 1, 10878
+"d:\Expace_Development\Mes_projets\expace-dev\config\bundles.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 25
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\cache.yaml", "YAML", 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 13, 5, 20
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\debug.yaml", "YAML", 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, 1, 6
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\doctrine.yaml", "YAML", 0, 0, 0, 36, 0, 0, 0, 0, 0, 0, 0, 4, 5, 45
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\doctrine_migrations.yaml", "YAML", 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 2, 1, 7
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\fos_ckeditor.yaml", "YAML", 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 1, 3, 17
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\framework.yaml", "YAML", 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 6, 4, 26
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\mailer.yaml", "YAML", 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\messenger.yaml", "YAML", 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 5, 4, 25
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\monolog.yaml", "YAML", 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 8, 4, 62
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\notifier.yaml", "YAML", 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 7, 1, 17
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\reset_password.yaml", "YAML", 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\routing.yaml", "YAML", 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 3, 3, 13
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\security.yaml", "YAML", 0, 0, 0, 29, 0, 0, 0, 0, 0, 0, 0, 15, 5, 49
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\sensio_framework_extra.yaml", "YAML", 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\translation.yaml", "YAML", 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 7, 1, 14
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\twig.yaml", "YAML", 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 2, 10
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\validator.yaml", "YAML", 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 4, 3, 14
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\web_profiler.yaml", "YAML", 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 4, 18
+"d:\Expace_Development\Mes_projets\expace-dev\config\packages\webpack_encore.yaml", "YAML", 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 29, 10, 46
+"d:\Expace_Development\Mes_projets\expace-dev\config\preload.php", "PHP", 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 6
+"d:\Expace_Development\Mes_projets\expace-dev\config\routes.yaml", "YAML", 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6
+"d:\Expace_Development\Mes_projets\expace-dev\config\routes\framework.yaml", "YAML", 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5
+"d:\Expace_Development\Mes_projets\expace-dev\config\routes\ux_autocomplete.yaml", "YAML", 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"d:\Expace_Development\Mes_projets\expace-dev\config\routes\ux_live_component.yaml", "YAML", 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, 1, 6
+"d:\Expace_Development\Mes_projets\expace-dev\config\routes\web_profiler.yaml", "YAML", 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 2, 9
+"d:\Expace_Development\Mes_projets\expace-dev\config\services.yaml", "YAML", 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 9, 3, 37
+"d:\Expace_Development\Mes_projets\expace-dev\docker-compose.override.yml", "YAML", 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 4, 3, 15
+"d:\Expace_Development\Mes_projets\expace-dev\docker-compose.yml", "YAML", 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 7, 3, 22
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230218120426.php", "PHP", 0, 0, 52, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 64
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230218120638.php", "PHP", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 32
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230222082335.php", "PHP", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 32
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230223073713.php", "PHP", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 32
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230224110019.php", "PHP", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 32
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230225085657.php", "PHP", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 36
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230225093708.php", "PHP", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 32
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230225095237.php", "PHP", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 32
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230227065626.php", "PHP", 0, 0, 36, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 48
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230227081708.php", "PHP", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 32
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230227081821.php", "PHP", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 32
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230305091620.php", "PHP", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 36
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230306101454.php", "PHP", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 36
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230307080708.php", "PHP", 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 40
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230307082122.php", "PHP", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 32
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230307101503.php", "PHP", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 32
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230309060624.php", "PHP", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 32
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230309085627.php", "PHP", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 36
+"d:\Expace_Development\Mes_projets\expace-dev\migrations\Version20230311072657.php", "PHP", 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 34
+"d:\Expace_Development\Mes_projets\expace-dev\package-lock.json", "JSON", 0, 0, 0, 0, 0, 8071, 0, 0, 0, 0, 0, 0, 1, 8072
+"d:\Expace_Development\Mes_projets\expace-dev\package.json", "JSON", 0, 0, 0, 0, 0, 33, 0, 0, 0, 0, 0, 0, 1, 34
+"d:\Expace_Development\Mes_projets\expace-dev\public\css\style-error.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 78, 0, 0, 0, 13, 91
+"d:\Expace_Development\Mes_projets\expace-dev\public\index.php", "PHP", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 10
+"d:\Expace_Development\Mes_projets\expace-dev\public\js\glightbox.min.js", "JavaScript", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"d:\Expace_Development\Mes_projets\expace-dev\public\js\isotope.pkgd.min.js", "JavaScript", 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 1, 12
+"d:\Expace_Development\Mes_projets\expace-dev\public\js\main.js", "JavaScript", 0, 213, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60, 33, 306
+"d:\Expace_Development\Mes_projets\expace-dev\public\js\noframework.waypoints.js", "JavaScript", 0, 583, 0, 0, 0, 0, 0, 0, 0, 0, 0, 71, 104, 758
+"d:\Expace_Development\Mes_projets\expace-dev\public\js\purecounter.js", "JavaScript", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 8
+"d:\Expace_Development\Mes_projets\expace-dev\public\js\swiper-bundle.min.js", "JavaScript", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 1, 14
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\ActivitesAdminFormComponent.php", "PHP", 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 31
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogArticlesFormAdminComponent.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 30
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogArticlesListAdminComponent.php", "PHP", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 38
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogCategoriesComponent.php", "PHP", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 27
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogCategoriesFormAdminComponent.php", "PHP", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 33
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogCategoriesListAdminComponent.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 33
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogCommentComponent.php", "PHP", 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 26
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogCommentFormComponent.php", "PHP", 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 27
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogCommentairesFormAdminComponent.php", "PHP", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 33
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogCommentairesListAdminComponent.php", "PHP", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 34
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogMenuComponent.php", "PHP", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 11
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogPostAllComponent.php", "PHP", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 31
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogPostComponent.php", "PHP", 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 24
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogPostRecentComponent.php", "PHP", 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 26
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BlogSearchFormComponent.php", "PHP", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 30
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\BreadcrumbsComponent.php", "PHP", 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 18
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\ClientsListAdminComponent.php", "PHP", 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 2, 14, 38
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\ContactFormComponent.php", "PHP", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 30
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\DevisFormAdminComponent.php", "PHP", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 27
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\DevisListAdminComponent.php", "PHP", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 2, 14, 40
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\DevisListClientComponent.php", "PHP", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 35
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\FacturesFormAdminComponent.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 29
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\FacturesListAdminComponent.php", "PHP", 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 2, 14, 41
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\FacturesListClientComponent.php", "PHP", 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 36
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\MessagesCountComponent.php", "PHP", 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 33
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\MessagesFormAdminComponent.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 29
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\MessagesFormClientComponent.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 29
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\MessagesListAdminComponent.php", "PHP", 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 37
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\MessagesListClientComponent.php", "PHP", 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 37
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\NotificationsCountComponent.php", "PHP", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 29
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\PaginationComponent.php", "PHP", 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 16
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\PaiementsListAdminComponent.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 33
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\PortfoliosAllComponent.php", "PHP", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 2, 12, 35
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\PortfoliosFormAdminComponent.php", "PHP", 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 31
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\PortfoliosListAdminComponent.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 2, 14, 39
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\ProfilFormCredentialsComponent.php", "PHP", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 28
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\ProfilFormInfoComponent.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 30
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\ProjetsFormAdminComponent.php", "PHP", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 28
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\ProjetsFormClientComponent.php", "PHP", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 28
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\ProjetsListAdminComponent.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 2, 14, 39
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\ProjetsListClientComponent.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 34
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\RegistrationComponent.php", "PHP", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 28
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\ResetPasswordComponent.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 30
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\TemoignagesFormAdminComponent.php", "PHP", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 33
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\TemoignagesFormClientComponent.php", "PHP", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 30
+"d:\Expace_Development\Mes_projets\expace-dev\src\Components\TemoignagesListAdminComponent.php", "PHP", 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 32
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\ActivitesController.php", "PHP", 0, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 46
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\BlogController.php", "PHP", 0, 0, 78, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 103
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\CategoriesController.php", "PHP", 0, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 73
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\CommentairesController.php", "PHP", 0, 0, 42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 54
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\DashboardController.php", "PHP", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 10, 7, 51
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\DevisController.php", "PHP", 0, 0, 145, 0, 0, 0, 0, 0, 0, 0, 0, 0, 53, 198
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\FacturesController.php", "PHP", 0, 0, 141, 0, 0, 0, 0, 0, 0, 0, 0, 0, 49, 190
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\MessagesController.php", "PHP", 0, 0, 117, 0, 0, 0, 0, 0, 0, 0, 0, 8, 41, 166
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\PaiementController.php", "PHP", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 23
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\PortfoliosController.php", "PHP", 0, 0, 93, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 129
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\ProjetsController.php", "PHP", 0, 0, 159, 0, 0, 0, 0, 0, 0, 0, 0, 0, 56, 215
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\TemoignagesController.php", "PHP", 0, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 78
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Admin\UsersController.php", "PHP", 0, 0, 74, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 100
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Client\BlogController.php", "PHP", 0, 0, 52, 0, 0, 0, 0, 0, 0, 0, 0, 17, 27, 96
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Client\DevisController.php", "PHP", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 36
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Client\FacturesController.php", "PHP", 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 37
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Client\MessagesController.php", "PHP", 0, 0, 117, 0, 0, 0, 0, 0, 0, 0, 0, 8, 43, 168
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Client\PaiementController.php", "PHP", 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 0, 5, 33, 137
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Client\ProjetsController.php", "PHP", 0, 0, 111, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43, 154
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\Client\TemoignagesController.php", "PHP", 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 45
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\DashboardController.php", "PHP", 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 37
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\HomeController.php", "PHP", 0, 0, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 80
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\ProfilController.php", "PHP", 0, 0, 37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 48
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\RegistrationController.php", "PHP", 0, 0, 77, 0, 0, 0, 0, 0, 0, 0, 0, 4, 22, 103
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\ResetPasswordController.php", "PHP", 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, 0, 23, 32, 182
+"d:\Expace_Development\Mes_projets\expace-dev\src\Controller\SecurityController.php", "PHP", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 33
+"d:\Expace_Development\Mes_projets\expace-dev\src\DataFixtures\AppFixtures.php", "PHP", 0, 0, 239, 0, 0, 0, 0, 0, 0, 0, 0, 40, 110, 389
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Activites.php", "PHP", 0, 0, 61, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21, 82
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Articles.php", "PHP", 0, 0, 139, 0, 0, 0, 0, 0, 0, 0, 0, 9, 41, 189
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Categories.php", "PHP", 0, 0, 112, 0, 0, 0, 0, 0, 0, 0, 0, 13, 31, 156
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Comments.php", "PHP", 0, 0, 114, 0, 0, 0, 0, 0, 0, 0, 0, 4, 37, 155
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Contact.php", "PHP", 0, 0, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 60
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Devis.php", "PHP", 0, 0, 125, 0, 0, 0, 0, 0, 0, 0, 0, 0, 42, 167
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\DocsMessages.php", "PHP", 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 68
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Factures.php", "PHP", 0, 0, 138, 0, 0, 0, 0, 0, 0, 0, 0, 1, 47, 186
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\ImagesPortfolios.php", "PHP", 0, 0, 39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 52
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Messages.php", "PHP", 0, 0, 151, 0, 0, 0, 0, 0, 0, 0, 0, 8, 46, 205
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Notifications.php", "PHP", 0, 0, 74, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 99
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Paiements.php", "PHP", 0, 0, 85, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29, 114
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Portfolios.php", "PHP", 0, 0, 93, 0, 0, 0, 0, 0, 0, 0, 0, 4, 28, 125
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Projets.php", "PHP", 0, 0, 195, 0, 0, 0, 0, 0, 0, 0, 0, 17, 57, 269
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\ResetPasswordRequest.php", "PHP", 0, 0, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 40
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Temoignages.php", "PHP", 0, 0, 73, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 98
+"d:\Expace_Development\Mes_projets\expace-dev\src\Entity\Users.php", "PHP", 0, 0, 471, 0, 0, 0, 0, 0, 0, 0, 0, 48, 150, 669
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\Admin\ActivitesType.php", "PHP", 0, 0, 37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 42
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\Admin\MessagesType.php", "PHP", 0, 0, 89, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 96
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\Admin\ProjetsType.php", "PHP", 0, 0, 107, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 114
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\Admin\TemoignagesType.php", "PHP", 0, 0, 37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 42
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\Blog\Admin\ArticlesType.php", "PHP", 0, 0, 88, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 94
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\Blog\Admin\CategoriesType.php", "PHP", 0, 0, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 50
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\Blog\Admin\CommentsType.php", "PHP", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 39
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\Blog\Client\ChercheType.php", "PHP", 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 32
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\ChangePasswordFormType.php", "PHP", 0, 0, 51, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 56
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\Client\Articles\CommentType.php", "PHP", 0, 0, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 36
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\Client\MessagesType.php", "PHP", 0, 0, 81, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 88
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\Client\ProjetsType.php", "PHP", 0, 0, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 62
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\Client\TemoignagesType.php", "PHP", 0, 0, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 51
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\ContactType.php", "PHP", 0, 0, 91, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7, 99
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\CredentialsType.php", "PHP", 0, 0, 59, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 64
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\DevisAutocompleteField.php", "PHP", 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 2, 6, 34
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\DevisType.php", "PHP", 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 41
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\FacturesType.php", "PHP", 0, 0, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 34
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\PortfoliosType.php", "PHP", 0, 0, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 62
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\ProfilType.php", "PHP", 0, 0, 201, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 206
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\ProjetsAutocompleteField.php", "PHP", 0, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 40
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\RegistrationFormType.php", "PHP", 0, 0, 245, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 250
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\ResetPasswordRequestFormType.php", "PHP", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 32
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\ServicesType.php", "PHP", 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7, 48
+"d:\Expace_Development\Mes_projets\expace-dev\src\Form\UsersAutocompleteField.php", "PHP", 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 34
+"d:\Expace_Development\Mes_projets\expace-dev\src\Kernel.php", "PHP", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 12
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\ActivitesRepository.php", "PHP", 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 31, 10, 67
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\ArticlesRepository.php", "PHP", 0, 0, 70, 0, 0, 0, 0, 0, 0, 0, 0, 32, 28, 130
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\CategoriesRepository.php", "PHP", 0, 0, 47, 0, 0, 0, 0, 0, 0, 0, 0, 32, 22, 101
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\CommentsRepository.php", "PHP", 0, 0, 57, 0, 0, 0, 0, 0, 0, 0, 0, 32, 24, 113
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\DevisRepository.php", "PHP", 0, 0, 91, 0, 0, 0, 0, 0, 0, 0, 0, 33, 37, 161
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\DocsMessagesRepository.php", "PHP", 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 31, 10, 67
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\FacturesRepository.php", "PHP", 0, 0, 91, 0, 0, 0, 0, 0, 0, 0, 0, 33, 37, 161
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\ImagesPortfoliosRepository.php", "PHP", 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 31, 10, 67
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\MessagesRepository.php", "PHP", 0, 0, 49, 0, 0, 0, 0, 0, 0, 0, 0, 32, 20, 101
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\NotificationsRepository.php", "PHP", 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 31, 10, 67
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\PaiementsRepository.php", "PHP", 0, 0, 57, 0, 0, 0, 0, 0, 0, 0, 0, 32, 23, 112
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\PortfoliosRepository.php", "PHP", 0, 0, 47, 0, 0, 0, 0, 0, 0, 0, 0, 32, 21, 100
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\ProjetsRepository.php", "PHP", 0, 0, 81, 0, 0, 0, 0, 0, 0, 0, 0, 33, 33, 147
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\ResetPasswordRequestRepository.php", "PHP", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 8, 10, 52
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\TemoignagesRepository.php", "PHP", 0, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 32, 22, 110
+"d:\Expace_Development\Mes_projets\expace-dev\src\Repository\UsersRepository.php", "PHP", 0, 0, 94, 0, 0, 0, 0, 0, 0, 0, 0, 35, 34, 163
+"d:\Expace_Development\Mes_projets\expace-dev\src\Security\AppAuthenticator.php", "PHP", 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 62
+"d:\Expace_Development\Mes_projets\expace-dev\src\Security\EmailVerifier.php", "PHP", 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 3, 11, 54
+"d:\Expace_Development\Mes_projets\expace-dev\src\Services\DashboardAdminService.php", "PHP", 0, 0, 232, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60, 292
+"d:\Expace_Development\Mes_projets\expace-dev\src\Services\InvoiceService.php", "PHP", 0, 0, 83, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24, 108
+"d:\Expace_Development\Mes_projets\expace-dev\src\Services\MailerService.php", "PHP", 0, 0, 68, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 81
+"d:\Expace_Development\Mes_projets\expace-dev\src\Services\NumInvoiceService.php", "PHP", 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 50
+"d:\Expace_Development\Mes_projets\expace-dev\src\Services\UploadService.php", "PHP", 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\activites\new.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 5, 31
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\blog\categories\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 33, 0, 0, 0, 0, 0, 6, 39
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\blog\categories\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\blog\commentaires\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 28, 0, 0, 0, 0, 0, 5, 33
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\blog\commentaires\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\blog\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 0, 6, 37
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\blog\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\dashboard\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 67, 0, 0, 0, 0, 0, 6, 73
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\devis\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 0, 5, 36
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\devis\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\devis\show.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 7, 47
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\factures\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 5, 29
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\factures\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\factures\show.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 7, 47
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\messages\_delete_form.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 1, 5
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\messages\_form.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 1, 5
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\messages\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 5, 31
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\messages\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\messages\new.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 5, 12
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\messages\show.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 43, 0, 0, 0, 0, 0, 9, 52
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\paiement\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\portfolios\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 0, 5, 36
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\portfolios\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\projets\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 42, 0, 0, 0, 0, 0, 5, 47
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\projets\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\temoignages\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 5, 31
+"d:\Expace_Development\Mes_projets\expace-dev\templates\admin\temoignages\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\base.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 1, 6, 37
+"d:\Expace_Development\Mes_projets\expace-dev\templates\bundles\TwigBundle\Exception\error403.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 12, 44
+"d:\Expace_Development\Mes_projets\expace-dev\templates\bundles\TwigBundle\Exception\error404.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 12, 44
+"d:\Expace_Development\Mes_projets\expace-dev\templates\bundles\TwigBundle\Exception\error500.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 12, 44
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\blog\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 3, 26
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\blog\show.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 42, 0, 0, 0, 0, 0, 5, 47
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\dashboard\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 77, 0, 0, 0, 0, 0, 6, 83
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\devis\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\factures\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\messages\_delete_form.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 1, 5
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\messages\_form.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 1, 5
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\messages\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 6, 14
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\messages\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\messages\new.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 5, 31
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\messages\show.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 43, 0, 0, 0, 0, 0, 9, 52
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\projets\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 42, 0, 0, 0, 0, 0, 5, 47
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\projets\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\client\temoignages\new.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 5, 31
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\activites_admin_form.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 7, 26
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_articles_form_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 14
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_articles_list_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 76, 0, 0, 0, 0, 0, 7, 83
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_categories.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 8
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_categories_form_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 7, 23
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_categories_list_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 76, 0, 0, 0, 0, 0, 9, 85
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_comment.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 81, 0, 0, 0, 0, 0, 10, 91
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_comment_form.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 1, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_commentaires_form_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 7, 23
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_commentaires_list_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 77, 0, 0, 0, 0, 0, 7, 84
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_menu.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 12
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_post.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 29, 0, 0, 0, 0, 0, 2, 31
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_post_all.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 35, 0, 0, 0, 0, 0, 2, 37
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_post_recent.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 2, 12
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\blog_search_form.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 11
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\breadcrumbs.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\clients_list_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 82, 0, 0, 0, 0, 0, 7, 89
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\contact_form.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 25
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\devis_form_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 4, 11
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\devis_list_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 67, 0, 0, 0, 0, 0, 3, 70
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\devis_list_client.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 62, 0, 0, 0, 0, 0, 1, 63
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\factures_form_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 4, 11
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\factures_list_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 65, 0, 0, 0, 0, 0, 3, 68
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\factures_list_client.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 1, 61
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\messages_count.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 1, 20
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\messages_form_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 4, 20
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\messages_form_client.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 4, 19
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\messages_list_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 92, 0, 0, 0, 0, 0, 7, 99
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\messages_list_client.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 92, 0, 0, 0, 0, 0, 7, 99
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\notifications_count.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 14
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\pagination.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 1, 33
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\paiements_list_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 47, 0, 0, 0, 0, 0, 1, 48
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\portfolios_all.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 46, 0, 0, 0, 0, 0, 0, 46
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\portfolios_form_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 71, 0, 0, 0, 0, 0, 11, 82
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\portfolios_list_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 80, 0, 0, 0, 0, 0, 8, 88
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\profil_form_credentials.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 66, 0, 0, 0, 0, 0, 4, 70
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\profil_form_info.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 116, 0, 0, 0, 0, 0, 13, 129
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\projets_form_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 14
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\projets_form_client.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 11
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\projets_list_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 98, 0, 0, 0, 0, 0, 13, 111
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\projets_list_client.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 98, 0, 0, 0, 0, 0, 9, 107
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\registration.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 172, 0, 0, 0, 0, 0, 16, 188
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\reset_password.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 0, 0, 4, 67
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\temoignages_form_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 10, 29
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\temoignages_form_client.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 9, 25
+"d:\Expace_Development\Mes_projets\expace-dev\templates\components\temoignages_list_admin.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 88, 0, 0, 0, 0, 0, 9, 97
+"d:\Expace_Development\Mes_projets\expace-dev\templates\emails\_contact.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 2
+"d:\Expace_Development\Mes_projets\expace-dev\templates\emails\_new_doc.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 5, 17
+"d:\Expace_Development\Mes_projets\expace-dev\templates\form-theme.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 21, 0, 0, 0, 0, 0, 2, 23
+"d:\Expace_Development\Mes_projets\expace-dev\templates\home\contact.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 57, 0, 0, 0, 0, 0, 6, 63
+"d:\Expace_Development\Mes_projets\expace-dev\templates\home\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 5, 14
+"d:\Expace_Development\Mes_projets\expace-dev\templates\home\portfolio.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 5, 11
+"d:\Expace_Development\Mes_projets\expace-dev\templates\home\portfolio_details.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 44, 0, 0, 0, 0, 0, 13, 57
+"d:\Expace_Development\Mes_projets\expace-dev\templates\partials\_carousel.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0, 0, 48
+"d:\Expace_Development\Mes_projets\expace-dev\templates\partials\_featured.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 27, 0, 0, 0, 0, 0, 0, 27
+"d:\Expace_Development\Mes_projets\expace-dev\templates\partials\_footer.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 60
+"d:\Expace_Development\Mes_projets\expace-dev\templates\partials\_procedure.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 5, 31
+"d:\Expace_Development\Mes_projets\expace-dev\templates\partials\_statistiques.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 37, 0, 0, 0, 0, 0, 0, 37
+"d:\Expace_Development\Mes_projets\expace-dev\templates\partials\_testimonials.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 28, 0, 0, 0, 0, 0, 1, 29
+"d:\Expace_Development\Mes_projets\expace-dev\templates\partials\navbar-mobile.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 28, 0, 0, 0, 0, 0, 0, 28
+"d:\Expace_Development\Mes_projets\expace-dev\templates\partials\navigation.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 51, 0, 0, 0, 0, 0, 1, 52
+"d:\Expace_Development\Mes_projets\expace-dev\templates\partials\social-icon.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3
+"d:\Expace_Development\Mes_projets\expace-dev\templates\partials\topbar.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 34, 0, 0, 0, 0, 0, 7, 41
+"d:\Expace_Development\Mes_projets\expace-dev\templates\profil\_delete_form.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 1, 5
+"d:\Expace_Development\Mes_projets\expace-dev\templates\profil\_form.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 1, 5
+"d:\Expace_Development\Mes_projets\expace-dev\templates\profil\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 6, 14
+"d:\Expace_Development\Mes_projets\expace-dev\templates\profil\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 69, 0, 0, 0, 0, 0, 5, 74
+"d:\Expace_Development\Mes_projets\expace-dev\templates\profil\new.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 5, 12
+"d:\Expace_Development\Mes_projets\expace-dev\templates\profil\show.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 96, 0, 0, 0, 0, 0, 7, 103
+"d:\Expace_Development\Mes_projets\expace-dev\templates\registration\confirmation_email.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 54, 0, 0, 0, 0, 0, 10, 64
+"d:\Expace_Development\Mes_projets\expace-dev\templates\registration\register.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 6, 28
+"d:\Expace_Development\Mes_projets\expace-dev\templates\reset_password\check_email.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 3, 12
+"d:\Expace_Development\Mes_projets\expace-dev\templates\reset_password\email.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 53, 0, 0, 0, 0, 0, 12, 65
+"d:\Expace_Development\Mes_projets\expace-dev\templates\reset_password\request.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 27, 0, 0, 0, 0, 0, 5, 32
+"d:\Expace_Development\Mes_projets\expace-dev\templates\reset_password\reset.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 3, 22
+"d:\Expace_Development\Mes_projets\expace-dev\templates\security\login.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 44, 0, 0, 0, 0, 10, 9, 63
+"d:\Expace_Development\Mes_projets\expace-dev\templates\themes\_form_devis.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 43, 0, 0, 0, 0, 0, 11, 54
+"d:\Expace_Development\Mes_projets\expace-dev\templates\themes\_form_factures.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 43, 0, 0, 0, 0, 0, 11, 54
+"d:\Expace_Development\Mes_projets\expace-dev\templates\users\edit.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 38, 0, 0, 0, 0, 0, 7, 45
+"d:\Expace_Development\Mes_projets\expace-dev\templates\users\index.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 5, 28
+"d:\Expace_Development\Mes_projets\expace-dev\templates\users\new.html.twig", "HTML (Twig)", 0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 4, 23
+"d:\Expace_Development\Mes_projets\expace-dev\tests\bootstrap.php", "PHP", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 12
+"d:\Expace_Development\Mes_projets\expace-dev\webpack.config.js", "JavaScript", 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 16, 77
+"Total", "-", 3, 6754, 8607, 302, 1, 20502, 4493, 1725, 11705, 5522, 1649, 2217, 5521, 69001
