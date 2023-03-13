@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form\Client\Articles;
+namespace App\Form\Blog\Client;
 
 use App\Entity\Comments;
 use Symfony\Component\Form\AbstractType;

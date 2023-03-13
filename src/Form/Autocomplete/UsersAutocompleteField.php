@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Autocomplete;
 
 use App\Entity\Users;
 use App\Repository\UsersRepository;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\Autocomplete\Form\AsEntityAutocompleteField;
 use Symfony\UX\Autocomplete\Form\ParentEntityAutocompleteType;

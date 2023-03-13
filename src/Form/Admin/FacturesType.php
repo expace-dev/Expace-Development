@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Admin;
 
 use App\Entity\Factures;
-use App\Form\ServicesType;
-use App\Form\ProjetsAutocompleteField;
+use App\Form\Admin\ServicesType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use App\Form\Autocomplete\ProjetsAutocompleteField;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\LiveComponent\Form\Type\LiveCollectionType;
 

@@ -2,19 +2,19 @@
 
 namespace App\Controller\Admin;
 
+use DateTime;
 use App\Entity\Factures;
 use App\Entity\Notifications;
-use App\Form\FacturesType;
+use App\Services\MailerService;
+use App\Form\Admin\FacturesType;
+use App\Services\InvoiceService;
+use App\Services\NumInvoiceService;
 use App\Repository\FacturesRepository;
 use App\Repository\NotificationsRepository;
-use App\Services\InvoiceService;
-use App\Services\MailerService;
-use App\Services\NumInvoiceService;
-use DateTime;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/factures')]
 class FacturesController extends AbstractController

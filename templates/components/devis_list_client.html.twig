@@ -37,8 +37,8 @@
                         <td>{{ devis.projet.titre }}</td>
                         <td class="text-end">
                             <div class="btn-group">
-                                <a class="btn btn-secondary" target="_blank" href="{{ path('app_client_devis_show', {'slug': devis.slug}) }}"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-success" href=""><i class="fa-solid fa-signature"></i></a>
+                                <a class="btn btn-secondary" target="_blank" href="{{ path('app_client_devis_show', {'slug': devis.slug}) }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Voir ce devis" data-bs-custom-class="custom-tooltip"><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-success" href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Signer ce devis" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-signature"></i></a>
                             </div>
                         </td>
                     </tr>

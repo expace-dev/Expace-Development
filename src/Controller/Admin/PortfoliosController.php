@@ -3,12 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Portfolios;
-use App\Form\PortfoliosType;
 use App\Services\UploadService;
 use App\Entity\ImagesPortfolios;
-use App\Repository\ImagesPortfoliosRepository;
+use App\Form\Admin\PortfoliosType;
 use App\Repository\PortfoliosRepository;
 use Symfony\Component\HttpFoundation\Request;
+use App\Repository\ImagesPortfoliosRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;

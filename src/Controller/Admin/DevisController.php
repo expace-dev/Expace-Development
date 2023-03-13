@@ -4,13 +4,13 @@ namespace App\Controller\Admin;
 
 use DateTime;
 use App\Entity\Devis;
-use App\Form\DevisType;
 use App\Entity\Notifications;
+use App\Form\Admin\DevisType;
 use App\Services\MailerService;
 use App\Services\InvoiceService;
 use App\Repository\DevisRepository;
-use App\Repository\NotificationsRepository;
 use App\Services\NumInvoiceService;
+use App\Repository\NotificationsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

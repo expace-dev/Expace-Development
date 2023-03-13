@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Autocomplete;
 
 use App\Entity\Projets;
 use App\Repository\ProjetsRepository;
