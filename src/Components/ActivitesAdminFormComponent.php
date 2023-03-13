@@ -3,11 +3,7 @@
 namespace App\Components;
 
 use App\Entity\Activites;
-use App\Entity\Devis;
-use App\Form\DevisType;
-use App\Entity\Factures;
 use App\Form\ActivitesType;
-use App\Form\FacturesType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;

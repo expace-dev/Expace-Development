@@ -3,12 +3,10 @@
 namespace App\Components;
 
 use App\Repository\PortfoliosRepository;
-use App\Repository\UsersRepository;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
-use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsLiveComponent('portfolios_list_admin')]
 class PortfoliosListAdminComponent {

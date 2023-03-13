@@ -3,8 +3,6 @@
 namespace App\Components;
 
 use App\Entity\Articles;
-use App\Entity\Projets;
-use App\Form\Admin\ProjetsType;
 use App\Form\Blog\Admin\ArticlesType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;

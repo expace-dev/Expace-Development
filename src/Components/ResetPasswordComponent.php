@@ -4,8 +4,6 @@ namespace App\Components;
 
 use App\Entity\Users;
 use App\Form\ChangePasswordFormType;
-use App\Form\RegistrationFormType;
-use App\Form\ResetPasswordRequestFormType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;

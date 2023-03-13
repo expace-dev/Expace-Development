@@ -2,8 +2,6 @@
 
 namespace App\Components;
 
-use App\Entity\Devis;
-use App\Form\DevisType;
 use App\Entity\Factures;
 use App\Form\Admin\FacturesType;
 use Symfony\Component\Form\FormInterface;

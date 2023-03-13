@@ -2,16 +2,11 @@
 
 namespace App\Components;
 
-use App\Repository\DevisRepository;
 use App\Repository\FacturesRepository;
-use App\Repository\UsersRepository;
-use App\Repository\ProjetsRepository;
 use Symfony\Bundle\SecurityBundle\Security;
-use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
-use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsLiveComponent('factures_list_client')]
 class FacturesListClientComponent {

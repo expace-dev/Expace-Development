@@ -3,9 +3,7 @@
 namespace App\Components;
 
 use App\Entity\Users;
-use App\Form\ProfilCreateType;
 use App\Form\ProfilType;
-use App\Form\ProfilUpdateType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;

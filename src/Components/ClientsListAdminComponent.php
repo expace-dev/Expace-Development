@@ -7,7 +7,6 @@ use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
-use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsLiveComponent('clients_list_admin')]
 class ClientsListAdminComponent {

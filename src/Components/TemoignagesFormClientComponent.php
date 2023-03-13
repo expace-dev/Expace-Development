@@ -2,9 +2,7 @@
 
 namespace App\Components;
 
-use App\Entity\Projets;
 use App\Entity\Temoignages;
-use App\Form\Client\ProjetsType;
 use App\Form\Client\TemoignagesType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;

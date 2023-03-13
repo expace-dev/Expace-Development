@@ -2,11 +2,7 @@
 
 namespace App\Components;
 
-use App\Entity\Devis;
-use App\Form\DevisType;
-use App\Entity\Factures;
 use App\Entity\Portfolios;
-use App\Form\FacturesType;
 use App\Form\Admin\PortfoliosType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;

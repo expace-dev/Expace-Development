@@ -2,8 +2,6 @@
 
 namespace App\Components;
 
-use App\Entity\Devis;
-use App\Form\DevisType;
 use App\Entity\Messages;
 use App\Form\Client\MessagesType;
 use Symfony\Component\Form\FormInterface;
