@@ -16,12 +16,25 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 #[Route('/admin/users')]
 class UsersController extends AbstractController
 {
+    /**
+     * Permet de lister les clients
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_admin_users_index', methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('users/index.html.twig');
     }
 
+    /**
+     * Permet de créer un client
+     *
+     * @param Request $request
+     * @param UsersRepository $usersRepository
+     * @param UserPasswordHasherInterface $userPasswordHasher
+     * @return Response
+     */
     #[Route('/new', name: 'app_admin_users_new', methods: ['GET', 'POST'])]
     public function new(Request $request, UsersRepository $usersRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
@@ -55,6 +68,14 @@ class UsersController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet d'éditer un client
+     *
+     * @param Request $request
+     * @param UsersRepository $usersRepository
+     * @param Users $user
+     * @return Response
+     */
     #[Route('/{id}/edit', name: 'app_admin_users_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Users $user, UsersRepository $usersRepository): Response
     {
@@ -87,6 +108,13 @@ class UsersController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de supprimer un client
+     *
+     * @param UsersRepository $usersRepository
+     * @param Users $user
+     * @return Response
+     */
     #[Route('/{id}/delete', name: 'app_admin_users_delete', methods: ['GET'])]
     public function delete(Users $user, UsersRepository $usersRepository): Response
     {

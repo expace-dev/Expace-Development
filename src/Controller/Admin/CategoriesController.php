@@ -13,12 +13,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/blog/categories')]
 class CategoriesController extends AbstractController
 {
+    /**
+     * Permet de lister les catégories du blog
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_admin_categories_blog_index')]
     public function index(): Response
     {
         return $this->render('admin/blog/categories/index.html.twig');
     }
 
+    /**
+     * Permet de créer une nouvelle catégorie
+     *
+     * @param Request $request
+     * @param CategoriesRepository $categoriesRepository
+     * @return Response
+     */
     #[Route('/new', name: 'app_admin_categories_blog_new', methods: ['GET', 'POST'])]
     public function categoriesNew(Request $request, CategoriesRepository $categoriesRepository): Response
     {
@@ -40,6 +52,14 @@ class CategoriesController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de créer une nouvelle catégorie
+     *
+     * @param Request $request
+     * @param Categories $categorie
+     * @param CategoriesRepository $categoriesRepository
+     * @return Response
+     */
     #[Route('/{id}/edit', name: 'app_admin_categories_blog_edit', methods: ['GET', 'POST'])]
     public function CategoriesEdit(Request $request, Categories $categorie, CategoriesRepository $categoriesRepository): Response
     {
@@ -60,6 +80,14 @@ class CategoriesController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de supprimer une catégorie de blog
+     * 
+     * @param Categories $categorie
+     * @param CategoriesRepository $categoriesRepository
+     * @return Response
+     * 
+     */
     #[Route('/delete/{id}', name: 'app_admin_categories_blog_delete', methods: ['GET'])]
     public function CategoriesDelete(Categories $categorie, CategoriesRepository $categoriesRepository): Response
     {

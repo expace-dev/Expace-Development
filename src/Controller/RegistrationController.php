@@ -27,6 +27,14 @@ class RegistrationController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
+    /**
+     * Permet de s'enregistrer
+     *
+     * @param Request $request
+     * @param UserPasswordHasherInterface $userPasswordHasher
+     * @param EntityManagerInterface $entityManager
+     * @return Response
+     */
     #[Route('/enregistrement', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
@@ -69,6 +77,14 @@ class RegistrationController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet d'activer son compte
+     *
+     * @param Request $request
+     * @param TranslatorInterface $translator
+     * @param UsersRepository $usersRepository
+     * @return Response
+     */
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator, UsersRepository $usersRepository): Response
     {

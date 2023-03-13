@@ -19,16 +19,37 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/devis')]
 class DevisController extends AbstractController
 {
+    /**
+     * Permet de lister les devis client
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_admin_devis_index', methods: ['GET'])]
-    public function index(DevisRepository $devisRepository): Response
+    public function index(): Response
     {
-        return $this->render('admin/devis/index.html.twig', [
-            'devis' => $devisRepository->findAll(),
-        ]);
+        return $this->render('admin/devis/index.html.twig');
     }
 
+    /**
+     * Permet de créer un nouveau devis
+     *
+     * @param Request $request
+     * @param DevisRepository $devisRepository
+     * @param NotificationsRepository $notificationsRepository
+     * @param InvoiceService $invoiceService
+     * @param NumInvoiceService $numInvoiceService
+     * @param MailerService $mailer
+     * @return Response
+     */
     #[Route('/new', name: 'app_admin_devis_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, DevisRepository $devisRepository, NotificationsRepository $notificationsRepository, InvoiceService $invoiceService, NumInvoiceService $numInvoiceService, MailerService $mailer): Response
+    public function new(
+        Request $request, 
+        DevisRepository $devisRepository, 
+        NotificationsRepository $notificationsRepository, 
+        InvoiceService $invoiceService, 
+        NumInvoiceService $numInvoiceService, 
+        MailerService $mailer
+    ): Response
     {
         $devis = new Devis();
         $form = $this->createForm(DevisType::class, $devis);
@@ -36,7 +57,7 @@ class DevisController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            
+            // On génère un numéro de devis
             $numero = $numInvoiceService->Generate(
                 numInvoice: $devisRepository->count([])+1,
                 type: 'DEVIS'
@@ -49,6 +70,7 @@ class DevisController extends AbstractController
             $slug = $numero . '.pdf';
             $devis->setSlug($slug);
 
+            // On génère un pdf
             $invoiceService->CreateDevis(
                 numero: $numero,
                 url: $url,
@@ -69,6 +91,7 @@ class DevisController extends AbstractController
 
             $devisRepository->save($devis, true);
 
+            // On envoie un mail au client
             $mailer->sendDocument(
                 from: 'noreply@expace-development.fr',
                 name: 'Expace Development',
@@ -82,6 +105,7 @@ class DevisController extends AbstractController
                 document: 'Devis'
             );
 
+            // On envoie une notification au client
             $notification = new Notifications();
 
             $notification->setSender($this->getUser())
@@ -107,8 +131,15 @@ class DevisController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet d'afficher un devis
+     * 
+     * @param Devis $devis
+     * @return Void
+     * 
+     */
     #[Route('/{slug}', name: 'app_admin_devis_show', methods: ['GET'])]
-    public function show(Devis $devis)
+    public function show(Devis $devis): void
     {
 
         $mime = "application/pdf";
@@ -118,9 +149,26 @@ class DevisController extends AbstractController
             readfile($fichier);
     }
 
-
+    /**
+     * Permet d'éditer un devis
+     * 
+     * @param Request $request
+     * @param Devis $devis
+     * @param DevisRepository $devisRepository
+     * @param NotificationsRepository $notificationsRepository
+     * @param InvoiceService $invoiceService
+     * @param MailerService $mailer
+     * @return Response
+     */
     #[Route('/{id}/edit', name: 'app_admin_devis_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Devis $devis, DevisRepository $devisRepository, NotificationsRepository $notificationsRepository, InvoiceService $invoiceService, MailerService $mailer): Response
+    public function edit(
+        Request $request, 
+        Devis $devis, 
+        DevisRepository $devisRepository, 
+        NotificationsRepository $notificationsRepository, 
+        InvoiceService $invoiceService, 
+        MailerService $mailer
+    ): Response
     {
         $form = $this->createForm(DevisType::class, $devis);
         $form->handleRequest($request);
@@ -133,6 +181,7 @@ class DevisController extends AbstractController
             $url = 'documents/devis/' . $devis->getSlug();
             $devis->setClient($devis->getProjet()->getClient());
             
+            // On modifie le pdf
             $invoiceService->CreateDevis(
                 numero: $devis->getSlug(),
                 url: $url,
@@ -152,6 +201,7 @@ class DevisController extends AbstractController
 
             $devisRepository->save($devis, true);
 
+            // On envoie un mail au client
             $mailer->sendDocument(
                 from: 'noreply@expace-development.fr',
                 name: 'Expace Development',
@@ -165,6 +215,7 @@ class DevisController extends AbstractController
                 document: 'Devis'
             );
 
+            // On envoie une notification au client
             $notification = new Notifications();
             $numero = substr($devis->getSlug(), 0, -4);
 

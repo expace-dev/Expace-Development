@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Client;
 
 use DateTime;
 use App\Repository\DevisRepository;
@@ -13,6 +13,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DashboardController extends AbstractController
 {
+    /**
+     * Permet d'afficher les statistiques client
+     *
+     * @param DevisRepository $devisRepository
+     * @param FacturesRepository $facturesRepository
+     * @param ProjetsRepository $projetsRepository
+     * @param DashboardAdminService $dashboardAdminService
+     * @return Response
+     */
     #[Route('/client/dashboard', name: 'app_client_dashboard')]
     public function index(
         DevisRepository $devisRepository, 

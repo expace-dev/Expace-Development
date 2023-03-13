@@ -14,12 +14,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/blog')]
 class BlogController extends AbstractController
 {
+    /**
+     * Permet de lister les articles de blog
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_admin_blog_index', methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('admin/blog/index.html.twig');
     }
 
+    /**
+     * Permet de créer un nouvel article de blog
+     *
+     * @param Request $request
+     * @param ArticlesRepository $articlesRepository
+     * @param UploadService $uploadService
+     * @return Response
+     */
     #[Route('/new', name: 'app_admin_blog_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ArticlesRepository $articlesRepository, UploadService $uploadService): Response
     {
@@ -28,9 +41,17 @@ class BlogController extends AbstractController
         $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
+
+                // Si on réceptionne une image d'illustration
                 if ($form->get('img')->getData()) {
+                    // On récupère l'image
                     $fichier = $form->get('img')->getData();
+                    // On récupère le dossier de destination
                     $directory = 'blog_directory';
+                    /**
+                     * On ajoute l'image et l'utilisateur connecté à l'article
+                     * et ont upload l'image via UploadService
+                     */
                     $article->setImg('images/blog/' .$uploadService->send($fichier, $directory))
                             ->setAuteur($this->getUser());
 
@@ -56,6 +77,15 @@ class BlogController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet d'éditer un article de blog
+     *
+     * @param Request $request
+     * @param Articles $article
+     * @param ArticlesRepository $articlesRepository
+     * @param UploadService $uploadService
+     * @return Response
+     */
     #[Route('/{id}/edit', name: 'app_admin_blog_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Articles $article, ArticlesRepository $articlesRepository, UploadService $uploadService): Response
     {
@@ -64,10 +94,15 @@ class BlogController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            // Si on réceptionne une image d'illustration
             if ($form->get('img')->getData()) {
+                // On récupère l'image
                 $fichier = $form->get('img')->getData();
+                // On récupère le répertoire de destination
                 $directory = 'blog_directory';
+                // On supprime l'ancienne image d'illustration
                 unlink($article->getImg());
+                // Puis on upload la nouvelle image et on ajoute cela à  l'article
                 $article->setImg('images/blog/' .$uploadService->send($fichier, $directory));
             }
             
@@ -89,8 +124,15 @@ class BlogController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de supprimer un article de blog
+     * 
+     * @param Articles $article
+     * @param ArticlesRepository $articlesRepository
+     * @return Response
+     */
     #[Route('/delete/{id}', name: 'app_admin_blog_delete', methods: ['GET'])]
-    public function delete(Request $request, Articles $article, ArticlesRepository $articlesRepository): Response
+    public function delete(Articles $article, ArticlesRepository $articlesRepository): Response
     {
         $articlesRepository->remove($article, true);
 

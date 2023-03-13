@@ -17,14 +17,25 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 #[Route('/admin/messagerie')]
 class MessagesController extends AbstractController
 {
+    /**
+     * Permet de lister les messages
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_admin_messages_index', methods: ['GET'])]
-    public function index(MessagesRepository $messagesRepository): Response
+    public function index(): Response
     {
-        return $this->render('admin/messages/index.html.twig', [
-            'messages' => $messagesRepository->findAll(),
-        ]);
+        return $this->render('admin/messages/index.html.twig');
     }
 
+    /**
+     * Permet de créer un nouveau message
+     *
+     * @param Request $request
+     * @param MessagesRepository $messagesRepository
+     * @param UploadService $uploadService
+     * @return Response
+     */
     #[Route('/new', name: 'app_admin_messages_new', methods: ['GET', 'POST'])]
     public function new(Request $request, MessagesRepository $messagesRepository, UploadService $uploadService): Response
     {
@@ -61,10 +72,16 @@ class MessagesController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de lire un message
+     * 
+     * @param Messages $message
+     * @param MessagesRepository $messagesRepository
+     * @return Response
+     */
     #[Route('/lire/{id}', name: 'app_admin_messages_show', methods: ['GET'])]
     public function show(Messages $message, MessagesRepository $messagesRepository): Response
     {
-        //dd($message->getDocsMessages()->getValues());
 
         $message->setLu(true);
         $messagesRepository->save($message, true);
@@ -74,14 +91,14 @@ class MessagesController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de voir une pièce jointe
+     * 
+     * @param DocsMessages $docsMessages
+     */
     #[Route('/document/{nom}', name: 'app_admin_messages_voir_doc', methods: ['GET'])]
     public function document(DocsMessages $docsMessages)
     {
-/*
-        if ($docsMessages->getSender() !== $this->getUser()) {
-            throw new AccessDeniedException("Vous n'avez pas l'autorisation d'accéder à cette page");
-        }
-*/
         $document = '/' .$docsMessages->getUrl();
         $ext = pathinfo($document, PATHINFO_EXTENSION);
 
@@ -102,16 +119,28 @@ class MessagesController extends AbstractController
   
     }
 
+    /**
+     * Permet de répondre à un message
+     * 
+     * @param Request $request
+     * @param Messages $parent
+     * @param MessagesRepository $messagesRepository
+     * @param UploadService $uploadService
+     * @return Response
+     */
     #[Route('/repondre/{id}', name: 'app_admin_messages_reponse', methods: ['GET', 'POST'])]
-    public function response(Request $request, Messages $parent, MessagesRepository $messagesRepository, UploadService $uploadService): Response
+    public function response(
+        Request $request, 
+        Messages $parent, 
+        MessagesRepository $messagesRepository, 
+        UploadService $uploadService
+    ): Response
     {
         $message = new Messages();
         $message->setSujet('Re: ' .$parent->getSujet());
         $message->setSender($this->getUser());
         $message->setMessage('<br>' .$parent->getMessage());
         $message->setRecipient($parent->getSender());
-        //$test = 'Votre réponse<br>merci';
-        //$message->setMessage(nl2br("foo isn't\n bar"));
 
         $form = $this->createForm(MessagesType::class, $message);
         $form->handleRequest($request);
@@ -147,6 +176,13 @@ class MessagesController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de supprimer un message
+     * 
+     * @param Messages $message
+     * @param MessagesRepository $messagesRepository
+     * @return Response
+     */
     #[Route('/suprimer/{id}', name: 'app_admin_messages_delete', methods: ['GET'])]
     public function delete(Messages $message, MessagesRepository $messagesRepository): Response
     {

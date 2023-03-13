@@ -16,11 +16,19 @@ use Symfony\Component\Routing\Annotation\Route;
 use Stripe\Exception\SignatureVerificationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/client/paiement')]
+#[Route('/profile/paiement')]
 class PaiementController extends AbstractController {
 
+    /**
+     * Permet de vérifier la validité d'un paiement
+     * et le traiter en conséquence
+     *
+     * @param FacturesRepository $facturesRepository
+     * @param PaiementsRepository $paiementsRepository
+     * @return void
+     */
     #[Route('/webhook', name: 'app_paiement_webhook', methods:['POST'])]
-    public function webhook(Request $request, FacturesRepository $facturesRepository, PaiementsRepository $paiementsRepository)
+    public function webhook(FacturesRepository $facturesRepository, PaiementsRepository $paiementsRepository)
     {
         // This is your Stripe CLI webhook secret for testing your endpoint locally.
         $endpoint_secret = 'whsec_a665c62b8bd86288b8f925483780f2b8cb9b54831951e8086d1016792cc7d287';
@@ -71,6 +79,12 @@ class PaiementController extends AbstractController {
 
     }
 
+    /**
+     * Retour d'un succès après paiement
+     *
+     * @param FacturesRepository $facturesRepository
+     * @return void
+     */
     #[Route('/success', name: 'app_paiement_success', methods:['GET'])]
     public function success(FacturesRepository $facturesRepository)
     {
@@ -86,6 +100,12 @@ class PaiementController extends AbstractController {
         ]);
     }
 
+    /**
+     * Retour d'une erreur après paiement
+     *
+     * @param FacturesRepository $facturesRepository
+     * @return void
+     */
     #[Route('/error', name: 'app_paiement_error', methods:['GET'])]
     public function error(FacturesRepository $facturesRepository)
     {
@@ -100,6 +120,12 @@ class PaiementController extends AbstractController {
             'factures' => $factures,
         ]);
     }
+    /**
+     * Redirection vers stripe pour que le client effectue son paiement
+     * 
+     * @param Factures $facture
+     * @param FacturesRepository $facturesRepository
+     */
     #[Route('/{id}', name: 'app_paiement', methods:['GET'])]
     public function paie(Factures $facture, FacturesRepository $facturesRepository)
     {

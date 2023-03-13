@@ -15,6 +15,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
+    /**
+     * Affiche la page d'accueil
+     *
+     * @param TemoignagesRepository $temoignagesRepository
+     * @return Response
+     */
     #[Route('/', name: 'app_home')]
     public function index(TemoignagesRepository $temoignagesRepository): Response
     {
@@ -23,6 +29,14 @@ class HomeController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de contacter la société
+     *
+     * @param MailerService $mailer
+     * @param Request $request
+     * @param TemoignagesRepository $temoignagesRepository
+     * @return Response
+     */
     #[Route('/contact', name: 'app_contact')]
     public function contact(MailerService $mailer, Request $request, TemoignagesRepository $temoignagesRepository): Response
     {
@@ -59,21 +73,28 @@ class HomeController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de lister les réalisations
+     *
+     * @return Response
+     */
     #[Route('/portfolio', name: 'app_portfolios_index')]
-    public function portfolio(PortfoliosRepository $portfoliosRepository): Response
+    public function portfolio(): Response
     {
-        return $this->render('home/portfolio.html.twig', [
-            'portfolios' => $portfoliosRepository->findAll()
-        ]);
+        return $this->render('home/portfolio.html.twig');
     }
 
+    /**
+     * Permet de voir une réalisation en détails
+     * 
+     * @param Portfolios $portfolio
+     */
     #[Route('/portfolio/details/{id}', name: 'app_portfolios_details')]
-    public function portfolioDetails(Portfolios $portfolios): Response
+    public function portfolioDetails(Portfolios $portfolio): Response
     {
-        
 
         return $this->render('home/portfolio_details.html.twig', [
-            'portfolio' => $portfolios
+            'portfolio' => $portfolio
         ]);
     }
 }

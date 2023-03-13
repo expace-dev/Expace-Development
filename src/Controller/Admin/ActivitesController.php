@@ -13,6 +13,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/activites')]
 class ActivitesController extends AbstractController
 {
+    /**
+     * Permet de créer une nouvelle activité
+     *
+     * @param Request $request
+     * @param ActivitesRepository $activitesRepository
+     * @return Response
+     */
     #[Route('/new', name: 'app_admin_activites_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ActivitesRepository $activitesRepository): Response
     {

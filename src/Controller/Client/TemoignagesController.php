@@ -11,9 +11,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/client/temoignages')]
+#[Route('/profile/temoignages')]
 class TemoignagesController extends AbstractController {
 
+    /**
+     * Permet au client de donner son avis
+     * sur les services rendu
+     *
+     * @param Request $request
+     * @param TemoignagesRepository $temoignagesRepository
+     * @return Response
+     */
     #[Route('/new', name: 'app_client_temoignages_new', methods: ['GET', 'POST'])]
     public function new(Request $request, TemoignagesRepository $temoignagesRepository): Response
     {

@@ -13,12 +13,22 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 #[Route('/client/factures')]
 class FacturesController extends AbstractController {
 
+    /**
+     * Permet de lister les factures client
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_client_factures_index', methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('client/factures/index.html.twig');
     }
 
+    /**
+     * permet d'afficher une facture client
+     * 
+     * @param Factures $factures
+     */
     #[Route('/{slug}', name: 'app_client_factures_show', methods: ['GET'])]
     public function show(Factures $factures)
     {

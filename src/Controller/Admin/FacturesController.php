@@ -19,16 +19,37 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/factures')]
 class FacturesController extends AbstractController
 {
+    /**
+     * Permet de lister les factures
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_admin_factures_index', methods: ['GET'])]
-    public function index(FacturesRepository $facturesRepository): Response
+    public function index(): Response
     {
-        return $this->render('admin/factures/index.html.twig', [
-            'factures' => $facturesRepository->findAll(),
-        ]);
+        return $this->render('admin/factures/index.html.twig');
     }
 
+    /**
+     * Permet de créer une facture
+     *
+     * @param Request $request
+     * @param NotificationsRepository $notificationsRepository
+     * @param FacturesRepository $facturesRepository
+     * @param NumInvoiceService $numInvoiceService
+     * @param InvoiceService $invoiceService
+     * @param MailerService $mailer
+     * @return Response
+     */
     #[Route('/new', name: 'app_admin_factures_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, NotificationsRepository $notificationsRepository, FacturesRepository $facturesRepository, NumInvoiceService $numInvoiceService, InvoiceService $invoiceService, MailerService $mailer): Response
+    public function new(
+        Request $request, 
+        NotificationsRepository $notificationsRepository, 
+        FacturesRepository $facturesRepository, 
+        NumInvoiceService $numInvoiceService, 
+        InvoiceService $invoiceService, 
+        MailerService $mailer
+    ): Response
     {
         $facture = new Factures();
         $form = $this->createForm(FacturesType::class, $facture);
@@ -100,8 +121,11 @@ class FacturesController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet d'afficher une facture
+     */
     #[Route('/{slug}', name: 'app_admin_factures_show', methods: ['GET'])]
-    public function show(Factures $facture)
+    public function show(Factures $facture): void
     {
 
         $mime = "application/pdf";
@@ -111,9 +135,27 @@ class FacturesController extends AbstractController
             readfile($fichier);
     }
 
-
+    /**
+     * Permet d'éditer une facture
+     *
+     * @param Request $request
+     * @param Factures $facture
+     * @param NotificationsRepository $notificationsRepository
+     * @param FacturesRepository $facturesRepository
+     * @param NumInvoiceService $numInvoiceService
+     * @param InvoiceService $invoiceService
+     * @param MailerService $mailer
+     * @return Response
+     */
     #[Route('/{id}/edit', name: 'app_admin_factures_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Factures $facture, FacturesRepository $facturesRepository, NotificationsRepository $notificationsRepository, InvoiceService $invoiceService, MailerService $mailer): Response
+    public function edit(
+        Request $request, 
+        Factures $facture, 
+        FacturesRepository $facturesRepository, 
+        NotificationsRepository $notificationsRepository, 
+        InvoiceService $invoiceService, 
+        MailerService $mailer
+    ): Response
     {
         $form = $this->createForm(FacturesType::class, $facture);
         $form->handleRequest($request);

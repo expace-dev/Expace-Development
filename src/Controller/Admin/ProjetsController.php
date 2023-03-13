@@ -2,12 +2,10 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Documents;
 use DateTime;
 use App\Entity\Projets;
 use App\Entity\Notifications;
 use App\Form\Admin\ProjetsType;
-use App\Repository\DocumentsRepository;
 use App\Repository\NotificationsRepository;
 use App\Services\MailerService;
 use App\Repository\ProjetsRepository;
@@ -19,12 +17,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/projets')]
 class ProjetsController extends AbstractController
 {
+    /**
+     * Permet de lister les projets
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_admin_projets_index', methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('admin/projets/index.html.twig');
     }
 
+    /**
+     * Permet de créer un projet
+     *
+     * @param Request $request
+     * @param ProjetsRepository $projetsRepository
+     * @return Response
+     */
     #[Route('/new', name: 'app_admin_projets_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ProjetsRepository $projetsRepository): Response
     {
@@ -50,6 +60,16 @@ class ProjetsController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet d'éditer un projet
+     *
+     * @param Request $request
+     * @param Projets $projet
+     * @param ProjetsRepository $projetsRepository
+     * @param MailerService $mailer
+     * @param NotificationsRepository $notificationsRepository
+     * @return Response
+     */
     #[Route('/{id}/edit', name: 'app_admin_projets_edit', methods: ['GET', 'POST'])]
     public function edit(
         Request $request, 
@@ -159,6 +179,14 @@ class ProjetsController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de supprimer un projet
+     *
+     * @param Request $request
+     * @param Projets $projet
+     * @param ProjetsRepository $projetsRepository
+     * @return Response
+     */
     #[Route('/{id}/delete', name: 'app_admin_projets_delete', methods: ['GET'])]
     public function delete(Projets $projet, ProjetsRepository $projetsRepository): Response
     {
@@ -176,6 +204,14 @@ class ProjetsController extends AbstractController
         return $this->redirectToRoute('app_admin_projets_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    /**
+     * Permet de modifier le statut d'un projet
+     *
+     * @param Request $request
+     * @param Projets $projet
+     * @param ProjetsRepository $projetsRepository
+     * @return Response
+     */
     #[Route('/{id}/update-statut', name: 'app_admin_projets_update', methods: ['GET'])]
     public function update(Request $request, Projets $projet, ProjetsRepository $projetsRepository): Response
     {
@@ -188,8 +224,14 @@ class ProjetsController extends AbstractController
         return $this->redirectToRoute('app_admin_projets_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    /**
+     * Permet de voir la proposition commerciale d'un projet
+     *
+     * @param Projets $projet
+     * @return void
+     */
     #[Route('/voir/proposition-commerciale/{slug}', name: 'app_admin_projets_voir_pc', methods: ['GET'])]
-    public function viewPropositionCommerciale(Projets $projet)
+    public function viewPropositionCommerciale(Projets $projet): void
     {
 
         $mime = "application/pdf";
@@ -200,6 +242,12 @@ class ProjetsController extends AbstractController
             readfile($fichier);
     }
 
+    /**
+     * Permet de voir le cahier des charges d'un projet
+     *
+     * @param Projets $projet
+     * @return void
+     */
     #[Route('/voir/cahier-des-charges/{slug}', name: 'app_admin_projets_voir_cdc', methods: ['GET'])]
     public function viewCahierDesCharges(Projets $projet)
     {

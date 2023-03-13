@@ -17,14 +17,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/portfolios')]
 class PortfoliosController extends AbstractController
 {
+    /**
+     * Permet de lister les réalisations
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_admin_portfolios_index', methods: ['GET'])]
-    public function index(PortfoliosRepository $portfoliosRepository): Response
+    public function index(): Response
     {
-        return $this->render('admin/portfolios/index.html.twig', [
-            'portfolios' => $portfoliosRepository->findAll(),
-        ]);
+        return $this->render('admin/portfolios/index.html.twig');
     }
 
+    /**
+     * Permet de créer une réalisation
+     *
+     * @param Request $request
+     * @param PortfoliosRepository $portfoliosRepository
+     * @param UploadService $uploadService
+     * @return Response
+     */
     #[Route('/new', name: 'app_admin_portfolios_new', methods: ['GET', 'POST'])]
     public function new(Request $request, PortfoliosRepository $portfoliosRepository, UploadService $uploadService): Response
     {
@@ -60,8 +71,22 @@ class PortfoliosController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet d'éditer une réalisation
+     *
+     * @param Request $request
+     * @param Portfolios $portfolio
+     * @param PortfoliosRepository $portfoliosRepository
+     * @param UploadService $uploadService
+     * @return Response
+     */
     #[Route('/{id}/edit', name: 'app_admin_portfolios_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Portfolios $portfolio, PortfoliosRepository $portfoliosRepository, UploadService $uploadService): Response
+    public function edit(
+        Request $request, 
+        Portfolios $portfolio, 
+        PortfoliosRepository $portfoliosRepository, 
+        UploadService $uploadService
+    ): Response
     {
         $form = $this->createForm(PortfoliosType::class, $portfolio);
         $form->handleRequest($request);
@@ -97,8 +122,15 @@ class PortfoliosController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de supprimer une réalisation
+     *
+     * @param Portfolios $portfolio
+     * @param PortfoliosRepository $portfoliosRepository
+     * @return Response
+     */
     #[Route('/{id}/delete', name: 'app_admin_portfolios_delete', methods: ['GET'])]
-    public function delete(Request $request, Portfolios $portfolio, PortfoliosRepository $portfoliosRepository): Response
+    public function delete(Portfolios $portfolio, PortfoliosRepository $portfoliosRepository): Response
     {
         $portfoliosRepository->remove($portfolio, true);
 
@@ -107,6 +139,14 @@ class PortfoliosController extends AbstractController
         return $this->redirectToRoute('app_admin_portfolios_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    /**
+     * Permet de supprimer une image de la réalisation
+     *
+     * @param Request $request
+     * @param ImagesPortfolios $image
+     * @param ImagesPortfoliosRepository $imagesPortfoliosRepository
+     * @return JsonResponse
+     */
     #[Route('/image/supprime/{id}', name: 'app_admin_portfolios_image_delete', methods: ['DELETE'])]
     public function deleteImage(Request $request, ImagesPortfolios $image, ImagesPortfoliosRepository $imagesPortfoliosRepository) {
 
@@ -121,7 +161,7 @@ class PortfoliosController extends AbstractController
             return new JsonResponse(['success' => 1]);
         }
         else {
-            return new JsonResponse(['error' => 'Token invalide'], 400);
+            return new JsonResponse(['error' => 'Token invalide'], 403);
         }
 
     }

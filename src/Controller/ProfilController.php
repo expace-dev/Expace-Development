@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
-use App\Form\UsersType;
 use App\Form\ProfilType;
 use App\Form\CredentialsType;
 use App\Repository\UsersRepository;
@@ -12,9 +10,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/panel/profil')]
+#[Route('/profile/profil')]
 class ProfilController extends AbstractController
 {
+    /**
+     * Permet de modifier le profil
+     *
+     * @param Request $request
+     * @param UsersRepository $usersRepository
+     * @return Response
+     */
     #[Route('/edit', name: 'app_profil_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, UsersRepository $usersRepository): Response
     {

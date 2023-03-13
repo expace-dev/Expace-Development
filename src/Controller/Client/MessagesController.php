@@ -15,19 +15,36 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-#[Route('/panel/messagerie')]
+#[Route('/profile/messagerie')]
 class MessagesController extends AbstractController
 {
+    /**
+     * Permet de lister les messages
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_client_messages_index', methods: ['GET'])]
-    public function index(MessagesRepository $messagesRepository): Response
+    public function index(): Response
     {
-        return $this->render('client/messages/index.html.twig', [
-            'messages' => $messagesRepository->findAll(),
-        ]);
+        return $this->render('client/messages/index.html.twig');
     }
 
+    /**
+     * Permet de créer un message
+     *
+     * @param Request $request
+     * @param MessagesRepository $messagesRepository
+     * @param UsersRepository $usersRepository
+     * @param UploadService $uploadService
+     * @return Response
+     */
     #[Route('/new', name: 'app_client_messages_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, MessagesRepository $messagesRepository, UsersRepository $usersRepository, UploadService $uploadService): Response
+    public function new(
+        Request $request, 
+        MessagesRepository $messagesRepository, 
+        UsersRepository $usersRepository, 
+        UploadService $uploadService
+    ): Response
     {
         $message = new Messages();
         $form = $this->createForm(MessagesType::class, $message);
@@ -67,6 +84,13 @@ class MessagesController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de lire un message
+     *
+     * @param Messages $message
+     * @param MessagesRepository $messagesRepository
+     * @return Response
+     */
     #[Route('/lire/{id}', name: 'app_client_messages_show', methods: ['GET'])]
     public function show(Messages $message, MessagesRepository $messagesRepository): Response
     {
@@ -82,14 +106,18 @@ class MessagesController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de voir une pièce jointe
+     *
+     * @param DocsMessages $docsMessages
+     * @return void
+     */
     #[Route('/document/{nom}', name: 'app_client_messages_voir_doc', methods: ['GET'])]
-    public function document(DocsMessages $docsMessages)
+    public function document(DocsMessages $docsMessages): void
     {
-/*
-        if ($docsMessages->getSender() !== $this->getUser()) {
+        if ($docsMessages->getMessage()->getRecipient() !== $this->getUser()) {
             throw new AccessDeniedException("Vous n'avez pas l'autorisation d'accéder à cette page");
         }
-*/
 
         
         $document = '/' .$docsMessages->getUrl();
@@ -119,17 +147,28 @@ class MessagesController extends AbstractController
   
     }
 
+    /**
+     * Permet de voir une pièce jointe
+     *
+     * @param Request $request
+     * @param Messages $parent
+     * @param MessagesRepository $messagesRepository
+     * @param UploadService $uploadService
+     * @return Response
+     */
     #[Route('/repondre/{id}', name: 'app_client_messages_reponse', methods: ['GET', 'POST'])]
-    public function response(Request $request, Messages $parent, MessagesRepository $messagesRepository, UploadService $uploadService): Response
+    public function response(
+        Request $request, 
+        Messages $parent, 
+        MessagesRepository $messagesRepository, 
+        UploadService $uploadService
+    ): Response
     {
         $message = new Messages();
         $message->setSujet('Re: ' .$parent->getSujet());
         $message->setSender($this->getUser());
         $message->setMessage('<br>' .$parent->getMessage());
         $message->setRecipient($parent->getSender());
-        //dd($parent->getSender()->getNom());
-        //$test = 'Votre réponse<br>merci';
-        //$message->setMessage(nl2br("foo isn't\n bar"));
 
         $form = $this->createForm(MessagesType::class, $message);
         $form->handleRequest($request);

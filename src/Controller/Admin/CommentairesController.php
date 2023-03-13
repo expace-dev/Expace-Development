@@ -13,14 +13,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/blog/commentaires')]
 class CommentairesController extends AbstractController
 {
+    /**
+     * Permet de lister les commentaires du blog
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_admin_comments_blog_index', methods: ['GET'])]
-    public function commentsIndex(CommentsRepository $commentsRepository): Response
+    public function commentsIndex(): Response
     {
-        return $this->render('admin/blog/commentaires/index.html.twig', [
-            'comments' => $commentsRepository->findAll(),
-        ]);
+        return $this->render('admin/blog/commentaires/index.html.twig');
     }
 
+    /**
+     * Permet d'éditer les commentaires du blig
+     * 
+     * @param Request $request
+     * @param Comments $comment
+     * @param CommentsRepository $commentsRepository
+     * @return Response
+     * 
+     */
     #[Route('/{id}/edit', name: 'app_admin_comments_blog_edit', methods: ['GET', 'POST'])]
     public function commentsEdit(Request $request, Comments $comment, CommentsRepository $commentsRepository): Response
     {
@@ -41,6 +53,13 @@ class CommentairesController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de supprimmer un commentaire
+     * 
+     * @param Comments $comment
+     * @param CommentsRepository $commentsRepository
+     * @return Response
+     */
     #[Route('/delete/{id}', name: 'app_admin_comments_blog_delete', methods: ['GET'])]
     public function commentsDelete(Comments $comment, CommentsRepository $commentsRepository): Response
     {

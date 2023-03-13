@@ -12,14 +12,25 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 #[Route('/client/devis')]
 class DevisController extends AbstractController {
 
+    /**
+     * Permet de lister les devis client
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_client_devis_index', methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('client/devis/index.html.twig');
     }
 
+    /**
+     * Permet d'afficher un devis client
+     * 
+     * @param Devis $devis
+     * @return void
+     */
     #[Route('/{slug}', name: 'app_client_devis_show', methods: ['GET'])]
-    public function show(Devis $devis)
+    public function show(Devis $devis): void
     {
 
         if ($devis->getClient() !== $this->getUser()) {

@@ -18,14 +18,33 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 #[Route('/profile/projets')]
 class ProjetsController extends AbstractController
 {
+    /**
+     * Permet de lister les projets d'un client
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_client_projets_index', methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('client/projets/index.html.twig');
     }
 
+    /**
+     * Permet de créer un projet
+     *
+     * @param Request $request
+     * @param ProjetsRepository $projetsRepository
+     * @param NotificationsRepository $notificationsRepository
+     * @param UsersRepository $usersRepository
+     * @return Response
+     */
     #[Route('/new', name: 'app_client_projets_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ProjetsRepository $projetsRepository, NotificationsRepository $notificationsRepository, UsersRepository $usersRepository): Response
+    public function new(
+        Request $request, 
+        ProjetsRepository $projetsRepository, 
+        NotificationsRepository $notificationsRepository, 
+        UsersRepository $usersRepository
+    ): Response
     {
         $projet = new Projets();
         $form = $this->createForm(ProjetsType::class, $projet);
@@ -56,10 +75,6 @@ class ProjetsController extends AbstractController
                 $notificationsRepository->save($notification, true);
             }
 
-            
-
-            
-
             $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Votre projet a été enregistré avec succès');
 
             return $this->redirectToRoute('app_client_projets_index', [], Response::HTTP_SEE_OTHER);
@@ -71,6 +86,14 @@ class ProjetsController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet d'éditer un projet
+     *
+     * @param Request $request
+     * @param Projets $projet
+     * @param ProjetsRepository $projetsRepository
+     * @return Response
+     */
     #[Route('/edit/{slug}', name: 'app_client_projets_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Projets $projet, ProjetsRepository $projetsRepository): Response
     {
@@ -103,8 +126,15 @@ class ProjetsController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de supprimer un projet
+     *
+     * @param Projets $projet
+     * @param ProjetsRepository $projetsRepository
+     * @return Response
+     */
     #[Route('/{slug}/delete', name: 'app_client_projets_delete', methods: ['GET'])]
-    public function delete(Request $request, Projets $projet, ProjetsRepository $projetsRepository): Response
+    public function delete(Projets $projet, ProjetsRepository $projetsRepository): Response
     {
         if ($projet->getClient() !== $this->getUser()) {
             throw new AccessDeniedException("Vous n'avez pas l'autorisation d'accéder à cette page");
@@ -121,8 +151,14 @@ class ProjetsController extends AbstractController
         return $this->redirectToRoute('app_client_projets_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    /**
+     * Permet de voir la proposition commerciale
+     *
+     * @param Projets $projet
+     * @return void
+     */
     #[Route('/voir/proposition-commerciale/{slug}', name: 'app_client_projets_voir_pc', methods: ['GET'])]
-    public function viewPropositionCommerciale(Projets $projet)
+    public function viewPropositionCommerciale(Projets $projet): void
     {
         if ($projet->getClient() !== $this->getUser()) {
             throw new AccessDeniedException("Vous n'avez pas l'autorisation d'accéder à cette page");
@@ -136,8 +172,14 @@ class ProjetsController extends AbstractController
             readfile($fichier);
     }
 
+    /**
+     * Permet de voir le cahier des charges
+     *
+     * @param Projets $projet
+     * @return void
+     */
     #[Route('/voir/cahier-des-charges/{slug}', name: 'app_client_projets_voir_cdc', methods: ['GET'])]
-    public function viewCahierDesCharges(Projets $projet)
+    public function viewCahierDesCharges(Projets $projet): void
     {
         if ($projet->getClient() !== $this->getUser()) {
             throw new AccessDeniedException("Vous n'avez pas l'autorisation d'accéder à cette page");

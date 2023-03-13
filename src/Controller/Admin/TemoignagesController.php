@@ -13,14 +13,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/temoignages')]
 class TemoignagesController extends AbstractController
 {
+    /**
+     * Permet de lister les témoignages client
+     *
+     * @return Response
+     */
     #[Route('/', name: 'app_admin_temoignages_index', methods: ['GET'])]
-    public function index(TemoignagesRepository $temoignagesRepository): Response
+    public function index(): Response
     {
-        return $this->render('admin/temoignages/index.html.twig', [
-            'temoignages' => $temoignagesRepository->findAll(),
-        ]);
+        return $this->render('admin/temoignages/index.html.twig');
     }
 
+    /**
+     * Permet d'éditer un témoignage client
+     * 
+     * @param Request $request
+     * @param Temoignages $temoignage
+     * @param TemoignagesRepository $temoignagesRepository
+     * @return Response
+     */
     #[Route('/{id}/edit', name: 'app_admin_temoignages_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Temoignages $temoignage, TemoignagesRepository $temoignagesRepository): Response
     {
@@ -41,8 +52,15 @@ class TemoignagesController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de supprimer un témoignage client
+     * 
+     * @param Temoignages $temoignage
+     * @param TemoignagesRepository $temoignagesRepository
+     * @return Response
+     */
     #[Route('/delete/{id}', name: 'app_admin_temoignages_delete', methods: ['GET'])]
-    public function delete(Request $request, Temoignages $temoignage, TemoignagesRepository $temoignagesRepository): Response
+    public function delete(Temoignages $temoignage, TemoignagesRepository $temoignagesRepository): Response
     {
         $temoignagesRepository->remove($temoignage, true);
 
@@ -51,8 +69,15 @@ class TemoignagesController extends AbstractController
         return $this->redirectToRoute('app_admin_temoignages_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    /**
+     * Permet d'activer ou désactiver un témoignage client
+     * 
+     * @param Temoignages $temoignage
+     * @param TemoignagesRepository $temoignagesRepository
+     * @return Response
+     */
     #[Route('/update/{id}', name: 'app_admin_temoignages_update', methods: ['GET'])]
-    public function update(Request $request, Temoignages $temoignage, TemoignagesRepository $temoignagesRepository): Response
+    public function update(Temoignages $temoignage, TemoignagesRepository $temoignagesRepository): Response
     {
         if ($temoignage->isActif() === true) {
 

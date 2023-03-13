@@ -17,15 +17,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/articles')]
 class BlogController extends AbstractController
 {
-
-
-    
     /**
      * Permet de lister les articles
      *
-     * @param Request $request
-     * @param ArticlesRepository $articlesRepository
-     * @param CategoriesRepository $categoriesRepository
      * @return Response
      */
     #[Route('/', name: 'app_blog_index', methods: ['GET', 'POST'])]
@@ -47,12 +41,14 @@ class BlogController extends AbstractController
 
     /**
      * Permet d'afficher un article en particulier
+     * 
+     * @param Request $request
+     * @param Articles $article
+     * @param EntityManagerInterface $manager
      */
     #[Route('/details/{id}', name: 'app_blog_show', methods: ['GET', 'POST'])]
-    public function show($id, CategoriesRepository $categoriesRepository, ArticlesRepository $articlesRepository, Request $request, Articles $article, EntityManagerInterface $manager): Response
+    public function show(Request $request, Articles $article, EntityManagerInterface $manager): Response
     {
-
-        
 
         $commentaires = new Comments();
         $form = $this->createForm(CommentType::class, $commentaires);
