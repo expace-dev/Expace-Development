@@ -27,7 +27,7 @@
                 {% for article in this.allArticles.data %}
                     <tr>
                         <td>{{ article.title }}</td>
-                        <td>{{ article.date ? article.date|format_datetime(locale='fr',pattern="dd MMMM YYYY") : '' }}</td>
+                        <td>{{ article.date|date('d-m-Y') }}</td>
                         <td class="text-end">
                             <div class="btn-group">
                                 <a href="{{ path('app_admin_blog_edit', {'id': article.id}) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>

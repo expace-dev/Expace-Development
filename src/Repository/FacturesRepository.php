@@ -48,6 +48,7 @@ class FacturesRepository extends ServiceEntityRepository
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('u')
             ->from('App\Entity\Factures', 'u')
+            ->orderBy('u.createdAt', 'DESC')
             ->setMaxResults($limit)
             ->setFirstResult(($page * $limit) - $limit);
 

@@ -48,6 +48,7 @@ class DevisRepository extends ServiceEntityRepository
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('u')
             ->from('App\Entity\Devis', 'u')
+            ->orderBy('u.date', 'DESC')
             ->setMaxResults($limit)
             ->setFirstResult(($page * $limit) - $limit);
 

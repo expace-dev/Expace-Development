@@ -3,7 +3,7 @@
 namespace App\Components;
 
 use App\Entity\Portfolios;
-use App\Form\Admin\PortfoliosType;
+use App\Form\Admin\PortfoliosCreateType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
@@ -11,8 +11,8 @@ use Symfony\UX\LiveComponent\LiveCollectionTrait;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[AsLiveComponent('portfolios_form_admin')]
-class PortfoliosFormAdminComponent extends AbstractController {
+#[AsLiveComponent('portfolios_create_admin')]
+class PortfoliosCreateAdminComponent extends AbstractController {
 
     use LiveCollectionTrait;
     use DefaultActionTrait;
@@ -22,6 +22,6 @@ class PortfoliosFormAdminComponent extends AbstractController {
 
     protected function instantiateForm(): FormInterface
     {
-        return $this->createForm(PortfoliosType::class, $this->portfolio);
+        return $this->createForm(PortfoliosCreateType::class, $this->portfolio);
     }
 }

@@ -21,7 +21,10 @@ class NotificationsCountComponent {
     }
 
     public function getAllNotifications(): int {
-        return $this->notificationsRepository->count(['recipient' => $this->id]);
+        return $this->notificationsRepository->count([
+            'recipient' => $this->id,
+            'lu' => false
+        ]);
     }
     
 }

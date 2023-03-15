@@ -31,6 +31,16 @@ class Notifications
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
 
+    #[ORM\Column]
+    private ?bool $lu = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $type = null;
+
+    public function __construct()
+    {
+        $this->lu = false;
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -95,4 +105,29 @@ class Notifications
 
         return $this;
     }
+
+    public function isLu(): ?bool
+    {
+        return $this->lu;
+    }
+
+    public function setLu(bool $lu): self
+    {
+        $this->lu = $lu;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
 }

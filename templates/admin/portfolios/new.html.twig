@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% if app.request.attributes.get('_route') == 'app_admin_portfolios_edit' %}
+    {% set titre = 'Editer le projet' %}
+{% else %}
+    {% set titre = 'Créer un projet' %}
+{% endif %}
+
+{% block title %}{{ titre }}{% endblock %}
+
+{% block body %}
+    {{ component('breadcrumbs', {'title': block('title')}) }}
+
+    <section class="auth">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="info-box mb-4">
+                    <div class="container mt-3">
+                        {% for label, messages in app.flashes %}
+                            <div class="alert alert-{{ label }}">
+                                {% for message in messages %}
+                                    {{ message | raw }}    
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        {{ component('portfolios_create_admin', {
+                            portfolio: portfolio.id ? portfolio: null,
+                            form: form
+                        }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -5,7 +5,8 @@ namespace App\Controller\Admin;
 use App\Entity\Portfolios;
 use App\Services\UploadService;
 use App\Entity\ImagesPortfolios;
-use App\Form\Admin\PortfoliosType;
+use App\Form\Admin\PortfoliosCreateType;
+use App\Form\Admin\PortfoliosEditType;
 use App\Repository\PortfoliosRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ImagesPortfoliosRepository;
@@ -40,10 +41,11 @@ class PortfoliosController extends AbstractController
     public function new(Request $request, PortfoliosRepository $portfoliosRepository, UploadService $uploadService): Response
     {
         $portfolio = new Portfolios();
-        $form = $this->createForm(PortfoliosType::class, $portfolio);
+        $form = $this->createForm(PortfoliosCreateType::class, $portfolio);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
 
             $fichiers = $form->get('imagesPortfolios')->getData();
             $directory = 'portfolios_directory';
@@ -65,7 +67,7 @@ class PortfoliosController extends AbstractController
             $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span> Des erreurs subsistent, veuillez modifier votre saisie');
         }
 
-        return $this->render('admin/portfolios/edit.html.twig', [
+        return $this->render('admin/portfolios/new.html.twig', [
             'portfolio' => $portfolio,
             'form' => $form,
         ]);
@@ -88,7 +90,7 @@ class PortfoliosController extends AbstractController
         UploadService $uploadService
     ): Response
     {
-        $form = $this->createForm(PortfoliosType::class, $portfolio);
+        $form = $this->createForm(PortfoliosEditType::class, $portfolio);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

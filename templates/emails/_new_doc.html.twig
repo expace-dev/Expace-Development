@@ -3,11 +3,9 @@
 <p>
     Bonjour {{ prenom }},<br><br>
 
-    Nous venons de déposer {% if document == 'cahier des charges' or document == 'Devis' %}le{% else %}la{% endif %}
-     {{document}} concernant votre projet web.<br>
-    Vous trouverez ce document en pièce jointe de cet email.<br><br>
+    Vous venez de recevoir une nouvelle notification <b>"{{message}}"</b><br><br>
 
-    Vous pouvez également {% if document == 'cahier des charges' or document == 'Devis' %}le{% else %}la{% endif %} retrouver sur votre espace client.
+    Vous pouvez retrouver cette notification en <a href="http://127.0.0.1:8000/profile/notifications/">cliquand ici</a> 
 
 </p>
 

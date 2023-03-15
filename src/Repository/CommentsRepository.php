@@ -48,6 +48,7 @@ class CommentsRepository extends ServiceEntityRepository
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('u')
             ->from('App\Entity\Comments', 'u')
+            ->orderBy('u.createdAt', 'DESC')
             ->setMaxResults($limit)
             ->setFirstResult(($page * $limit) - $limit);
 

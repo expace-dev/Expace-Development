@@ -3,10 +3,10 @@
 namespace App\Form\Admin;
 
 use App\Entity\Projets;
-use App\Form\UsersAutocompleteField;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
+use App\Form\Autocomplete\UsersAutocompleteField;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotNull;

@@ -51,6 +51,7 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('u')
             ->from('App\Entity\Users', 'u')
+            ->orderBy('u.nom', 'ASC')
             ->setMaxResults($limit)
             ->setFirstResult(($page * $limit) - $limit);
 

@@ -16,7 +16,7 @@
             <tr>
                 <th>Article</th>
                 <th>Auteur</th>
-                <th>CreatedAt</th>
+                <th>Date</th>
                 <th>Actif</th>
                 <th class="text-end"><select name="search_limit" class="search_limit" style="width: 60px;"><option value="5">5</option><option value="15" selected="selected">15</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="999999999">all</option></select></th>
             </tr>
@@ -27,7 +27,7 @@
                     <tr>
                         <td>{{ commentaire.articles.title }}</td>
                         <td>{{ commentaire.auteur.username }}</td>
-                        <td>{{ commentaire.createdAt ? commentaire.createdAt|date('j F Y') : '' }}</td>
+                        <td>{{ commentaire.createdAt|date('d-m-Y') }}</td>
                         <td>{{ commentaire.active ? 'Oui' : 'Non' }}</td>
                         <td class="text-end">
                             <div class="btn-group">

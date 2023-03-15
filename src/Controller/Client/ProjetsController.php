@@ -4,11 +4,12 @@ namespace App\Controller\Client;
 
 use DateTime;
 use App\Entity\Projets;
+use Cocur\Slugify\Slugify;
 use App\Entity\Notifications;
 use App\Form\Client\ProjetsType;
+use App\Repository\UsersRepository;
 use App\Repository\ProjetsRepository;
 use App\Repository\NotificationsRepository;
-use App\Repository\UsersRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -56,6 +57,9 @@ class ProjetsController extends AbstractController
             $projet->setStatut('ouverture');
             $projet->setClient($this->getUser());
 
+            $slugify = new Slugify();
+
+
             $projetsRepository->save($projet, true);
 
             $users = $usersRepository->findAllUsers('["ROLE_ADMIN"]');
@@ -68,8 +72,9 @@ class ProjetsController extends AbstractController
                 $notification->setSender($this->getUser())
                             ->setRecipient($user)
                             ->setMessage('Réception d\'un nouveau projet')
-                            ->setDocument('teste')
-                            ->setCreatedAt(new DateTime());
+                            ->setDocument($slugify->slugify($projet->getTitre()))
+                            ->setCreatedAt(new DateTime())
+                            ->setType('projet');
 
 
                 $notificationsRepository->save($notification, true);
@@ -113,9 +118,9 @@ class ProjetsController extends AbstractController
 
             
             
-                $projetsRepository->save($projet, true);
+            $projetsRepository->save($projet, true);
 
-                $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Votre projet a été enregistré avec succès');
+            $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Votre projet a été enregistré avec succès');
 
             return $this->redirectToRoute('app_client_projets_index', [], Response::HTTP_SEE_OTHER);
         }

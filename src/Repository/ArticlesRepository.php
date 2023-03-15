@@ -48,6 +48,7 @@ class ArticlesRepository extends ServiceEntityRepository
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('a')
             ->from('App\Entity\Articles', 'a')
+            ->orderBy('a.date', 'DESC')
             ->setMaxResults($limit)
             ->setFirstResult(($page * $limit) - $limit);
 

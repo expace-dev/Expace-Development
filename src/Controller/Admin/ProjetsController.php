@@ -4,11 +4,13 @@ namespace App\Controller\Admin;
 
 use DateTime;
 use App\Entity\Projets;
+use Cocur\Slugify\Slugify;
 use App\Entity\Notifications;
 use App\Form\Admin\ProjetsType;
-use App\Repository\NotificationsRepository;
 use App\Services\MailerService;
 use App\Repository\ProjetsRepository;
+use App\Services\NotificationService;
+use App\Repository\NotificationsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,6 +19,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/projets')]
 class ProjetsController extends AbstractController
 {
+    /**
+     * 
+     *
+     * @param ProjetsRepository $projetsRepository
+     * @param MailerService $mailer
+     * @param NotificationsRepository $notificationsRepository
+     */
+    public function __construct(
+        private ProjetsRepository $projetsRepository,
+        private MailerService $mailer, 
+        private NotificationService $notificationService,
+    )
+    {
+        
+    }
     /**
      * Permet de lister les projets
      *
@@ -32,11 +49,10 @@ class ProjetsController extends AbstractController
      * Permet de créer un projet
      *
      * @param Request $request
-     * @param ProjetsRepository $projetsRepository
      * @return Response
      */
     #[Route('/new', name: 'app_admin_projets_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ProjetsRepository $projetsRepository): Response
+    public function new(Request $request): Response
     {
         $projet = new Projets();
         $form = $this->createForm(ProjetsType::class, $projet);
@@ -47,7 +63,7 @@ class ProjetsController extends AbstractController
             $projet->setCreatedAt(new DateTime());
             $projet->setStatut('ouverture');
 
-            $projetsRepository->save($projet, true);
+            $this->projetsRepository->save($projet, true);
 
             $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Le projet a été enregistré avec succès');
 
@@ -65,19 +81,10 @@ class ProjetsController extends AbstractController
      *
      * @param Request $request
      * @param Projets $projet
-     * @param ProjetsRepository $projetsRepository
-     * @param MailerService $mailer
-     * @param NotificationsRepository $notificationsRepository
      * @return Response
      */
     #[Route('/{id}/edit', name: 'app_admin_projets_edit', methods: ['GET', 'POST'])]
-    public function edit(
-        Request $request, 
-        Projets $projet, 
-        ProjetsRepository $projetsRepository, 
-        MailerService $mailer, 
-        NotificationsRepository $notificationsRepository,
-    ): Response
+    public function edit(Request $request, Projets $projet): Response
     {
         $form = $this->createForm(ProjetsType::class, $projet);
         $form->handleRequest($request);
@@ -87,6 +94,7 @@ class ProjetsController extends AbstractController
 
             $propositionCommercial = $form->get('propositionCommercial')->getData();
             $titre = str_replace(" ", "-", $projet->getTitre());
+            $slugify = new Slugify();
             
             if ($propositionCommercial) {
                 
@@ -98,33 +106,14 @@ class ProjetsController extends AbstractController
                 $projet->setPropositionCommercial('documents/propositions_commerciales/' .$fichier);
 
 
-                $mailer->sendDocument(
-                    from: 'noreply@expace-development.fr',
-                    name: 'Expace Development',
-                    to: $projet->getClient()->getEmail(),
-                    template: 'emails/_new_doc.html.twig',
-                    subject: 'Nouveau document',
-                    attache: $this->getParameter('propositions_commerciales_directory') . '/' . $fichier,
-                    mime: 'application/pdf',
-                    docAttache: 'Proposition-commerciale.pdf',
-                    client: $projet->getClient()->getPrenom(),
-                    document: 'proposition commerciale'
+                $this->notificationService->addNotification(
+                    sender: $this->getUser(),
+                    recipient: $projet->getClient(),
+                    message: 'Réception d\'une proposition commerciale',
+                    document: $slugify->slugify($projet->getTitre()),
+                    type: 'proposition_commenciale'
                 );
-
-                $notification = new Notifications();
-
-
-                $notification->setSender($this->getUser())
-                            ->setRecipient($projet->getClient())
-                            ->setMessage('Réception d\'une proposition commerciale')
-                            ->setDocument('teste')
-                            ->setCreatedAt(new DateTime());
-
-                $notificationsRepository->save($notification, true);
-
-
             }
-            
 
             $cahierCharge = $form->get('cahierCharge')->getData();
             if ($cahierCharge) {
@@ -135,34 +124,21 @@ class ProjetsController extends AbstractController
                 );
                 $projet->setCahierCharge('documents/cahiers_charges/' .$fichier);
 
-                $mailer->sendDocument(
-                    from: 'noreply@expace-development.fr',
-                    name: 'Expace Development',
-                    to: $projet->getClient()->getEmail(),
-                    template: 'emails/_new_doc.html.twig',
-                    subject: 'Nouveau document',
-                    attache: $this->getParameter('cahiers_charges_directory') . '/' . $fichier,
-                    mime: 'application/pdf',
-                    docAttache: 'Cahier-des-charges.pdf',
-                    client: $projet->getClient()->getPrenom(),
-                    document: 'cahier des charges'
+
+                $this->notificationService->addNotification(
+                    sender: $this->getUser(),
+                    recipient: $projet->getClient(),
+                    message: 'Réception d\'un cahier des charges',
+                    document: $slugify->slugify($projet->getTitre()),
+                    type: 'cahier_charges'
                 );
 
-                $notification = new Notifications();
 
-
-                $notification->setSender($this->getUser())
-                            ->setRecipient($projet->getClient())
-                            ->setMessage('Réception d\'un cahier des charges')
-                            ->setDocument('teste')
-                            ->setCreatedAt(new DateTime());
-
-                $notificationsRepository->save($notification, true);
             }
             
             
 
-            $projetsRepository->save($projet, true);
+            $this->projetsRepository->save($projet, true);
 
             $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Le projet a été enregistré avec succès');
 
@@ -188,13 +164,13 @@ class ProjetsController extends AbstractController
      * @return Response
      */
     #[Route('/{id}/delete', name: 'app_admin_projets_delete', methods: ['GET'])]
-    public function delete(Projets $projet, ProjetsRepository $projetsRepository): Response
+    public function delete(Projets $projet): Response
     {
         if ($projet->getStatut() === 'ouverture') {
 
             $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Le projet a été supprimé avec succès');
 
-            $projetsRepository->remove($projet, true);
+            $this->projetsRepository->remove($projet, true);
         }
         else {
             $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Ce projet ne peut plus être supprimmé');
@@ -213,11 +189,11 @@ class ProjetsController extends AbstractController
      * @return Response
      */
     #[Route('/{id}/update-statut', name: 'app_admin_projets_update', methods: ['GET'])]
-    public function update(Request $request, Projets $projet, ProjetsRepository $projetsRepository): Response
+    public function update(Request $request, Projets $projet): Response
     {
 
           $projet->setStatut($request->query->get('statut'));
-          $projetsRepository->save($projet, true);
+          $this->projetsRepository->save($projet, true);
 
           $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Le projet a été modifié avec succès');
 

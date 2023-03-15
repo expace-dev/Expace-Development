@@ -2,15 +2,12 @@
 
 namespace App\Controller\Admin;
 
-use DateTime;
 use App\Entity\Factures;
-use App\Entity\Notifications;
-use App\Services\MailerService;
 use App\Form\Admin\FacturesType;
 use App\Services\InvoiceService;
 use App\Services\NumInvoiceService;
 use App\Repository\FacturesRepository;
-use App\Repository\NotificationsRepository;
+use App\Services\NotificationService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +16,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/factures')]
 class FacturesController extends AbstractController
 {
+    /**
+     * 
+     *
+     * @param FacturesRepository $facturesRepository
+     * @param NumInvoiceService $numInvoiceService
+     * @param InvoiceService $invoiceService
+     * @param NotificationService $notificationService
+     */
+    public function __construct(
+        private FacturesRepository $facturesRepository, 
+        private NumInvoiceService $numInvoiceService, 
+        private InvoiceService $invoiceService, 
+        private NotificationService $notificationService,
+    )
+    {
+        
+    }
     /**
      * Permet de lister les factures
      *
@@ -33,23 +47,10 @@ class FacturesController extends AbstractController
     /**
      * Permet de créer une facture
      *
-     * @param Request $request
-     * @param NotificationsRepository $notificationsRepository
-     * @param FacturesRepository $facturesRepository
-     * @param NumInvoiceService $numInvoiceService
-     * @param InvoiceService $invoiceService
-     * @param MailerService $mailer
      * @return Response
      */
     #[Route('/new', name: 'app_admin_factures_new', methods: ['GET', 'POST'])]
-    public function new(
-        Request $request, 
-        NotificationsRepository $notificationsRepository, 
-        FacturesRepository $facturesRepository, 
-        NumInvoiceService $numInvoiceService, 
-        InvoiceService $invoiceService, 
-        MailerService $mailer
-    ): Response
+    public function new(Request $request): Response
     {
         $facture = new Factures();
         $form = $this->createForm(FacturesType::class, $facture);
@@ -57,8 +58,8 @@ class FacturesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $numero = $numInvoiceService->Generate(
-                numInvoice: $facturesRepository->count([])+1,
+            $numero = $this->numInvoiceService->Generate(
+                numInvoice: $this->facturesRepository->count([])+1,
                 type: 'FACTURE'
             );
 
@@ -69,7 +70,7 @@ class FacturesController extends AbstractController
             $slug = $numero . '.pdf';
             $facture->setSlug($slug);
 
-            $invoiceService->CreateDevis(
+            $this->invoiceService->CreateDevis(
                 numero: $numero,
                 url: $url,
                 type: 'FACTURE',
@@ -85,30 +86,15 @@ class FacturesController extends AbstractController
 
             $facture->setAmount($tarif_total);
 
-            $facturesRepository->save($facture, true);
+            $this->facturesRepository->save($facture, true);
 
-            $mailer->sendDocument(
-                from: 'noreply@expace-development.fr',
-                name: 'Expace Development',
-                to: $facture->getClient()->getEmail(),
-                template: 'emails/_new_doc.html.twig',
-                subject: 'Nouveau document',
-                attache: $this->getParameter('factures_directory') . '/' . $numero .'.pdf',
-                mime: 'application/pdf',
-                docAttache: $numero .'.pdf',
-                client: $facture->getClient()->getPrenom(),
-                document: 'Facture'
+            $this->notificationService->addNotification(
+                sender: $this->getUser(),
+                recipient: $facture->getClient(),
+                message: 'Votre facture' .' ' .$numero .' ' .'a été créé',
+                document: $facture->getSlug(),
+                type: 'facture'
             );
-
-            $notification = new Notifications();
-
-            $notification->setSender($this->getUser())
-                         ->setRecipient($facture->getClient())
-                         ->setMessage('Votre facture' .' ' .$numero .' ' .'a été créé')
-                         ->setDocument('teste')
-                         ->setCreatedAt(new DateTime());
-
-            $notificationsRepository->save($notification, true);
 
             $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>La facture a été enregistré avec succès');
 
@@ -123,6 +109,8 @@ class FacturesController extends AbstractController
 
     /**
      * Permet d'afficher une facture
+     * 
+     * @return void
      */
     #[Route('/{slug}', name: 'app_admin_factures_show', methods: ['GET'])]
     public function show(Factures $facture): void
@@ -138,24 +126,10 @@ class FacturesController extends AbstractController
     /**
      * Permet d'éditer une facture
      *
-     * @param Request $request
-     * @param Factures $facture
-     * @param NotificationsRepository $notificationsRepository
-     * @param FacturesRepository $facturesRepository
-     * @param NumInvoiceService $numInvoiceService
-     * @param InvoiceService $invoiceService
-     * @param MailerService $mailer
      * @return Response
      */
     #[Route('/{id}/edit', name: 'app_admin_factures_edit', methods: ['GET', 'POST'])]
-    public function edit(
-        Request $request, 
-        Factures $facture, 
-        FacturesRepository $facturesRepository, 
-        NotificationsRepository $notificationsRepository, 
-        InvoiceService $invoiceService, 
-        MailerService $mailer
-    ): Response
+    public function edit(Request $request, Factures $facture): Response
     {
         $form = $this->createForm(FacturesType::class, $facture);
         $form->handleRequest($request);
@@ -166,7 +140,7 @@ class FacturesController extends AbstractController
             $url = 'documents/factures/' . $facture->getSlug();
             
 
-            $invoiceService->CreateDevis(
+            $this->invoiceService->CreateDevis(
                 numero: $facture->getSlug(),
                 url: $url,
                 type: 'FACTURE',
@@ -182,34 +156,18 @@ class FacturesController extends AbstractController
             
             $facture->setAmount($tarif_total);
 
-            $facturesRepository->save($facture, true);
+            $this->facturesRepository->save($facture, true);
 
-            $mailer->sendDocument(
-                from: 'noreply@expace-development.fr',
-                name: 'Expace Development',
-                to: $facture->getClient()->getEmail(),
-                template: 'emails/_new_doc.html.twig',
-                subject: 'Nouveau document',
-                attache: $this->getParameter('factures_directory') . '/' . $facture->getSlug(),
-                mime: 'application/pdf',
-                docAttache: $facture->getSlug(),
-                client: $facture->getClient()->getPrenom(),
-                document: 'Facture'
-            );
-
-            $notification = new Notifications();
+            
             $numero = substr($facture->getSlug(), 0, -4);
 
-
-            $notification->setSender($this->getUser())
-                         ->setRecipient($facture->getClient())
-                         ->setMessage('Votre facture' .' ' .$numero .' ' .'a été modifié')
-                         ->setDocument('teste')
-                         ->setCreatedAt(new DateTime());
-
-            $notificationsRepository->save($notification, true);
-
-
+            $this->notificationService->addNotification(
+                sender: $this->getUser(),
+                recipient: $facture->getClient(),
+                message: 'Votre facture' .' ' .$numero .' ' .'a été modifié',
+                document: $facture->getSlug(),
+                type: 'facture'
+            );
 
             $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>La facture a été enregistré avec succès');
 

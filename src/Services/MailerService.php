@@ -78,4 +78,28 @@ class MailerService {
         $this->mailer->send($email);
 
     }
+
+    public function sendNotification(
+        $from, 
+        $name, 
+        $template, 
+        $subject, 
+        $to,
+        $client,
+        $notification,
+        ):void {
+
+        $email = (new TemplatedEmail())
+            ->from(new Address($from, $name))
+            ->to(new Address($to))
+            ->subject($subject)
+            ->htmlTemplate($template)
+            ->context([
+                'prenom' => $client,
+                'message' => $notification
+        ]);
+
+        $this->mailer->send($email);
+
+    }
 }
