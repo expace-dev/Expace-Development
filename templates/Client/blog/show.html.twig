@@ -22,13 +22,13 @@
                             <h4>{{ article.auteur.fullName }}</h4>
                             <div class="social-links">
                                 {% if article.auteur.tweeter %}
-                                <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                                <a href="{{ article.auteur.tweeter }}" target="_blank"><i class="bi bi-twitter"></i></a>
                                 {% endif %}
                                 {% if article.auteur.facebook %}
-                                <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                                <a href="{{ article.auteur.facebook }}" target="_blank"><i class="bi bi-facebook"></i></a>
                                 {% endif %}
                                 {% if article.auteur.linkedin %}
-                                <a href="https://instagram.com/#"><i class="bi bi-linkedin"></i></a>
+                                <a href="{{ article.auteur.linkedin }}" target="_blank"><i class="bi bi-linkedin"></i></a>
                                 {% endif %}
                             </div>
                             <p>

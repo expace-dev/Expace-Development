@@ -40,36 +40,48 @@ class BlogController extends AbstractController
         $form = $this->createForm(ArticlesType::class, $article);
         $form->handleRequest($request);
 
-            if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
-                // Si on réceptionne une image d'illustration
-                if ($form->get('img')->getData()) {
-                    // On récupère l'image
-                    $fichier = $form->get('img')->getData();
-                    // On récupère le dossier de destination
-                    $directory = 'blog_directory';
-                    /**
-                     * On ajoute l'image et l'utilisateur connecté à l'article
-                     * et ont upload l'image via UploadService
-                     */
-                    $article->setImg('/images/blog/' .$uploadService->send($fichier, $directory))
-                            ->setAuteur($this->getUser());
+            // Si on réceptionne une image d'illustration
+            if ($form->get('img')->getData()) {
+                // On récupère l'image
+                $fichier = $form->get('img')->getData();
+                // On récupère le dossier de destination
+                $directory = 'blog_directory';
+                /**
+                * On ajoute l'image et l'utilisateur connecté à l'article
+                * et ont upload l'image via UploadService
+                */
+                $article->setImg('/images/blog/' .$uploadService->send($fichier, $directory))
+                         ->setAuteur($this->getUser());
 
 
-                    $articlesRepository->save($article, true);
+                $articlesRepository->save($article, true);
 
-                    $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Votre article a été enregistré avec succès');
+                $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Votre article a été enregistré avec succès');
 
-                    return $this->redirectToRoute('app_admin_blog_index', [], Response::HTTP_SEE_OTHER);
-                }
-                else {
-                    $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Veuillez fournir une image d\'illustration');
-                }
+                return $this->redirectToRoute('app_admin_blog_index', [], Response::HTTP_SEE_OTHER);
             }
-
-            if ($form->isSubmitted() && !$form->isValid()) {
-                $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Des erreurs subsistent veuillez corriger votre saisie');
+            else {
+                $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Veuillez fournir une image d\'illustration');
             }
+        }
+
+        if ($form->isSubmitted() && !$form->isValid()) {
+            $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Des erreurs subsistent veuillez corriger votre saisie');
+        }
+
+        if ($this->getUser()->getDescription() === null) {
+
+            $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Vous devez configurer votre profil avant de publier un article');
+            return $this->redirectToRoute('app_profil_edit', [], Response::HTTP_SEE_OTHER);
+        }
+        elseif ($this->getUser()->getFacebook() === null OR $this->getUser()->getTweeter() === null OR $this->getUser()->getLinkedin() === null) {
+            $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Vous devez renseigner au moins un réseau social');
+            return $this->redirectToRoute('app_profil_edit', [], Response::HTTP_SEE_OTHER);
+        }
+
+
 
         return $this->render('admin/blog/edit.html.twig', [
             'article' => $article,

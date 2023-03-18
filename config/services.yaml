@@ -11,6 +11,7 @@ parameters:
     cahiers_charges_directory: '%kernel.project_dir%/public/documents/cahiers_charges'
     devis_directory: '%kernel.project_dir%/public/documents/devis'
     factures_directory: '%kernel.project_dir%/public/documents/factures'
+    avatar_directory: '%kernel.project_dir%/public/images/avatar'
 services:
     # default configuration for services in *this* file
     _defaults:

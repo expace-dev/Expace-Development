@@ -2,6 +2,15 @@
 
     {{ form_start(form, {attr: {'data-model': '*'}}) }}
         <div class="row justify-content-center">
+            <div class="col-md-10">
+                {% for label, messages in app.flashes %}
+                    <div class="alert alert-{{ label }}">
+                        {% for message in messages %}
+                            {{ message | raw }}    
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
             <div class="col-md-5">
                 {{ form_row(form.societe) }}
                 <div class="row">
@@ -36,6 +45,14 @@
                 {{ form_row(form.fax) }}
                 {{ form_row(form.email) }}
                 {{ form_row(form.web) }}
+                
+            </div>
+            <div class="col-md-10">
+            {{ form_row(form.avatar) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.facebook) }}
+            {{ form_row(form.tweeter) }}
+            {{ form_row(form.linkedin) }}
             </div>
         </div>
         <div class="row justify-content-center">
