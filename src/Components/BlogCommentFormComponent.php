@@ -3,7 +3,7 @@
 namespace App\Components;
 
 use App\Entity\Comments;
-use App\Form\Client\Articles\CommentType;
+use App\Form\Blog\Client\CommentType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;

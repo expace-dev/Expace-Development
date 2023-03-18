@@ -43,12 +43,11 @@
         </ul>
     </li>
 {% else %}
-    <li><a href="{{path('app_home')}}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Retour à l'accueil" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-house" style="font-size: 24px;"></i></a></li>
-    <li><a href="{{ path('app_portfolios_index') }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Voir nos réalisations" data-bs-custom-class="custom-tooltip"><i class="fas fa-briefcase" style="font-size: 24px;"></i></a></li>
-    <li><a href="{{ path('app_blog_index') }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Voir nos articles" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-blog" style="font-size: 24px;"></i></a></li>
-    <li><a href="{{ path('app_home', {'_fragment': 'temoignages'}) }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Voir les témoignages" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-comment" style="font-size: 24px;"></i></a></li>
-    <li><a href="{{ path('app_home', {'_fragment': 'statistiques'}) }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Voir les statistiques" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-chart-pie" style="font-size: 24px;"></i></a></li>
-    <li><a href="{{ path('app_home', {'_fragment': 'about'}) }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Mode de fonctionnement" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-circle-info" style="font-size: 24px;"></i></a></li>
-    <li><a href="{{path('app_contact')}}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Nous contacter" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-message" style="font-size: 24px;"></i></a></li>
-    <li><a href="{{path('app_login')}}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Accéder ou créer un compte" data-bs-custom-class="custom-tooltip"><i class="fa-solid fa-power-off" style="font-size: 24px;"></i></a></li>
+    <li><a href="{{path('app_home')}}"><i class="fa-solid fa-house" style="top:-1px;"></i> Accueil</a></li>
+    <li><a href="{{ path('app_portfolios_index') }}"><i class="fas fa-briefcase" style="top:-1px;"></i> Réalisations</a></li>
+    <li><a href="{{ path('app_blog_index') }}"><i class="fa-solid fa-blog" style="top:-1px;"></i> Nos articles</a></li>
+    <li><a href="{{ path('app_home', {'_fragment': 'temoignages'}) }}"><i class="fa-solid fa-comment" style="top:-1px;"></i> Temoignages</a></li>
+    <li><a href="{{ path('app_home', {'_fragment': 'statistiques'}) }}"><i class="fa-solid fa-chart-pie" style="top:-1px;"></i> Statistiques</a></li>
+    <li><a href="{{ path('app_home', {'_fragment': 'about'}) }}"><i class="fa-solid fa-circle-info" style="top:-1px;"></i> Fonctionnement</a></li>
+    <li><a href="{{path('app_contact')}}"><i class="fa-solid fa-message" style="top:0px;"></i> Contact</a></li>
 {% endif %}

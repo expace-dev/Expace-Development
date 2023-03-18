@@ -12,6 +12,7 @@ use App\Form\Autocomplete\ProjetsAutocompleteField;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class PortfoliosCreateType extends AbstractType
 {
@@ -22,8 +23,11 @@ class PortfoliosCreateType extends AbstractType
             ->add('url',UrlType::class, [
                 'label' => 'Url du projet',
             ])
-            ->add('details', CKEditorType::class, [
+            ->add('details', TextareaType::class, [
                 'label' => 'Description',
+                'attr' => [
+                    'rows' => 5
+                ]
             ])
             
             ->add('imagesPortfolios', FileType::class, [

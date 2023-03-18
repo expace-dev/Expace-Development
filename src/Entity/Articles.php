@@ -47,6 +47,9 @@ class Articles
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $auteur = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $introduction = null;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -182,6 +185,18 @@ class Articles
     public function setAuteur(?Users $auteur): self
     {
         $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    public function getIntroduction(): ?string
+    {
+        return $this->introduction;
+    }
+
+    public function setIntroduction(string $introduction): self
+    {
+        $this->introduction = $introduction;
 
         return $this;
     }

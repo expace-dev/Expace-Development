@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% if app.request.attributes.get('_route') == 'app_admin_portfolios_edit' %}
-    {% set titre = 'Editer le projet' %}
+    {% set titre = 'Editer une réalisation' %}
 {% else %}
-    {% set titre = 'Créer un projet' %}
+    {% set titre = 'Ajouter une réalisation' %}
 {% endif %}
 
 {% block title %}{{ titre }}{% endblock %}

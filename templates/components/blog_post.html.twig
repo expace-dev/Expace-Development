@@ -15,7 +15,7 @@
   </div>
   <div class="entry-content">
     {% if app.request.get('_route') != 'app_blog_show' %}
-      {% set content = article.content | raw | slice(0,2000)  %}
+      {% set content = article.introduction|raw  %}
     {% else %}
       {% set content = article.content %}
     {% endif %}

@@ -7,8 +7,11 @@
         <title>Expace Development - {% block title %}{% endblock %}</title>
         <script src="https://kit.fontawesome.com/99b1503dd1.js" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/super-build/ckeditor.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/super-build/translations/fr.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+        <link href="/css/prism.css" rel="stylesheet" />
         
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -32,5 +35,6 @@
         <script src="/js/swiper-bundle.min.js"></script>
         <script src="/js/noframework.waypoints.js"></script>
         <script src="/js/main.js"></script>
+        <script src="/js/prism.js"></script>
     </body>
 </html>

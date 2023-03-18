@@ -23,7 +23,7 @@
                                             <a href="{{ image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ client }}"><i class="bx bx-plus"></i></a>
                                         {% endif %}
                                     {% endfor %}
-                                    <a href="{{ path('app_portfolios_details', {'id': portfolio.id}) }}" title="En savoir plus"><i class="bx bx-link"></i></a>
+                                    <a href="{{ path('app_portfolios_details', {'slug': portfolio.slug}) }}" title="En savoir plus"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
                         </div>

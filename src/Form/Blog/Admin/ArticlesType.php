@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Length;
 
@@ -46,9 +47,24 @@ class ArticlesType extends AbstractType
                 ],
                 'trim' => false,
             ])
-            ->add('content', CKEditorType::class, [
+            ->add('introduction', TextareaType::class, [
+                'label' => 'Introduction',
+                'row_attr' => [
+                    'data-live-ignore' => 'true'
+                ],
+                'constraints' => [
+                    new NotNull(['message' => 'Veuillez détailler votre intro']),
+                    new Length([
+                        'min' => 5,
+                        'minMessage' => 'Trop court, minimum {{ limit }} caractères',
+                    ]),
+                ],
+                'attr' => [
+                    'class' => 'editor'
+                ]
+            ])
+            ->add('content', TextareaType::class, [
                 'label' => 'Contenu',
-                'config_name' => 'main_config',
                 'row_attr' => [
                     'data-live-ignore' => 'true'
                 ],
@@ -59,6 +75,9 @@ class ArticlesType extends AbstractType
                         'minMessage' => 'Trop court, minimum {{ limit }} caractères',
                     ]),
                 ],
+                'attr' => [
+                    'class' => 'editor'
+                ]
             ])
             ->add('img', FileType::class, [
                 'attr' => [

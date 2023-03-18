@@ -7,8 +7,8 @@
     {% endif %}
 >
     {% if this.allNotifications %}
-        <li><a href=""><i data-count="{{ this.allNotifications }}" class="fa-solid fa-bell fa-2x badger" style="font-size: 24px;"></i></a></li>
+        <li><a href="{{ path('app_notifications_index') }}"><i data-count="{{ this.allNotifications }}" class="fa-solid fa-bell fa-2x badger" style="font-size: 24px;"></i></a></li>
     {% else %}
-        <li><a href=""><i class="fa-solid fa-bell fa-2x" style="font-size: 24px;"></i></a></li>
+        <li><a href="{{ path('app_notifications_index') }}"><i class="fa-solid fa-bell fa-2x" style="font-size: 24px;"></i></a></li>
     {% endif %}
 </div>

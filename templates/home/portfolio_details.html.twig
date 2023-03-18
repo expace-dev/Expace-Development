@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nos réalisations{% endblock %}
+{% block title %}{{ portfolio.projet.titre }}{% endblock %}
 
 {% block body %}
 {% if portfolio.projet.client.societe %}

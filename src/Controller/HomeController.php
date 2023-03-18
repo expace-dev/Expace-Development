@@ -78,7 +78,7 @@ class HomeController extends AbstractController
      *
      * @return Response
      */
-    #[Route('/portfolio', name: 'app_portfolios_index')]
+    #[Route('/realisations', name: 'app_portfolios_index')]
     public function portfolio(): Response
     {
         return $this->render('home/portfolio.html.twig');
@@ -89,7 +89,7 @@ class HomeController extends AbstractController
      * 
      * @param Portfolios $portfolio
      */
-    #[Route('/portfolio/details/{id}', name: 'app_portfolios_details')]
+    #[Route('/realisations/{slug}', name: 'app_portfolios_details')]
     public function portfolioDetails(Portfolios $portfolio): Response
     {
 

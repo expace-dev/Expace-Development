@@ -9,8 +9,18 @@ fos_ck_editor:
         default:
             language: fr
             toolbar:
-                 - { name: "styles", items: ['Bold', 'Italic', 'Underline', 'Strike', 'Blockquote', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Styles', 'Format','FontSize', '-', 'TextColor', 'BGColor'] }
+                 - { name: "styles", items: ['Italic', 'Underline', 'Strike', 'Blockquote', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Styles', 'Format','FontSize', '-', 'TextColor', 'BGColor'] }
+            filebrowserBrowseRoute: elfinder
+            filebrowserBrowseRouteParameters: []
+            extraPlugins: ["codesnippet"]
         main_config:
             language: fr
             toolbar:
-                - { name: "styles", items: ['Bold', 'Italic', 'Underline', 'Strike', 'Blockquote', '-', 'Link', '-', 'RemoveFormat', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Smiley', 'Image', 'Youtube', 'Embed',  'Table', 'Styles', 'Format','Font','FontSize', '-', 'TextColor', 'BGColor', 'Source'] }
+                - { name: "styles", items: ['code', 'Bold', 'Italic', 'Underline', 'Strike', 'Blockquote', '-', 'Link', '-', 'RemoveFormat', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Smiley', 'Image', 'Youtube', 'Embed',  'Table', 'Styles', 'Format','Font','FontSize', '-', 'TextColor', 'BGColor', 'Source'] }
+            filebrowserBrowseRoute: elfinder
+            filebrowserBrowseRouteParameters: []
+            extraPlugins: ["codesnippet"]
+        plugins:
+        codesnippet:
+            path:     "bundles/fosckeditor/plugins/codesnippet/" # with trailing slash
+            filename: "plugin.js"

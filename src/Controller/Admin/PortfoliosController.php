@@ -46,6 +46,8 @@ class PortfoliosController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $portfolio->setSlug($portfolio->getProjet()->getSlug());
+
 
             $fichiers = $form->get('imagesPortfolios')->getData();
             $directory = 'portfolios_directory';

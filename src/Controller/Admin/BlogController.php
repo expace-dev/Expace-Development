@@ -52,7 +52,7 @@ class BlogController extends AbstractController
                      * On ajoute l'image et l'utilisateur connecté à l'article
                      * et ont upload l'image via UploadService
                      */
-                    $article->setImg('images/blog/' .$uploadService->send($fichier, $directory))
+                    $article->setImg('/images/blog/' .$uploadService->send($fichier, $directory))
                             ->setAuteur($this->getUser());
 
 
@@ -103,7 +103,7 @@ class BlogController extends AbstractController
                 // On supprime l'ancienne image d'illustration
                 unlink($article->getImg());
                 // Puis on upload la nouvelle image et on ajoute cela à  l'article
-                $article->setImg('images/blog/' .$uploadService->send($fichier, $directory));
+                $article->setImg('/images/blog/' .$uploadService->send($fichier, $directory));
             }
             
 
