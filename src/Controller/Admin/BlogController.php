@@ -41,7 +41,7 @@ class BlogController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            
             // Si on réceptionne une image d'illustration
             if ($form->get('img')->getData()) {
                 // On récupère l'image
@@ -70,14 +70,9 @@ class BlogController extends AbstractController
         if ($form->isSubmitted() && !$form->isValid()) {
             $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Des erreurs subsistent veuillez corriger votre saisie');
         }
-
-        if ($this->getUser()->getDescription() === null) {
+        if (!$this->getUser()->getDescription()) {
 
             $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Vous devez configurer votre profil avant de publier un article');
-            return $this->redirectToRoute('app_profil_edit', [], Response::HTTP_SEE_OTHER);
-        }
-        elseif ($this->getUser()->getFacebook() === null OR $this->getUser()->getTweeter() === null OR $this->getUser()->getLinkedin() === null) {
-            $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Vous devez renseigner au moins un réseau social');
             return $this->redirectToRoute('app_profil_edit', [], Response::HTTP_SEE_OTHER);
         }
 
