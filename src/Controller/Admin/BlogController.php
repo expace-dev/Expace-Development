@@ -75,6 +75,11 @@ class BlogController extends AbstractController
             $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Vous devez configurer votre profil avant de publier un article');
             return $this->redirectToRoute('app_profil_edit', [], Response::HTTP_SEE_OTHER);
         }
+        if (!$this->getUser()->getAvatar()) {
+
+            $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Vous devez ajouter une photo de profil avant de publier un article');
+            return $this->redirectToRoute('app_profil_edit', [], Response::HTTP_SEE_OTHER);
+        }
 
 
 
