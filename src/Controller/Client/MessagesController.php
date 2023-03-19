@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-#[Route('/profile/messagerie')]
+#[Route('/panel/messagerie')]
 class MessagesController extends AbstractController
 {
     /**
@@ -65,7 +65,7 @@ class MessagesController extends AbstractController
                 
             }
 
-            $recipient = $usersRepository->findOneBy(['id' => 2]);
+            $recipient = $usersRepository->findOneBy(['id' => 1]);
 
             $message->setSender($this->getUser())
                     ->setRecipient($recipient)

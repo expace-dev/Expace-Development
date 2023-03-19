@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Notifications;
 use App\Form\NotificationsType;
 use App\Repository\DevisRepository;
+use App\Repository\FacturesRepository;
 use App\Repository\ProjetsRepository;
 use App\Repository\NotificationsRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-#[Route('/profile/notifications')]
+#[Route('/panel/notifications')]
 class NotificationsController extends AbstractController
 {
     /**
@@ -40,7 +41,8 @@ class NotificationsController extends AbstractController
         Notifications $notification, 
         ProjetsRepository $projetsRepository, 
         NotificationsRepository $notificationsRepository,
-        DevisRepository $devisRepository
+        DevisRepository $devisRepository,
+        FacturesRepository $facturesRepository
     ): Response
     {
         if ($notification->getRecipient() !== $this->getUser()) {
@@ -63,6 +65,13 @@ class NotificationsController extends AbstractController
             
             $devis = $devisRepository->findOneBy(['slug' => $notification->getDocument()]);
             return $this->redirectToRoute('app_client_devis_show', ['slug' => $devis->getSlug()], Response::HTTP_SEE_OTHER);
+
+        }
+
+        if ($notification->getType() === 'facture') {
+            
+            $facture = $facturesRepository->findOneBy(['slug' => $notification->getDocument()]);
+            return $this->redirectToRoute('app_client_factures_show', ['slug' => $facture->getSlug()], Response::HTTP_SEE_OTHER);
 
         }
 

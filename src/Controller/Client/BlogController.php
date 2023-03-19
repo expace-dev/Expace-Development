@@ -44,7 +44,7 @@ class BlogController extends AbstractController
      * @param Articles $article
      * @param EntityManagerInterface $manager
      */
-    #[Route('/details/{id}', name: 'app_blog_show', methods: ['GET', 'POST'])]
+    #[Route('/details/{slug}', name: 'app_blog_show', methods: ['GET', 'POST'])]
     public function show(Request $request, Articles $article, EntityManagerInterface $manager): Response
     {
 

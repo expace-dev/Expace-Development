@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class MessagesType extends AbstractType
@@ -33,7 +34,8 @@ class MessagesType extends AbstractType
                     ]),
                 ]
             ])
-            ->add('message', CKEditorType::class, [
+            ->add('message', TextareaType::class, [
+                'required' => false,
                 'label' => 'Message',
                 'trim' => false,
                 'constraints' => [
@@ -42,9 +44,6 @@ class MessagesType extends AbstractType
                         'min' => 10,
                         'minMessage' => 'Trop court, minimum {{ limit }} caractères',
                     ]),
-                ],
-                'attr' => [
-                    'rows' => 10
                 ],
                 'row_attr' => [
                     'data-live-ignore' => 'true'

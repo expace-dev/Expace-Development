@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-#[Route('/profile/projets')]
+#[Route('/panel/projets')]
 class ProjetsController extends AbstractController
 {
     /**
@@ -139,7 +139,7 @@ class ProjetsController extends AbstractController
      * @return Response
      */
     #[Route('/{slug}/delete', name: 'app_client_projets_delete', methods: ['GET'])]
-    public function delete(Projets $projet, ProjetsRepository $projetsRepository): Response
+    public function delete(Projets $projet, ProjetsRepository $projetsRepository, NotificationsRepository $notificationsRepository): Response
     {
         if ($projet->getClient() !== $this->getUser()) {
             throw new AccessDeniedException("Vous n'avez pas l'autorisation d'accéder à cette page");
@@ -148,6 +148,13 @@ class ProjetsController extends AbstractController
             $this->addFlash('danger', '<span class="me-2 fa fa-circle-exclamation"></span>Vous ne pouvez plus supprimmer ce projet');
         }
         else {
+            
+            $notifications = $notificationsRepository->findBy(['document' => $projet->getSlug()]);
+
+            foreach ($notifications as $notification) {
+                $notificationsRepository->remove($notification, true);
+            }
+            
             $this->addFlash('success', '<span class="me-2 fa fa-circle-check"></span>Votre projet a été supprimmé avec succès');
             $projetsRepository->remove($projet, true);
         }

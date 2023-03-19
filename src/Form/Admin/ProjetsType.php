@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ProjetsType extends AbstractType
@@ -36,12 +37,12 @@ class ProjetsType extends AbstractType
                     ]),
                                     ]
             ])
-            ->add('besoinClient', CKEditorType::class, [
+            ->add('besoinClient', TextareaType::class, [
+                'required' => false,
                 'row_attr' => [
                     'data-live-ignore' => 'true'
                 ],
                 'label' => 'Besoin du client',
-                'config_name' => 'default',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez préciser les besoins'

@@ -5,6 +5,7 @@ namespace App\Form\Client;
 use App\Entity\Projets;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -32,12 +33,12 @@ class ProjetsType extends AbstractType
                     ]),
                                     ]
             ])
-            ->add('besoinClient', CKEditorType::class, [
+            ->add('besoinClient', TextareaType::class, [
+                'required' => false,
                 'row_attr' => [
                     'data-live-ignore' => 'true'
                 ],
                 'label' => 'Besoin du client',
-                'config_name' => 'default',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez préciser les besoins'

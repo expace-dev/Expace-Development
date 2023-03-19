@@ -22,7 +22,7 @@ class DashboardController extends AbstractController
      * @param DashboardAdminService $dashboardAdminService
      * @return Response
      */
-    #[Route('/client/dashboard', name: 'app_client_dashboard')]
+    #[Route('/panel/dashboard', name: 'app_client_dashboard')]
     public function index(
         DevisRepository $devisRepository, 
         FacturesRepository $facturesRepository, 

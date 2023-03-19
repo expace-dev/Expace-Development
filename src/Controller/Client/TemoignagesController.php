@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/profile/temoignages')]
+#[Route('/panel/temoignages')]
 class TemoignagesController extends AbstractController {
 
     /**
@@ -42,7 +42,7 @@ class TemoignagesController extends AbstractController {
                 "Votre avis a bien été enregistré"
             );
 
-            return $this->redirectToRoute('client_temoignages_new', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_client_temoignages_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('client/temoignages/new.html.twig', [

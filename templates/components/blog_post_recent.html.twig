@@ -5,7 +5,7 @@
     {% for derniersArticle in this.recentArticle %}
         <div class="post-item clearfix">
             <img src="{{ derniersArticle.img }}" alt="">
-            <h4><a href="{{ path('app_blog_show', {'id': derniersArticle.id}) }}">{{ derniersArticle.title }}</a></h4>
+            <h4><a href="{{ path('app_blog_show', {'slug': derniersArticle.slug}) }}">{{ derniersArticle.title }}</a></h4>
             <time datetime="{{ derniersArticle.date|format_datetime(locale='fr',pattern="dd MMMM YYYY") }}">{{ derniersArticle.date|format_datetime(locale='fr',pattern="dd MMMM YYYY") }}</time>
         </div>
     {% endfor %}

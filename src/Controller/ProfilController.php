@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/profile/profil')]
+#[Route('/panel/profil')]
 class ProfilController extends AbstractController
 {
     /**
